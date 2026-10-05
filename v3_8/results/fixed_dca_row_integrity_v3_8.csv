@@ -1,0 +1,5 @@
+model,reference_rows,rows,keys_exact,numeric_max_abs_delta,all_match
+A,4973,4973,True,0.0,True
+B,4973,4973,True,0.0,True
+J7,4973,4973,True,0.0,True
+K,4973,4973,True,0.0,True

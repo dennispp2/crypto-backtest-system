@@ -1,0 +1,3 @@
+# V3.8 analysis log
+
+The three-completed-close rule and all gates were frozen before formal execution. V3.1 B, the independent V3.1 shadow and V3.7 J7 were replayed before K. Forward returns were added only after K execution ended. A preliminary attempt was invalidated because its cooldown boundary allowed the third subsequent close instead of blocking it; the implementation and unit test were corrected to the already frozen three-close specification before this formal rerun. See `invalid_attempt_1_off_by_one.md`. No search, strategy-parameter change, or post-result gate change was performed.

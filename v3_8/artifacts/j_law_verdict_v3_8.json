@@ -1,0 +1,18 @@
+{
+  "Champion": "V3.1 Model B",
+  "Challenger": "V3.8 Model K",
+  "State Isolation Integrity": "PASS",
+  "Return Edge": "FAIL",
+  "Drawdown Edge": "PASS",
+  "2022 Bear Protection": "PASS",
+  "2026 Bear Protection": "PASS",
+  "Short Whipsaw Reduction": "PASS",
+  "Turnover Reduction": "FAIL",
+  "AHR Delay Opportunity Cost": 12744.480963025359,
+  "Execution Efficiency": "FAIL",
+  "Bull Re-entry Integrity": "PASS",
+  "Risk Sell Integrity": "PASS",
+  "No Look Ahead": "PASS",
+  "Overfit Risk": "ELEVATED_SINGLE_REALIZED_PATH",
+  "Final Verdict": "B. V3.1 REMAINS CHAMPION"
+}

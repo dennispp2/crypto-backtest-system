@@ -1,0 +1,113 @@
+{
+  "schema_version": "3.8",
+  "strategy_version": "BTC+ETH Macro Hedge V3.8 - V3.1 Shadow Engine + 3-Completed-Close AHR Execution Overlay",
+  "frozen_at_utc": "2026-09-03T13:36:10Z",
+  "frozen_before_formal_run": true,
+  "base_version": "V3.1 Model B",
+  "base_config": "config/config_frozen_v3_1.json",
+  "base_config_sha256": "50adc23c620d068087842ca574f8d4f87a8b6de3d96ebca0392184c43574bc84",
+  "j7_replay_version": "V3.7 Model J",
+  "v3_7_config": "config/config_frozen_v3_7.json",
+  "v3_7_config_sha256": "9ca1cfbbd19dec46225b7ed11aad55e8cb9b783b0d0387ed20822a7b24da3acf",
+  "v3_7_engine_sha256": "1ec9a594e8e1677826d8eb0f2067c7ba481addec5f5d193a290986e82eb5c649",
+  "strictly_forbidden_changes": [
+    "FSM", "Stage", "Cycle", "Target", "Crash", "NEW_BULL", "Right-side",
+    "Risk Sell", "AHR999 threshold", "20 percent floor", "Fixed DCA"
+  ],
+  "strictly_excluded_features": [
+    "AHR duplicate suppression", "sell cooldown after AHR", "sticky base",
+    "14-day lock", "one-rung sell rule", "episode lock", "rearm rule", "AI"
+  ],
+  "models": {
+    "H0": "Initial allocation only; no DCA; no tactical trading",
+    "A": "V3.1 Fixed DCA",
+    "B": "V3.1 frozen FSM-only replay",
+    "J7": "V3.7 frozen seven-calendar-day overlay replay",
+    "K": "Independent V3.1 shadow plus three-completed-close AHR execution overlay"
+  },
+  "shadow_engine": {
+    "implementation": "separately executed unmodified V3.1 FSM-only engine",
+    "actual_portfolio_feedback": false,
+    "required_daily_parity_fields": [
+      "macro_state", "sell_stage", "cycle_id", "active_target", "crash_state", "new_bull_state"
+    ],
+    "all_mismatch_counts_must_equal_zero": true
+  },
+  "execution_overlay": {
+    "restrictable_action": "TACTICAL_BUYBACK_AHR999_TO_35 only",
+    "ahr_signal_type": "AHR_VALUE_BUY",
+    "cooldown_completed_daily_closes_after_any_tactical_sell": 3,
+    "cooldown_boundary": "sell signal close is close zero; the next three newly available completed daily closes are all blocked; eligible only from the first tradable bar after the third subsequent close, when the fourth subsequent daily signal is available",
+    "pending_condition": "completed AHR999 <= V3.1 threshold and V3.1 shadow remains in BEAR, DEEP_BEAR, or ACCUMULATION",
+    "pending_condition_checked_at_cooldown_end": true,
+    "pending_cancel_on_right_side_buy": true,
+    "pending_cancel_on_new_bull": true,
+    "risk_sell_resets_completed_close_counter": true,
+    "additional_duplicate_suppression": false,
+    "sell_lock_after_ahr": false,
+    "risk_sell_never_restricted": true,
+    "right_side_never_restricted": true,
+    "new_bull_never_restricted": true,
+    "fixed_dca_never_restricted": true,
+    "bar_execution_order": "original V3.1 tactical order, then original V3.1 DCA order; if risk sell and AHR coexist, risk sell first and AHR cannot execute at that timestamp"
+  },
+  "operational_interpretations": {
+    "shadow_action_source": "executed tactical-event groups from the independent original V3.1 shadow trade ledger at the current timestamp only",
+    "completed_close_counter": "increments only when a new completed daily signal becomes available after the risk-sell signal; resets to zero on every new risk sell",
+    "zero_notional_risk_sell": "NO_TRADE_ALREADY_BELOW_TARGET with EXECUTE decision; unchanged target and not suppression",
+    "pending_recheck_frequency": "once per newly available completed daily signal",
+    "pending_target": "the original shadow AHR desired exposure target",
+    "multiple_delayed_requests": "one pending order may retain multiple delayed shadow-request audit records; each record receives the eventual execution or cancellation outcome",
+    "temporary_cash": "V3.1 temporary-lot ownership and unwind events are mirrored for actual execution only and never feed the shadow FSM",
+    "new_bull_budget": "actual tactical cash divided by the current original V3.1 redeploy steps remaining",
+    "opportunity_forward_returns": "post-backtest reporting only; BTC open at the original shadow execution compared with BTC close exactly 30 and 60 calendar days later when available",
+    "audit_windows_are_reporting_only": true,
+    "implementation_correction_at_utc": "2026-09-03T13:58:32Z",
+    "implementation_correction": "invalidated preliminary attempt 1 because it incorrectly allowed AHR on the third subsequent completed close; corrected to block closes one through three and allow only from day four; no strategy parameter or gate changed"
+  },
+  "audit_windows": {
+    "COVID_2020": ["2020-02-15", "2020-04-30"],
+    "MAY_2021": ["2021-05-01", "2021-06-30"],
+    "BEAR_2021NOV_2022JUN": ["2021-11-01", "2022-06-30"],
+    "BOTTOM_2022": ["2022-06-01", "2022-07-31"],
+    "FTX_2022": ["2022-11-01", "2022-12-31"],
+    "BULL_2023_2025": ["2023-01-01", "2025-12-31"],
+    "BOTTOM_2026": ["2026-02-01", "2026-06-30"],
+    "CORRECTION_2025_2026": ["2025-01-01", "end"]
+  },
+  "reference_v31_b": {
+    "final_portfolio_value": 348746.8528777533,
+    "twr_cagr": 0.4769146261923145,
+    "maximum_drawdown": -0.3951313419600695,
+    "calmar": 1.2069774668507813,
+    "tactical_turnover": 9.367689873226654,
+    "tactical_event_count": 106
+  },
+  "reference_v37_j7": {
+    "final_portfolio_value": 329903.173969334,
+    "twr_cagr": 0.4634304808670271,
+    "maximum_drawdown": -0.38693836521759806,
+    "calmar": 1.1976855295969762,
+    "tactical_turnover": 8.349961098377133,
+    "tactical_event_count": 90
+  },
+  "promotion_gates": {
+    "shadow_state_all_mismatches_equal_zero": true,
+    "overlay_restricted_actions_ahr_only": true,
+    "short_three_close_whipsaw_reduction_min_fraction": 0.50,
+    "seven_calendar_day_whipsaw_reduction_min_fraction": 0.25,
+    "overall_tactical_turnover_reduction_min_fraction": 0.075,
+    "overall_tactical_event_reduction_min_fraction": 0.10,
+    "overall_tactical_event_count_maximum": 95,
+    "bear_2021nov_2022jun_dd_regression_max_pp": 2.0,
+    "correction_2025_2026_dd_regression_max_pp": 2.0,
+    "overall_max_dd_regression_max_pp": 1.0,
+    "twr_cagr_minimum": 0.465,
+    "final_value_min_fraction_of_v31_b": 0.98,
+    "calmar_shortfall_maximum": 0.05,
+    "integrity_required": true
+  },
+  "promotion_is_post_backtest_only": true,
+  "forbid_parameter_search": true,
+  "forbid_follow_on_version": "V3.9"
+}

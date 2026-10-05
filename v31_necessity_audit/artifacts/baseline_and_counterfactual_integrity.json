@@ -1,0 +1,17 @@
+{
+  "baseline_replay_pass": true,
+  "independent_zero_deletion_replay_pass": true,
+  "fixed_dca_all_counterfactuals_pass": true,
+  "frozen_shadow_all_counterfactuals_pass": true,
+  "portfolio_event_count_106": true,
+  "btc_eth_two_legs_per_event": true,
+  "data_contract_pass": true,
+  "prefix_baseline_trade_identity_pass": true,
+  "prefix_counterfactual_trade_identity_pass": true,
+  "forward_outcome_terms_in_execution_engine": [],
+  "forward_outcomes_added_after_all_simulations": true,
+  "no_lookahead_pass": true,
+  "v31_engine_sha256_after_audit": "ea91309e5821431210998cf2289965adad8991cc97005105cceab9037aeae2a1",
+  "v31_engine_unchanged": true,
+  "pass": true
+}

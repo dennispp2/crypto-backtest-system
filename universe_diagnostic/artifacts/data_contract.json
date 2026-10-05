@@ -1,0 +1,31 @@
+{
+  "input_paths": [
+    "C:\\Users\\denni\\OneDrive\\Desktop\\虛擬貨幣\\crypto_backtest_system\\config\\frozen_rules.json",
+    "C:\\Users\\denni\\OneDrive\\Desktop\\虛擬貨幣\\crypto_backtest_system\\config\\frozen_rules_v2.json",
+    "C:\\Users\\denni\\OneDrive\\Desktop\\虛擬貨幣\\crypto_backtest_system\\data\\processed\\backtest_4h_signals.csv.gz",
+    "C:\\Users\\denni\\OneDrive\\Desktop\\虛擬貨幣\\crypto_backtest_system\\v2\\results\\summary_v2.csv",
+    "C:\\Users\\denni\\OneDrive\\Desktop\\虛擬貨幣\\crypto_backtest_system\\v2\\results\\daily_portfolio_v2.csv",
+    "C:\\Users\\denni\\OneDrive\\Desktop\\虛擬貨幣\\crypto_backtest_system\\v2\\results\\trade_log_v2.csv"
+  ],
+  "input_sha256": {
+    "config\\frozen_rules.json": "29178cd80377c5a261c358fffb3a33021c00952bc90fd0cbaee1e7a469f3fb75",
+    "config\\frozen_rules_v2.json": "2fe44e59a97712e03af57648c16fcc6a15426ad93ed71deefca39f26048e720e",
+    "data\\processed\\backtest_4h_signals.csv.gz": "8a5ec544f25733682e7be4137dfeff304d3653543e3b523aee0055cee9b45734",
+    "v2\\results\\summary_v2.csv": "708c3d178967031060a4d26a771925d4977c2c481b0b61c0bbaa3326c4fd5a35",
+    "v2\\results\\daily_portfolio_v2.csv": "0eb15710005d329df119c0b85fe3da2cfdfdffec16735172a1423ce5a4e215d0",
+    "v2\\results\\trade_log_v2.csv": "90aa60ce738ff7bedda68e2a7ce27b4a41e0fac8865b3d4d2e3c551c90ce41bf"
+  },
+  "price_panel_rows_through_v2_end": 19319,
+  "v2_formal_end": "2026-09-02T08:00:00+00:00",
+  "duplicate_timestamp_count": 0,
+  "required_price_null_count": 0,
+  "fee": 0.001,
+  "slippage": 0.0005,
+  "minimum_notional": {
+    "BTC": 5.0,
+    "ETH": 5.0,
+    "BNB": 5.0
+  },
+  "external_contribution_per_4h": 2.0,
+  "pass": true
+}

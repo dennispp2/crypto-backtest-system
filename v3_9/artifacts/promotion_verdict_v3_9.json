@@ -1,0 +1,19 @@
+{
+  "verdict": "D. V3.9 REJECTED - NO MATERIAL BULL EDGE",
+  "all_gates_pass": false,
+  "checks": {
+    "G0_INTEGRITY_ALL_PASS": true,
+    "G1_BULL_AVG_EXPOSURE_DELTA_GTE_10PP": false,
+    "G2_BULL_TIME_GTE85_DELTA_GTE_15PP": false,
+    "G3_FINAL_VALUE_GTE_V31": true,
+    "G4_TWR_CAGR_GTE_47_5PCT": true,
+    "G5_2021NOV_2022JUN_DD_WORSEN_LTE_2PP": true,
+    "G6_2025_2026_DD_WORSEN_LTE_2PP": true,
+    "G7_COVID_DD_WORSEN_LTE_1PP": true,
+    "G8_MAY_2021_DD_WORSEN_LTE_1PP": true,
+    "G9_2025_11_STAGE4_EXECUTED": true,
+    "G10_CRASH_L1_L2_NOT_SUPPRESSED": true,
+    "G11_CALMAR_NOT_BELOW_V31": true,
+    "G12_TURNOVER_INCREASE_LTE_10PCT": true
+  }
+}

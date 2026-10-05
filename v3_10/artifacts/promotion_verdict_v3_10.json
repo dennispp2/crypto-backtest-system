@@ -1,0 +1,23 @@
+{
+  "verdict": "A. V3.10 STAGE3 CONFIRMATION PROMOTED",
+  "all_gates_pass": true,
+  "checks": {
+    "G0_INTEGRITY_ALL_PASS": true,
+    "G1_Q_FINAL_ABOVE_B": true,
+    "G2_UPLIFT_CAPTURE_GTE_75PCT": true,
+    "G3_TWR_CAGR_GTE_48_4PCT": true,
+    "G4_OVERALL_DD_WORSEN_LTE_0_5PP": true,
+    "G5_2022_BEAR_DD_WORSEN_LTE_1PP": true,
+    "G6_2025_2026_DD_WORSEN_LTE_1PP": true,
+    "G7_STAGE4_AND_CRASH_INTEGRITY": true,
+    "G8_CALMAR_NOT_BELOW_B": true,
+    "G9_TURNOVER_INCREASE_LTE_5PCT": true,
+    "G10_ROLLING_START_ROBUSTNESS": true,
+    "COVID_DD_WORSEN_LTE_0_5PP": true,
+    "MAY_2021_DD_WORSEN_LTE_0_5PP": true
+  },
+  "v39_return_uplift_usd": 18660.654306216806,
+  "v310_return_uplift_usd": 18660.654306216806,
+  "uplift_capture_ratio": 1.0,
+  "precise_75pct_final_value_threshold_usd": 362742.3436074159
+}

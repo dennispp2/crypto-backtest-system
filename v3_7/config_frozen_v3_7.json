@@ -1,0 +1,87 @@
+{
+  "schema_version": "3.7",
+  "strategy_version": "BTC+ETH Macro Hedge V3.7 - V3.1 Shadow Engine + Pure Execution Overlay",
+  "frozen_at_utc": "2026-09-03T13:01:27Z",
+  "frozen_before_formal_run": true,
+  "base_version": "V3.1 Model B",
+  "base_config": "config/config_frozen_v3_1.json",
+  "base_config_sha256": "50adc23c620d068087842ca574f8d4f87a8b6de3d96ebca0392184c43574bc84",
+  "strictly_excluded_versions": ["V3.2", "V3.3 trading modifications", "V3.4", "V3.5", "V3.6 state-dependent throttle"],
+  "strictly_excluded_features": ["Macro Bull Requalification", "Crash Level 3", "AI", "new macro rule"],
+  "models": {
+    "H0": "Initial allocation only; no DCA; no tactical trading",
+    "A": "V3.1 Fixed DCA",
+    "B": "V3.1 frozen FSM-only replay",
+    "J": "Independent V3.1 shadow plus pure AHR execution overlay"
+  },
+  "shadow_engine": {
+    "implementation": "a separately executed unmodified V3.1 FSM-only engine",
+    "actual_portfolio_feedback": false,
+    "required_daily_parity_fields": ["macro_state", "sell_stage", "cycle_id", "active_target", "crash_state", "new_bull_state"],
+    "all_mismatch_counts_must_equal_zero": true
+  },
+  "execution_overlay": {
+    "restrictable_action": "TACTICAL_BUYBACK_AHR999_TO_35 only",
+    "ahr_signal_type": "AHR_VALUE_BUY",
+    "ahr_rebuy_cooldown_calendar_days_after_any_tactical_sell": 7,
+    "same_ahr_signal_duplicate_window_calendar_days": 3,
+    "pending_condition": "completed AHR999 <= V3.1 threshold and V3.1 shadow remains in BEAR, DEEP_BEAR, or ACCUMULATION",
+    "pending_cancel_when_condition_disappears": true,
+    "pending_cancel_on_right_side_buy": true,
+    "pending_cancel_on_new_bull": true,
+    "risk_sell_resets_cooldown": true,
+    "fixed_priority": ["FIXED_DCA", "RISK_SELL", "NEW_BULL_REDEPLOY", "RIGHT_SIDE_BUYBACK", "AHR_VALUE_BUYBACK"],
+    "same_timestamp_tactical_buy_sell_forbidden": true,
+    "risk_sell_never_restricted": true,
+    "right_side_never_restricted": true,
+    "new_bull_never_restricted": true,
+    "fixed_dca_never_restricted": true
+  },
+  "operational_interpretations": {
+    "shadow_action_source": "executed tactical-event groups from the independent original V3.1 shadow trade ledger at the current timestamp only",
+    "pending_recheck_frequency": "once per new completed daily signal",
+    "seven_day_boundary": "cooldown is active for timestamp < latest tactical sell timestamp + 7 calendar days; exactly 7 days is eligible",
+    "three_day_boundary": "duplicate suppression applies for elapsed time < 3 calendar days; exactly 3 days is eligible",
+    "duplicate_reset": "a new tactical sell increments the risk-sell epoch and permits the next same-type AHR buy after cooldown",
+    "zero_notional_non_ahr_order": "EXECUTE_NO_FILL_AT_TARGET, not suppression, when actual exposure already satisfies the unchanged shadow target",
+    "pending_target": "the original shadow AHR target of 35 percent",
+    "temporary_cash": "V3.1 temporary-lot ownership and five-step unwind are mirrored in actual execution without feeding shadow state",
+    "new_bull_budget": "use actual tactical cash divided by the current V3.1 redeploy days remaining, preserving the V3.1 ten-step schedule without future access",
+    "execution_order_difference": "B keeps untouched V3.1 order; J follows requested DCA-first priority and this is disclosed"
+  },
+  "audit_windows": {
+    "COVID_2020": ["2020-02-15", "2020-04-30"],
+    "MAY_2021": ["2021-05-01", "2021-06-30"],
+    "BEAR_2021NOV_2022JUN": ["2021-11-01", "2022-06-30"],
+    "BOTTOM_2022": ["2022-06-01", "2022-07-31"],
+    "FTX_2022": ["2022-11-01", "2022-12-31"],
+    "BULL_2023_2025": ["2023-01-01", "2025-12-31"],
+    "BOTTOM_2026": ["2026-02-01", "2026-06-30"],
+    "CORRECTION_2025_2026": ["2025-01-01", "end"]
+  },
+  "reference_v31_b": {
+    "final_portfolio_value": 348746.8528777533,
+    "twr_cagr": 0.4769146261923145,
+    "maximum_drawdown": -0.3951313419600695,
+    "calmar": 1.2069774668507813,
+    "tactical_turnover": 9.367689873226654,
+    "tactical_event_count": 106
+  },
+  "promotion_gates": {
+    "shadow_state_all_mismatches_equal_zero": true,
+    "overlay_restricted_actions_ahr_only": true,
+    "bottom_2022_event_reduction_min_fraction": 0.40,
+    "bottom_2026_event_reduction_min_fraction": 0.40,
+    "whipsaw_pair_reduction_min_fraction": 0.50,
+    "overall_tactical_turnover_reduction_min_fraction": 0.15,
+    "bear_2021nov_2022jun_dd_regression_max_pp": 2.0,
+    "correction_2025_2026_dd_regression_max_pp": 2.0,
+    "overall_max_dd_regression_max_pp": 2.0,
+    "twr_cagr_minimum": 0.45,
+    "final_value_min_fraction_of_v31_b": 0.95,
+    "integrity_required": true
+  },
+  "promotion_is_post_backtest_only": true,
+  "forbid_parameter_search": true,
+  "forbid_follow_on_version": "V3.8"
+}

@@ -1,0 +1,6 @@
+source_key,path,sha256,rows,inherited_from
+BTC_4h,v3_1/data/raw/binance_BTCUSDT_4h.csv.gz,7a6ef3b914f1127a2b6b01f7632e18f76633a6499e7685f5ad120642401102ba,19809,V3.1 frozen raw inputs
+ETH_4h,v3_1/data/raw/binance_ETHUSDT_4h.csv.gz,3e55ab2bd08f82d54466cacacdaecdef0b02f9675e1dd84f7df4825c05f9835a,19809,V3.1 frozen raw inputs
+BTC_1d,v3_1/data/raw/binance_BTCUSDT_1d.csv.gz,09791b500ffc830a1fda49be63bc3d4201b19c4b6e8b406c0f9f580c5d376d35,3304,V3.1 frozen raw inputs
+ETH_1d,v3_1/data/raw/binance_ETHUSDT_1d.csv.gz,1f21d047fc264082a115b8d26a4eba5f7e6098ea906ec4b84653e2be2419d33c,3304,V3.1 frozen raw inputs
+BITSTAMP_1d,v3_1/data/raw/bitstamp_BTCUSD_1d.csv.gz,a06caafdcd56fda4aac077e01a66aea7fccf2aa4918c1ca7bd9588624350b91e,4903,V3.1 frozen raw inputs

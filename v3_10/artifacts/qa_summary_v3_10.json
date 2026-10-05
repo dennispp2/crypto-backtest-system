@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "created_at_utc": "2026-09-04T08:37:57.136925+00:00",
+  "checks": {
+    "required_outputs_nonempty": true,
+    "pytest_105_passed": true,
+    "v31_replay_exact": true,
+    "v39_replay_exact": true,
+    "q_final_exact": true,
+    "p39_q_key_metrics_identical": true,
+    "all_integrity_pass": true,
+    "no_lookahead_pass": true,
+    "frozen_verdict_promoted": true,
+    "uplift_capture_100pct": true,
+    "candidate_counts_exact": true,
+    "stage3_scope_zero_unexpected": true,
+    "causal_lineage_zero_unexplained": true,
+    "all_fixed_dca_rows_match": true,
+    "rolling_q_above_b_four_of_four": true,
+    "stage4_integrity": true,
+    "crash_integrity": true,
+    "seven_figures_rendered": true
+  },
+  "pytest_tests": 105,
+  "pytest_failures_or_errors": 0,
+  "figure_shapes": {
+    "01_equity_curve_v3_10.png": [
+      1061,
+      2318,
+      4
+    ],
+    "02_normalized_growth_v3_10.png": [
+      1061,
+      2318,
+      4
+    ],
+    "03_drawdown_v3_10.png": [
+      881,
+      2320,
+      4
+    ],
+    "04_2023_stage3_isolation_v3_10.png": [
+      1600,
+      2499,
+      4
+    ],
+    "05_2021_2022_safety_v3_10.png": [
+      1421,
+      2501,
+      4
+    ],
+    "06_2025_2026_safety_v3_10.png": [
+      1421,
+      2501,
+      4
+    ],
+    "07_rolling_start_v3_10.png": [
+      971,
+      1961,
+      4
+    ]
+  }
+}

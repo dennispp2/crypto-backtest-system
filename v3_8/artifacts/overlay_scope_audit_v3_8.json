@@ -1,0 +1,11 @@
+{
+  "pass": true,
+  "restricted_rows": 87,
+  "restricted_non_ahr_rows": 0,
+  "risk_sell_restricted_count": 0,
+  "right_side_restricted_count": 0,
+  "new_bull_restricted_count": 0,
+  "risk_sell_no_trade_already_below_target_count": 2,
+  "shadow_tactical_event_count": 106,
+  "shadow_tactical_events_represented": 106
+}

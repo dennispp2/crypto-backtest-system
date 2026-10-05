@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0",
+  "label": "FORWARD_PAPER_ONLY",
+  "strategy": "BTC+ETH V3.10 Frozen Champion",
+  "champion": "V3.10 Model Q",
+  "comparator": "V3.1 Model B",
+  "historical_cutoff": "2026-09-03T04:00:00+00:00",
+  "normalized_initial_value_usd": 20000.0,
+  "normalization": "scale each model's exact cutoff holdings and cash ledgers to USD 20,000; preserve all FSM and candidate state",
+  "external_contribution_per_4h_usd": 2.0,
+  "data_source": "Binance Spot public REST klines",
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT"
+  ],
+  "intervals": [
+    "4h",
+    "1d"
+  ],
+  "candidate_outcomes": [
+    "REJECTED_FALSE_BEAR",
+    "CONFIRMED_STAGE3",
+    "SMA200_HARD_FAILURE",
+    "STAGE4_OVERRIDE",
+    "CRASH_OVERRIDE",
+    "OPEN_UNRESOLVED"
+  ],
+  "candidate_horizons_calendar_days": [
+    3,
+    7,
+    14,
+    30,
+    60,
+    90
+  ],
+  "checkpoint": {
+    "minimum_oos_calendar_days": 180,
+    "minimum_resolved_candidates": 3,
+    "ideal_candidate_counts": [
+      5,
+      10
+    ]
+  },
+  "evaluation_gates": {
+    "candidate_delay_drawdown_worse_than_v31_warning_pp": 5.0,
+    "overall_drawdown_worse_than_v31_max_pp": 3.0,
+    "reject_simultaneously_lower_return_and_worse_drawdown": true,
+    "median_candidate_60d_return_and_drawdown_both_negative_fail": true
+  },
+  "prohibited": [
+    "historical parameter search",
+    "V3.11 or later strategy creation",
+    "human intervention in the paper portfolio",
+    "incomplete-candle execution",
+    "rewriting an append-only record",
+    "using forward outcomes as trading inputs"
+  ],
+  "request_path": "C:/Users/denni/.codex/attachments/8ca02e13-46e1-43aa-ad0a-90e9c80a5fb5/pasted-text.txt",
+  "request_sha256": "3397F5B08838C0FB05B1E88CD317C3EEF890C2F92870BB44236C54FBB90C7294",
+  "frozen_at_utc": "2026-09-04T09:07:25.465294+00:00",
+  "frozen_before_first_oos_execution": true,
+  "historical_source_sha256": {
+    "request": "3397f5b08838c0fb05b1e88cd317c3eef890c2f92870bb44236c54fbb90c7294",
+    "v310_config": "a0a7db91f1c93782f01a158a807370dd80acc0f3378ce74c39d38186c6cf7e64",
+    "v310_engine": "7caaf9dfdaccf3d0d1c2c9fc9dcbadc808acfad27b45ff5d876f46d643507289",
+    "v31_config": "50adc23c620d068087842ca574f8d4f87a8b6de3d96ebca0392184c43574bc84",
+    "v31_engine": "ea91309e5821431210998cf2289965adad8991cc97005105cceab9037aeae2a1",
+    "v39_engine": "02a9a00a1eab84319865b89980081327f5954ea885fcb57a46e8c8af6c1980e2",
+    "v310_manifest": "6b027eaa00b4673f1f9a7349f923ff46b324e706300337a85806600d09b701a1",
+    "historical_data_manifest": "f11867ff83f0c47ac7d4e9bc34f17c1eeb78586ae61574547f69c0fb6aece1bf"
+  },
+  "forward_code_sha256": {
+    "run_forward_v3_10.py": "ad1cc0c5d024909128da0ea2196978dd2e25375b61337d35d0752426c74aacad",
+    "src/crypto_backtest/v310_forward.py": "b1293cdeac5a3597a97d8ba21d76ed2f0f14dd97edb22d60c0f434f3225e7875",
+    "design/best_skill_v310_forward.md": "2acfb112d114d5f90f39771296f15238506f3f9ee38e550efedd507dd3efd680"
+  },
+  "cutoff_state_sha256": "95bc568311eb3548e0189563c2d63950cf0ad8c913677db7325e2da714027ec9",
+  "hash_chain": "sha256(prev_record_hash + '|' + canonical_json(row_without_hashes))",
+  "prelaunch_refrozen_at_utc": "2026-09-04T09:10:41.597252+00:00",
+  "prelaunch_refreeze_reason": "common pending-DCA buffer normalization before first OOS commit",
+  "forward_infrastructure_patch_history": [
+    {
+      "patch_id": "INFRASTRUCTURE_PATCH_001",
+      "applied_at_utc": "2026-09-04T09:12:48.025292+00:00",
+      "reason": "append only safety for incomplete UTC day month and unresolved candidate outcome records",
+      "source_hash_changes": {
+        "run_forward_v3_10.py": {
+          "before": "582f2f8da905e5a1c432ae15fe7a6c6fd278232393181808fcde04b7c851038a",
+          "after": "e031ad1569ebb7d6f38ebafff516e5c719067985204894a3c43bf5b7d1740fbd"
+        }
+      },
+      "champion_strategy_source_changed": false,
+      "fsm_or_trading_rule_changed": false,
+      "oos_candidates_before_patch": 0,
+      "affected_reporting_ledgers_archived": true
+    },
+    {
+      "patch_id": "INFRASTRUCTURE_PATCH_002",
+      "applied_at_utc": "2026-09-04T09:14:50.958626+00:00",
+      "reason": "segregate Fixed DCA from tactical event ledger and aggregate each tactical event by asset",
+      "source_hash_changes": {
+        "run_forward_v3_10.py": {
+          "before": "e031ad1569ebb7d6f38ebafff516e5c719067985204894a3c43bf5b7d1740fbd",
+          "after": "4fc0172ab88745a9207ad8793b5afd4ab2133cf6031afdce1108212e11166714"
+        }
+      },
+      "champion_strategy_source_changed": false,
+      "fsm_or_trading_rule_changed": false,
+      "oos_candidates_before_patch": 0,
+      "affected_trade_ledger_archived": true
+    },
+    {
+      "patch_id": "INFRASTRUCTURE_PATCH_003",
+      "applied_at_utc": "2026-09-05T07:54:22.037309+00:00",
+      "reason": "sort the multi-model signal ledger by execution time and model before append-only hashing",
+      "source_hash_changes": {
+        "run_forward_v3_10.py": {
+          "before": "4fc0172ab88745a9207ad8793b5afd4ab2133cf6031afdce1108212e11166714",
+          "after": "4db32e0958aeae29211724c6c1297309243969db04a8aed6cb46a10634077114"
+        }
+      },
+      "champion_strategy_source_changed": false,
+      "fsm_or_trading_rule_changed": false,
+      "oos_candidates_before_patch": 0,
+      "affected_signal_rows_rewritten": false
+    },
+    {
+      "patch_id": "INFRASTRUCTURE_PATCH_004",
+      "applied_at_utc": "2026-09-05T07:55:24.585314+00:00",
+      "reason": "retain the existing exception ledger during successful append-only verification",
+      "source_hash_changes": {
+        "run_forward_v3_10.py": {
+          "before": "4db32e0958aeae29211724c6c1297309243969db04a8aed6cb46a10634077114",
+          "after": "ad1cc0c5d024909128da0ea2196978dd2e25375b61337d35d0752426c74aacad"
+        }
+      },
+      "champion_strategy_source_changed": false,
+      "fsm_or_trading_rule_changed": false,
+      "oos_candidates_before_patch": 0,
+      "existing_exception_rows_rewritten": false
+    }
+  ]
+}

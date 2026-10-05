@@ -1,0 +1,10 @@
+{
+  "pass": true,
+  "reference_metric_max_abs_delta": 0.0,
+  "prior_output_metric_max_abs_delta": 5.551115123125783e-17,
+  "trade_rows_current": 5155,
+  "trade_rows_prior": 5155,
+  "trade_numeric_max_abs_delta": 1.4551915228366852e-11,
+  "trade_rows_exact": true,
+  "tactical_event_count": 90
+}

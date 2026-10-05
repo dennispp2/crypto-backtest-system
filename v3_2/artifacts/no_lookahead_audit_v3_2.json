@@ -1,0 +1,22 @@
+{
+  "data_contract_pass": true,
+  "completed_daily_candle_violations": 0,
+  "signal_availability_violations": 0,
+  "future_columns_in_execution_frame": [],
+  "recovery_gate_uses_only_t_or_earlier_completed_daily_rows": true,
+  "tactical_execution_not_after_signal_violations": 0,
+  "fixed_dca_row_integrity_pass": true,
+  "v3_1_row_integrity_pass": true,
+  "illegal_fsm_transition_count": 0,
+  "tactical_sell_floor_violations": 0,
+  "h0_external_contributions_zero": true,
+  "h0_post_initial_trade_count_zero": true,
+  "promotion_gate_terms_absent_from_trading_engine": true,
+  "prefix_invariance": {
+    "model_h0_trade_prefix_identical": true,
+    "model_a_trade_prefix_identical": true,
+    "model_b_trade_prefix_identical": true,
+    "model_d_trade_prefix_identical": true
+  },
+  "pass": true
+}

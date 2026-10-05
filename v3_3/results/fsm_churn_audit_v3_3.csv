@@ -1,0 +1,9 @@
+model,record_type,state,count,average_dwell_days,median_dwell_days
+B,transition_count,BEAR->DEEP_BEAR,113,,
+B,transition_count,DEEP_BEAR->BEAR,110,,
+B,state_dwell,BEAR,113,11.212389380530974,1.0
+B,state_dwell,DEEP_BEAR,144,2.3402777777777777,1.0
+E,transition_count,BEAR->DEEP_BEAR,16,,
+E,transition_count,DEEP_BEAR->BEAR,13,,
+E,state_dwell,BEAR,16,72.5625,1.0
+E,state_dwell,DEEP_BEAR,47,9.425531914893616,1.0

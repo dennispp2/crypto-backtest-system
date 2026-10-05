@@ -1,0 +1,3 @@
+model,total_tactical_events,total_tactical_trade_rows,tactical_notional_usd,tactical_turnover,average_days_between_events,median_days_between_events
+B,106,212,2004497.7257279935,9.367689873226654,22.038095238095238,4.0
+J,90,180,1721027.2657228904,8.349961098377133,26.06741573033708,7.0

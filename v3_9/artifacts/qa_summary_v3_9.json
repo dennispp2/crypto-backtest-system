@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "created_at_utc": "2026-09-04T08:04:30.460578+00:00",
+  "checks": {
+    "required_outputs_nonempty": true,
+    "pytest_95_passed": true,
+    "v31_replay_exact": true,
+    "no_lookahead_pass": true,
+    "verdict_is_frozen_option_d": true,
+    "only_bull_edge_gates_failed": true,
+    "drift_audit_has_three_unblocked_shadow_events": true,
+    "stage4_integrity": true,
+    "crash_integrity": true,
+    "six_figures_rendered": true
+  },
+  "pytest_tests": 95,
+  "pytest_failures_or_errors": 0,
+  "figure_shapes": {
+    "01_equity_curve_v3_9.png": [
+      1061,
+      2138,
+      4
+    ],
+    "02_normalized_growth_v3_9.png": [
+      1061,
+      2138,
+      4
+    ],
+    "03_drawdown_v3_9.png": [
+      881,
+      2140,
+      4
+    ],
+    "04_bull_participation_v3_9.png": [
+      1601,
+      2321,
+      4
+    ],
+    "05_2021_2022_safety_v3_9.png": [
+      1421,
+      2321,
+      4
+    ],
+    "06_2025_2026_safety_v3_9.png": [
+      1421,
+      2321,
+      4
+    ]
+  }
+}

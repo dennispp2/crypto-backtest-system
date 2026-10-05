@@ -1,0 +1,23 @@
+{
+  "promotion_gate": "FAIL",
+  "checks": {
+    "maximum_drawdown_gte_minus_0_30": false,
+    "twr_cagr_gte_0_45": true,
+    "calmar_gte_1_50": false,
+    "final_value_gte_95pct_of_v31_b": true,
+    "material_tactical_cash_time_strictly_below_v31_b": false,
+    "tactical_turnover_lte_9_3677": true,
+    "bear_deep_bear_churn_reduced_at_least_50pct": true,
+    "no_lookahead_pass": true,
+    "execution_integrity_pass": true,
+    "fsm_audit_pass": true,
+    "cycle_reset_audit_pass": false
+  },
+  "diagnostic_regression_guardrails": {
+    "bear_protection_regression_pass": true,
+    "bull_reentry_regression_pass": true,
+    "bear_protection_regression_pp": 0.0,
+    "bull_reentry_delay_calendar_days": 0.0
+  },
+  "final_verdict": "C. V3.3 NEEDS REDESIGN"
+}

@@ -1,0 +1,20 @@
+{
+  "promotion_gate": "FAIL",
+  "checks": {
+    "maximum_drawdown_gte_minus_0_30": false,
+    "twr_cagr_gte_0_45": false,
+    "calmar_gte_1_50": false,
+    "final_value_gte_95pct_of_v31_b": false,
+    "normal_bear_regression_lte_2pp": false,
+    "bull_participation_pass": false,
+    "cash_reset_pass": true,
+    "state_churn_reduced_at_least_50pct": true,
+    "tactical_turnover_lte_9_8361": true,
+    "no_lookahead_pass": true,
+    "execution_integrity_pass": true,
+    "fsm_audit_pass": true,
+    "cash_reset_audit_pass": true
+  },
+  "normal_bear_regression_percentage_points": 22.424421701920238,
+  "final_verdict": "B. V3.1 REMAINS CHAMPION"
+}

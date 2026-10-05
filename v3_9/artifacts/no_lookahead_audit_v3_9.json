@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "data_contract_pass": true,
+  "completed_daily_signal_before_execution": true,
+  "future_label_columns_in_execution_frame": [],
+  "forward_return_terms_in_engine": [],
+  "prefix_trade_identity_through_2024_12_31": true,
+  "three_close_source": "completed daily closes carried to next tradable 4h open",
+  "ex_post_forward_returns_appended_after_engine": true
+}

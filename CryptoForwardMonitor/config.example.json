@@ -1,0 +1,13 @@
+{
+  "model_command": ".venv/Scripts/python.exe run_forward_v3_10.py",
+  "model_workdir": "..",
+  "status_file": "../v3_10_forward/DAILY_FORWARD_STATUS.md",
+  "app_data_dir": ".",
+  "v310_portfolio_file": "../v3_10_forward/forward_v310_portfolio.csv",
+  "v31_portfolio_file": "../v3_10_forward/forward_v31_shadow_portfolio.csv",
+  "market_refresh_seconds": 30,
+  "auto_refresh": true,
+  "one_normal_model_run_per_day": true,
+  "market_timeout_seconds": 5.0,
+  "model_timeout_seconds": 1800
+}

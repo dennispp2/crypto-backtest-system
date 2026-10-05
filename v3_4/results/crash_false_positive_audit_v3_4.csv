@@ -1,0 +1,2 @@
+model,lot_id,level3_trigger_date,audit_end,minimum_btc_close,continued_down_at_least_10pct,quick_v_recovery_confirmed,potential_crash_false_positive
+F,,2020-03-12T00:00:00+0000,2020-04-11T00:00:00+0000,4800.0,False,False,False

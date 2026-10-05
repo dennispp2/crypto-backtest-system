@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "prefix_invariance": {
+    "model_h0_trade_prefix_identical": true,
+    "model_a_trade_prefix_identical": true,
+    "model_b_trade_prefix_identical": true,
+    "model_h_trade_prefix_identical": true
+  },
+  "fixed_dca_row_integrity": true,
+  "fsm_audit": true,
+  "v3_1_replay": true,
+  "same_timestamp_opposite_action_violations": 0
+}

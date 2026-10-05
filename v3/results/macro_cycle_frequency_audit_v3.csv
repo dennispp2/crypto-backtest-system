@@ -1,0 +1,16 @@
+strategy,year,confirmed_macro_cycles,regime_too_sensitive,fsm_frequency_fail
+V3-E20 - Fixed DCA + Macro Cycle Hedge,2020,3,False,False
+V3-E20 - Fixed DCA + Macro Cycle Hedge,2021,3,False,False
+V3-E20 - Fixed DCA + Macro Cycle Hedge,2023,2,False,False
+V3-E20 - Fixed DCA + Macro Cycle Hedge,2024,3,False,False
+V3-E20 - Fixed DCA + Macro Cycle Hedge,2025,1,False,False
+V3-E30 - Fixed DCA + Macro Cycle Hedge,2020,3,False,False
+V3-E30 - Fixed DCA + Macro Cycle Hedge,2021,3,False,False
+V3-E30 - Fixed DCA + Macro Cycle Hedge,2023,2,False,False
+V3-E30 - Fixed DCA + Macro Cycle Hedge,2024,3,False,False
+V3-E30 - Fixed DCA + Macro Cycle Hedge,2025,1,False,False
+V3-E40 - Fixed DCA + Macro Cycle Hedge,2020,3,False,False
+V3-E40 - Fixed DCA + Macro Cycle Hedge,2021,3,False,False
+V3-E40 - Fixed DCA + Macro Cycle Hedge,2023,2,False,False
+V3-E40 - Fixed DCA + Macro Cycle Hedge,2024,3,False,False
+V3-E40 - Fixed DCA + Macro Cycle Hedge,2025,1,False,False

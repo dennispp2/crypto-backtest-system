@@ -1,0 +1,16 @@
+{
+  "reference_strategy": "A - Fixed DCA Champion",
+  "reference_final_value": 419364.0419515349,
+  "reproduced_final_value": 419364.0419515349,
+  "final_value_delta": 0.0,
+  "trade_reference_rows": 4889,
+  "trade_reproduced_rows": 4889,
+  "trade_identity_keys_exact": true,
+  "trade_numeric_max_abs_delta": 1.4551915228366852e-11,
+  "daily_reference_rows": 2437,
+  "daily_reproduced_rows": 2437,
+  "daily_date_keys_exact": true,
+  "daily_numeric_max_abs_delta": 5.820766091346741e-11,
+  "tolerance": 1e-08,
+  "pass": true
+}

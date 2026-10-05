@@ -1,0 +1,24 @@
+{
+  "promotion_gate": "FAIL",
+  "patch_d_gate": "FAIL",
+  "patch_d_checks": {
+    "bottom_whipsaw_pair_reduction_gte_50pct": true,
+    "2022_bottom_trade_reduction_gte_50pct": true,
+    "2026_bottom_trade_reduction_gte_50pct": true,
+    "turnover_lte_v31_b": true,
+    "2021nov_2022jun_dd_regression_lte_2pp": false,
+    "2025_to_cutoff_dd_regression_lte_2pp": false,
+    "final_value_gte_95pct_v31_b": false
+  },
+  "v3_4_core_checks": {
+    "maximum_drawdown_gte_minus_0_30": false,
+    "twr_cagr_gte_0_45": false,
+    "calmar_gte_1_50": false,
+    "bull_participation_pass": false,
+    "cash_reset_pass": true,
+    "no_lookahead_pass": true,
+    "execution_integrity_pass": true,
+    "fsm_audit_pass": true
+  },
+  "final_verdict": "B. V3.1 REMAINS CHAMPION"
+}

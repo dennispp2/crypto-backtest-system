@@ -1,0 +1,15 @@
+{
+  "promotion_gate": "FAIL",
+  "checks": {
+    "maximum_drawdown_gte_minus_0_30": false,
+    "twr_cagr_gte_0_45": false,
+    "calmar_gte_1_50": false,
+    "new_bull_exposure_gte_0_85": true,
+    "material_tactical_cash_time_below_v31": false,
+    "tactical_turnover_lte_9_3677": false,
+    "no_lookahead_pass": true,
+    "execution_integrity_pass": true,
+    "fsm_audit_pass": true
+  },
+  "final_verdict": "B. V3.1 REMAINS CHAMPION"
+}

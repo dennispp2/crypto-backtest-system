@@ -1,0 +1,40 @@
+{
+  "daily_signal_available_after_candle_close_violations": 0,
+  "tactical_trade_before_signal_available_violations": 0,
+  "normal_dca_wrong_ledger_count": 0,
+  "tactical_buy_wrong_ledger_count": 0,
+  "max_theoretical_dca": 3.0,
+  "dca_hard_cap": 3.0,
+  "minimum_normal_cash": 0.0,
+  "minimum_tactical_cash": 0.0,
+  "contribution_spread_by_capital_test": {
+    "test1": 0.0,
+    "test2": 0.0
+  },
+  "expected_calendar_4h_intervals": 19335,
+  "expected_periodic_contributions_usd": 38670.0,
+  "periodic_contribution_deviation_by_run": {
+    "test1|Benchmark A - Fixed DCA|primary|primary": 0.0,
+    "test1|Benchmark B - Annual Rebalance|primary|primary": 0.0,
+    "test1|Benchmark C - Dynamic DCA|primary|primary": 0.0,
+    "test1|Strategy D - Full|primary|primary": 0.0,
+    "test2|Benchmark A - Fixed DCA|primary|primary": 0.0,
+    "test2|Benchmark B - Annual Rebalance|primary|primary": 0.0,
+    "test2|Benchmark C - Dynamic DCA|primary|primary": 0.0,
+    "test2|Strategy D - Full|primary|primary": 0.0,
+    "test2|Strategy D - Full|cash_protection_off|primary": 0.0,
+    "test2|Strategy D - Full|overweight_plus_technical_weakness|primary": 0.0,
+    "test2|Benchmark A - Fixed DCA|low_cost|low": 0.0,
+    "test2|Strategy D - Full|low_cost|low": 0.0,
+    "test2|Benchmark A - Fixed DCA|high_cost|high": 0.0,
+    "test2|Strategy D - Full|high_cost|high": 0.0
+  },
+  "prefix_invariance": {
+    "prefix_bars": 5000,
+    "prefix_end": "2020-02-19T20:00:00+00:00",
+    "prefix_trade_rows": 1116,
+    "full_matching_trade_rows": 1116,
+    "prefix_trades_identical": true
+  },
+  "pass": true
+}

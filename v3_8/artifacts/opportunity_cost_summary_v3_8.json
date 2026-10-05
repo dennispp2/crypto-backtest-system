@@ -1,0 +1,17 @@
+{
+  "delayed_record_count": 28,
+  "executed_record_count": 24,
+  "cancelled_record_count": 4,
+  "pending_record_count": 0,
+  "average_delay_completed_closes": 3.0,
+  "median_delay_completed_closes": 3.0,
+  "average_btc_price_cost_fraction": 0.0004133209523948106,
+  "average_eth_price_cost_fraction": 0.004109468030839725,
+  "average_30d_btc_return_after_original_signal": 0.0883822337110238,
+  "average_60d_btc_return_after_original_signal": 0.1587055439718248,
+  "ahr_requested_shadow_events": 34,
+  "ahr_delayed_shadow_requests": 28,
+  "ahr_executed_after_delay": 24,
+  "ahr_cancelled_pending_requests": 4,
+  "ahr_executed_without_delay": 6
+}

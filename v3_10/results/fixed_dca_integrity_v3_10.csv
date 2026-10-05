@@ -1,0 +1,5 @@
+model,strategy,reference_rows,rows,keys_exact,numeric_max_abs_delta,all_match
+A,MODEL A - BTC+ETH Fixed DCA,4973,4973,True,0.0,True
+B,MODEL B - BTC+ETH Fixed DCA + V3.1 FSM,4973,4973,True,0.0,True
+P39,MODEL P39 - V3.9 Frozen Replay Reference,4973,4973,True,0.0,True
+Q,MODEL Q - BTC+ETH V3.10 Isolated Stage3 Confirmation,4973,4973,True,0.0,True

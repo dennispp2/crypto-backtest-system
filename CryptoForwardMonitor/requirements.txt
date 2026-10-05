@@ -1,0 +1,5 @@
+# DPI-aware UI, rounded widgets and high-resolution icon assets.
+customtkinter==5.2.2
+Pillow==12.3.0
+# Packaging dependency:
+pyinstaller==6.22.2

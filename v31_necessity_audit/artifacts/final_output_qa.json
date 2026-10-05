@@ -1,0 +1,11 @@
+{
+  "required_csv_present_and_nonempty": true,
+  "required_png_present_and_nonempty": true,
+  "direct_answer_count": 30,
+  "loeo_rows": 106,
+  "loco_rows": 21,
+  "interaction_rows": 45,
+  "classification_partition_rows": 106,
+  "reporting_selection_fixed": true,
+  "pass": true
+}

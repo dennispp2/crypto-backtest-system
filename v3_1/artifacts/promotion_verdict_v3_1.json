@@ -1,0 +1,22 @@
+{
+  "fsm_edge": "PASS",
+  "fsm_checks": {
+    "hard_audits_pass": true,
+    "max_dd_improvement_ge_10pp": true,
+    "calmar_above_a": true,
+    "cagr_loss_le_5pp": true,
+    "cycles_per_year_le_3": true,
+    "temporary_unwind_fail_zero": true,
+    "turnover_at_least_10pct_below_v3": true
+  },
+  "ai_edge": "FAIL",
+  "ai_checks": {
+    "hard_audits_pass": true,
+    "max_dd_improvement_ge_3pp": false,
+    "calmar_above_b": true,
+    "cagr_loss_le_2pp": true,
+    "turnover_increase_le_10pct": true
+  },
+  "ai_turnover_increase_fraction": 0.005830246500612368,
+  "final_verdict": "B. V3.1 FSM PROMOTED TO FORWARD PAPER TEST"
+}

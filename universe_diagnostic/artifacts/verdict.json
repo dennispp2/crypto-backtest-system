@@ -1,0 +1,24 @@
+{
+  "verdict": "C. FIXED DCA RESULT STRONGLY BNB-DEPENDENT",
+  "u3_2020_bnb_total_profit_share": 0.5033056563151614,
+  "u3_2020_ending_value_drop_if_bnb_removed": 0.3403181980680365,
+  "u3_vs_u2_final_value_uplift_by_start": {
+    "2020": 0.5158823497500926,
+    "2021": 0.500821104658369,
+    "2022": 0.03564399381075978,
+    "2023": -0.004464754046725972
+  },
+  "later_start_absolute_uplift_median": 0.03564399381075978,
+  "2020_to_later_uplift_concentration_ratio": 14.473191542143189,
+  "all_universe_start_net_profits_positive": true,
+  "strong_gate_checks": {
+    "bnb_profit_share_ge_50pct": true,
+    "removing_bnb_ending_value_drop_ge_25pct": true,
+    "2020_uplift_at_least_2x_later_median": true
+  },
+  "robust_gate_checks": {
+    "all_universe_start_net_profits_positive": true,
+    "bnb_profit_share_lt_30pct": false,
+    "removing_bnb_ending_value_drop_lt_10pct": false
+  }
+}

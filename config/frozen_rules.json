@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "timezone": "UTC",
+  "requested_primary_start": "2017-08-01T00:00:00Z",
+  "extended_btc_start": "2013-04-01T00:00:00Z",
+  "warmup_days": 250,
+  "assets": ["BTC", "ETH", "BNB"],
+  "symbols": {"BTC": "BTCUSDT", "ETH": "ETHUSDT", "BNB": "BNBUSDT"},
+  "target_weights": {"BTC": 0.5, "ETH": 0.3, "BNB": 0.2},
+  "allocation_tolerance": 0.02,
+  "external_contribution_per_4h": 2.0,
+  "dca_rates": {
+    "normal": 2.0,
+    "ahr_030_035": 2.5,
+    "ahr_below_030": 3.0,
+    "overheat_pre_sell": 1.5,
+    "sell_stage": 1.0,
+    "hard_max": 3.0
+  },
+  "cash_protection_caps": [
+    {"min_ratio": 0.2, "max_dca": 3.0},
+    {"min_ratio": 0.15, "max_dca": 2.0},
+    {"min_ratio": 0.1, "max_dca": 1.5},
+    {"min_ratio": 0.0, "max_dca": 1.0}
+  ],
+  "overheat": {
+    "bollinger_window": 20,
+    "bollinger_std": 2.0,
+    "sma20_deviation": 0.1,
+    "sma50_deviation": 0.2,
+    "minimum_conditions": 2,
+    "volume_ratio_record": 1.5,
+    "long_upper_wick_body_multiple": 2.0
+  },
+  "sell_stage_targets": {"1": 0.15, "2": 0.3, "3": 0.45, "4": 0.6},
+  "buyback_tranches": {
+    "ahr_030_035": 0.05,
+    "ahr_below_030": 0.25,
+    "ahr_extreme": 0.2,
+    "right_confirmation": 0.1
+  },
+  "ahr999": {
+    "slope": 5.84,
+    "intercept": -17.01,
+    "genesis_date": "2009-01-03",
+    "sma_window": 200,
+    "expanding_min_observations": 730
+  },
+  "costs": {
+    "primary": {"fee": 0.001, "slippage": 0.0005},
+    "low": {"fee": 0.00025, "slippage": 0.00025},
+    "high": {"fee": 0.00125, "slippage": 0.00125}
+  },
+  "modeled_min_notional_usdt": {"BTC": 5.0, "ETH": 5.0, "BNB": 5.0},
+  "initial_tests": {
+    "test1": {"initial_capital": 10000.0, "initial_crypto_fraction": 1.0},
+    "test2": {"initial_capital": 20000.0, "initial_crypto_fraction": 0.7}
+  },
+  "cycle_windows": {
+    "2017-2018": ["2017-01-01", "2018-12-31"],
+    "2019-2020": ["2019-01-01", "2020-12-31"],
+    "2020-2022": ["2020-01-01", "2022-12-31"],
+    "2022-2024": ["2022-01-01", "2024-12-31"],
+    "2024-2026": ["2024-01-01", "2026-12-31"]
+  },
+  "sensitivity": {
+    "sma20_deviation": [0.08, 0.1, 0.12],
+    "sma50_deviation": [0.15, 0.2, 0.25],
+    "dca_ahr_030_035": [2.0, 2.5, 3.0],
+    "dca_ahr_below_030": [2.5, 3.0]
+  },
+  "risk_free_rate": 0.0,
+  "annual_days": 365.25,
+  "bars_per_day": 6,
+  "seed": 42
+}

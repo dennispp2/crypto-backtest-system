@@ -1,0 +1,14 @@
+{
+  "pass": false,
+  "cycle_lifecycle_reset_pass": true,
+  "cash_reset_pass": false,
+  "new_bull_to_bull_completion_count": 2,
+  "completed_cycle_ids": [
+    1,
+    2
+  ],
+  "lifecycle_issues": [],
+  "cash_issues": [
+    "cycle_2_cash_reset_fail"
+  ]
+}

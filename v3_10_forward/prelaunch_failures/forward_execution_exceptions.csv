@@ -1,0 +1,2 @@
+record_id,timestamp,event_type,severity,message,action_taken,prev_record_hash,record_hash
+EXCEPTION:2026-09-04T09:09:10.455978+00:00:RuntimeError,2026-09-04 09:09:10.455978+00:00,EXECUTION_EXCEPTION,SAFETY_FAIL,RuntimeError: APPEND_ONLY_HASH_CHAIN_FAIL,HALT_NO_RECORD_REWRITE,GENESIS,e2168217bebdf9fd1504f236e9937dc6d6e9cc2fb0cb7e2aa3743788265b5385

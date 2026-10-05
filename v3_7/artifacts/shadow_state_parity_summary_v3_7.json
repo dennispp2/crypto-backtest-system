@@ -1,0 +1,10 @@
+{
+  "macro_state_mismatch_days": 0,
+  "stage_mismatch_days": 0,
+  "cycle_mismatch_days": 0,
+  "target_mismatch_days": 0,
+  "crash_mismatch_days": 0,
+  "new_bull_mismatch_days": 0,
+  "date_alignment_mismatch_days": 0,
+  "pass": true
+}

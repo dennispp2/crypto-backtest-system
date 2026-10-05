@@ -1,0 +1,3 @@
+window,start,end,event_count,positive_raw_contribution,negative_raw_contribution,RETURN_ESSENTIAL,RISK_ESSENTIAL,REDUNDANT,HARMFUL,MIXED_UNCERTAIN
+BOTTOM_2022,2022-06-01,2022-12-31,41,20,21,2,3,21,9,6
+BOTTOM_2026,2026-02-01,2026-06-30,22,13,9,2,2,8,4,6

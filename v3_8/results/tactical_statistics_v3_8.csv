@@ -1,0 +1,4 @@
+model,total_tactical_events,total_tactical_trade_rows,tactical_notional_usd,tactical_turnover,short_three_close_whipsaw_count,seven_calendar_day_whipsaw_count,average_days_between_events,median_days_between_events
+B,106,212,2004497.7257279935,9.367689873226654,28,56,22.038095238095238,4.0
+J7,90,180,1721027.2657228904,8.349961098377133,0,36,26.06741573033708,7.0
+K,100,200,1907958.5970415394,9.083623819562751,0,48,23.404040404040405,4.0

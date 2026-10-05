@@ -1,0 +1,2 @@
+candidate_id,candidate_date,hard_failure_date,status,resolution_reason,B_exposure,P39_exposure,Q_exposure,days_delayed_vs_B
+2,2023-08-18 00:00:00+00:00,2023-08-19 00:00:00+00:00,REJECTED,SMA200_HARD_FAILURE,0.5990472024069817,0.676787273179432,0.676787273179432,1.0

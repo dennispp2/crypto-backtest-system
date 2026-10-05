@@ -1,0 +1,46 @@
+{
+  "assets": {
+    "BTC": {
+      "rows": 19804,
+      "start": "2017-08-17T04:00:00+00:00",
+      "end": "2026-09-02T11:59:59+00:00",
+      "duplicate_open_times": 0,
+      "nonpositive_close": 0
+    },
+    "ETH": {
+      "rows": 19804,
+      "start": "2017-08-17T04:00:00+00:00",
+      "end": "2026-09-02T11:59:59+00:00",
+      "duplicate_open_times": 0,
+      "nonpositive_close": 0
+    },
+    "BNB": {
+      "rows": 19319,
+      "start": "2017-11-06T00:00:00+00:00",
+      "end": "2026-09-02T11:59:59+00:00",
+      "duplicate_open_times": 0,
+      "nonpositive_close": 0
+    }
+  },
+  "common": {
+    "rows": 19319,
+    "start": "2017-11-06T00:00:00+00:00",
+    "end": "2026-09-02T08:00:00+00:00",
+    "is_monotonic": true,
+    "duplicate_open_times": 0
+  },
+  "requested_primary_start": "2017-08-01T00:00:00Z",
+  "actual_backtest_start": "2017-11-06T00:00:00+00:00",
+  "actual_backtest_end": "2026-09-02T08:00:00+00:00",
+  "rows_before_signal_gate": 19319,
+  "rows_after_signal_gate": 19319,
+  "expected_regular_4h_rows": 19335,
+  "missing_common_4h_rows": 16,
+  "calendar_4h_contribution_intervals": 19335,
+  "warmup_calendar_days_available": 1680,
+  "warmup_requirement_days": 250,
+  "warmup_pass": true,
+  "btc_daily_source_switch_date": "2017-08-17T00:00:00+00:00",
+  "signal_availability_violations": 0,
+  "requested_start_unavailable_reason": "BNBUSDT first Binance 4H bar is 2017-11-06; no synthetic BNB backfill"
+}

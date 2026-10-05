@@ -1,0 +1,125 @@
+{
+  "schema_version": "3.3",
+  "strategy_version": "BTC+ETH Macro Hedge V3.3",
+  "frozen_at_utc": "2026-09-03T10:51:49Z",
+  "frozen_before_formal_run": true,
+  "base_strategy": "V3.1 FSM-only Model B frozen replay",
+  "base_config_path": "config/config_frozen_v3_1.json",
+  "base_config_sha256": "50adc23c620d068087842ca574f8d4f87a8b6de3d96ebca0392184c43574bc84",
+  "explicitly_not_based_on": "V3.2 trading logic",
+  "formal_start": "2020-01-01T00:00:00Z",
+  "formal_end": "latest_complete_common_4h_bar_from_frozen_v3_1_inputs",
+  "warmup_start": "2019-01-01T00:00:00Z",
+  "timezone": "UTC",
+  "assets": ["BTC", "ETH"],
+  "target_weights": {"BTC": 0.625, "ETH": 0.375},
+  "initial_capital": 20000.0,
+  "initial_allocation_usd": {"BTC": 8750.0, "ETH": 5250.0, "USD": 6000.0},
+  "external_contribution_per_4h": 2.0,
+  "costs": {"fee": 0.001, "slippage": 0.0005},
+  "modeled_min_notional_usdt": {"BTC": 5.0, "ETH": 5.0},
+  "hard_floor": 0.20,
+  "stage_targets": {"0": 0.95, "1": 0.85, "2": 0.70, "3": 0.55, "4": 0.25},
+  "ai_enabled": false,
+  "dynamic_dca_enabled": false,
+  "allowed_change_scope": [
+    "accumulation_exposure_drift_cap",
+    "bear_deep_bear_hysteresis",
+    "new_bull_cycle_close_reset_audit"
+  ],
+  "forbidden_v32_logic": [
+    "bull_recovery_gate",
+    "stage3_to_stage4_minus_25_percent_acceleration",
+    "v32_slower_bear_bottom_buyback",
+    "v32_new_bull_redeploy",
+    "v32_right_side_buyback_changes"
+  ],
+  "accumulation_exposure_drift_cap": {
+    "eligible_state": "ACCUMULATION",
+    "upper_band_percentage_points": 0.10,
+    "completed_daily_closes_above_required": 3,
+    "sell_to_target_plus_percentage_points": 0.05,
+    "cooldown_calendar_days": 14,
+    "forbidden_while_accumulation_lock_active": true,
+    "crash_brake_exempt": true,
+    "new_bull_must_not_be_confirmed": true
+  },
+  "deep_bear_hysteresis": {
+    "minimum_completed_daily_closes": 10,
+    "exit_to_bear_close_above_sma50_consecutive_days": 5,
+    "exit_to_bear_sma20_slope_lookback_days": 5,
+    "exit_to_bear_requires_no_new_20d_low": true,
+    "original_v31_accumulation_entry_bypasses_minimum": true,
+    "must_not_block_transitions": [
+      "BEAR_TO_ACCUMULATION",
+      "DEEP_BEAR_TO_ACCUMULATION",
+      "ACCUMULATION_TO_NEW_BULL",
+      "NEW_BULL_TO_BULL"
+    ]
+  },
+  "cycle_reset": {
+    "on_new_bull_confirmed_status": "CLOSING_NEW_BULL",
+    "on_new_bull_confirmed_sell_stage": 0,
+    "new_bull_redeploy_source": "unchanged V3.1 ten completed daily signals",
+    "on_bull_status": "COMPLETED_NEW_BULL",
+    "on_bull_cycle_closed": true,
+    "on_bull_active_cycle_id": null,
+    "on_bull_sell_stage": 0,
+    "cash_reset_max_tactical_bear_cash_ratio": 0.01,
+    "cash_reset_exemption": "aggregate modeled minimum notional or floating-point rounding only"
+  },
+  "operational_interpretations": {
+    "crypto_trading_day": "one completed UTC daily candle",
+    "daily_signal_execution": "first common BTC/ETH 4h open at or after signal_available_at",
+    "accumulation_exposure_observation": "mark-to-market at the first execution bar open after each completed daily close, before that signal's tactical orders",
+    "consecutive_counter_reset": "reset to zero whenever pre-trade exposure is not strictly above active_target_plus_10pp or state is not ACCUMULATION",
+    "drift_counter_during_lock": "counter continues to observe completed closes but ordinary drift execution is blocked; crash remains independent",
+    "minimum_deep_bear_dwell": "ten completed daily signal observations after BEAR_TO_DEEP_BEAR; AHR999 accumulation bypass remains immediate",
+    "no_new_20d_low": "current completed BTC close is strictly above the minimum of the previous 20 completed BTC closes",
+    "one_ordinary_fsm_transition_per_signal_day": true,
+    "crash_brake_can_execute_on_same_bar_as_ordinary_transition": true,
+    "initial_budget_includes_fee_and_slippage": true,
+    "h0_external_contributions": 0.0,
+    "h0_after_initial_trade": "no DCA, rebalance, FSM, tactical sell, or buyback"
+  },
+  "promotion_gates_are_post_backtest_only": true,
+  "promotion_gates_prohibited_from_trading_engine": true,
+  "promotion_gates": {
+    "maximum_drawdown_minimum": -0.30,
+    "twr_cagr_minimum": 0.45,
+    "calmar_minimum": 1.50,
+    "final_value_minimum_fraction_of_v31_b": 0.95,
+    "material_tactical_cash_time_strictly_below_v31_b": true,
+    "tactical_turnover_maximum": 9.3677,
+    "bear_deep_bear_churn_minimum_reduction_fraction": 0.50,
+    "no_lookahead_required": true,
+    "execution_integrity_required": true,
+    "fsm_audit_required": true,
+    "cycle_reset_audit_required": true
+  },
+  "diagnostic_guardrails": {
+    "bear_window_start": "2021-11-01",
+    "bear_window_end": "2022-06-30",
+    "bear_protection_maximum_regression_percentage_points": 5.0,
+    "bull_reentry_maximum_delay_calendar_days": 60,
+    "cycle_long_warning_days": 730,
+    "cycle_extreme_warning_days": 1095,
+    "cash_persistence_days_after_new_bull": [5, 10, 20, 30],
+    "material_tactical_cash_ratio": 0.01
+  },
+  "audit_windows": {
+    "2020_COVID": ["2020-02-15", "2020-04-30"],
+    "2021_MAY_DAILY": ["2021-05-01", "2021-07-31"],
+    "2021_NOV_TO_2022_JUN": ["2021-11-01", "2022-06-30"],
+    "2023_BULL_RECOVERY": ["2023-01-01", "2023-12-31"]
+  },
+  "reference_v31_b": {
+    "final_portfolio_value": 348746.8528777533,
+    "maximum_drawdown": -0.3951313419600695,
+    "twr_cagr": 0.4769146261923145,
+    "calmar": 1.2069774668507813,
+    "tactical_turnover": 9.367689873226654,
+    "material_tactical_cash_time": 0.9623196334541476
+  },
+  "seed": 42
+}

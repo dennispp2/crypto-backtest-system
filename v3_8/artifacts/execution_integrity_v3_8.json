@@ -1,0 +1,20 @@
+{
+  "pass": true,
+  "prefix_invariance": {
+    "model_h0_trade_prefix_identical": true,
+    "model_a_trade_prefix_identical": true,
+    "model_b_trade_prefix_identical": true,
+    "shadow_trade_prefix_identical": true,
+    "model_j7_trade_prefix_identical": true,
+    "model_k_trade_prefix_identical": true
+  },
+  "fixed_dca_row_integrity": true,
+  "fsm_audit": true,
+  "v3_1_replay": true,
+  "v3_7_j7_replay": true,
+  "independent_shadow_replay": true,
+  "shadow_state_parity": true,
+  "overlay_scope": true,
+  "original_order_violations": 0,
+  "same_timestamp_opposite_action_violations": 0
+}

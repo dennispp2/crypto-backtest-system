@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "study_name": "BTC+ETH V3.1 Tactical Event / Round-Trip Necessity Audit - Counterfactual Attribution Research",
+  "study_type": "DIAGNOSTIC_COUNTERFACTUAL_ATTRIBUTION_ONLY",
+  "frozen_at_utc": "2026-09-03T15:25:21Z",
+  "frozen_before_counterfactual_run": true,
+  "not_a_strategy_version": true,
+  "forbid_strategy_changes": true,
+  "forbid_v3_9": true,
+  "attachment_sha256": "630c5723276e56e320a78dcce7890b220ff7795827d80b489faa3ed633a86af4",
+  "baseline": {
+    "name": "V3.1 Model B",
+    "config_path": "config/config_frozen_v3_1.json",
+    "config_sha256": "50adc23c620d068087842ca574f8d4f87a8b6de3d96ebca0392184c43574bc84",
+    "engine_path": "src/crypto_backtest/v31_engine.py",
+    "engine_sha256": "ea91309e5821431210998cf2289965adad8991cc97005105cceab9037aeae2a1",
+    "reference": {
+      "final_portfolio_value": 348746.8528777533,
+      "twr_cagr": 0.4769146261923145,
+      "maximum_drawdown": -0.3951313419600695,
+      "calmar": 1.2069774668507813,
+      "tactical_event_count": 106,
+      "tactical_trade_count": 212,
+      "tactical_turnover": 9.367689873226654
+    },
+    "numeric_replay_tolerance": 1e-8
+  },
+  "data": {
+    "formal_start": "2020-01-01T00:00:00Z",
+    "formal_end": "latest_complete_common_4h_bar",
+    "warmup_start": "2019-01-01T00:00:00Z",
+    "source_manifest": "v3_1/artifacts/source_manifest_v3_1.csv",
+    "source_manifest_sha256": "513f048e043cb32523899f81f6cce2c40ff435f7d0eb7a0ecfb0d0ed1b86778e",
+    "completed_daily_signals_only": true,
+    "execution": "next_tradable_4h_bar"
+  },
+  "counterfactual_contract": {
+    "freeze_shadow_state_stage_cycle_crash_new_bull_target_and_signal_dates": true,
+    "delete_portfolio_event_btc_and_eth_together": true,
+    "fixed_dca_never_deleted": true,
+    "initial_allocation_never_deleted": true,
+    "actual_orders_target_frozen_shadow_target": true,
+    "no_fill_sell_reason": "SHADOW_SELL_PRESENT_NO_TRADE_ALREADY_AT_OR_BELOW_TARGET",
+    "loeo_event_count": 106,
+    "loeo_contributions_non_additive": true,
+    "forward_outcomes_ex_post_only": true
+  },
+  "resynchronization": {
+    "absolute_exposure_tolerance_percentage_points": 0.5,
+    "consecutive_completed_daily_closes": 3,
+    "first_resync_date_is_confirmation_close": true
+  },
+  "local_attribution": {
+    "portfolio_value_horizons_calendar_days": [7, 30, 60, 90, 180],
+    "drawdown_horizons_calendar_days": [7, 30, 60, 90],
+    "primary_local_drawdown": "event execution through next major shadow transition",
+    "next_major_transition": "first later daily signal with macro state change, cycle id change, Right-side action, or NEW_BULL action",
+    "horizon_observation": "first available 4h close at or after the calendar horizon",
+    "contribution_direction": "baseline minus counterfactual; positive return contribution means the baseline event helped wealth; positive DD contribution means the baseline event protected drawdown"
+  },
+  "cluster_identification": {
+    "exposure_return_tolerance_percentage_points": 0.5,
+    "inactivity_boundary_calendar_days": 30,
+    "start": "first unassigned tactical event",
+    "end_order": [
+      "return to start pre-event exposure within tolerance after at least one later event",
+      "include a Right-side or NEW_BULL structural event and end",
+      "end before the first event in a new macro cycle",
+      "end at the last event before a greater-than-30-calendar-day inactivity gap",
+      "sample end"
+    ],
+    "whipsaw_labels_reporting_only": true
+  },
+  "classification": {
+    "metric_units": {"final_impact": "fraction_of_baseline_final", "dd_impact": "percentage_points"},
+    "precedence": ["MIXED_CONFLICT", "RISK_ESSENTIAL", "RETURN_ESSENTIAL", "HARMFUL", "REDUNDANT", "MIXED_UNCERTAIN"],
+    "loose": {
+      "redundant_abs_final_max_fraction": 0.005,
+      "redundant_abs_dd_max_pp": 0.5,
+      "harmful_delete_final_gain_min_fraction": 0.001,
+      "harmful_dd_worsening_max_pp": 0.5,
+      "return_essential_final_loss_min_fraction": 0.005,
+      "return_essential_delete_dd_improvement_max_pp": 1.5,
+      "risk_essential_dd_worsening_min_pp": 0.5
+    },
+    "base": {
+      "redundant_abs_final_max_fraction": 0.0025,
+      "redundant_abs_dd_max_pp": 0.25,
+      "harmful_delete_final_gain_min_fraction": 0.0025,
+      "harmful_dd_worsening_max_pp": 0.25,
+      "return_essential_final_loss_min_fraction": 0.01,
+      "return_essential_delete_dd_improvement_max_pp": 1.0,
+      "risk_essential_dd_worsening_min_pp": 1.0
+    },
+    "strict": {
+      "redundant_abs_final_max_fraction": 0.001,
+      "redundant_abs_dd_max_pp": 0.1,
+      "harmful_delete_final_gain_min_fraction": 0.005,
+      "harmful_dd_worsening_max_pp": 0.1,
+      "return_essential_final_loss_min_fraction": 0.02,
+      "return_essential_delete_dd_improvement_max_pp": 0.5,
+      "risk_essential_dd_worsening_min_pp": 2.0
+    }
+  },
+  "interaction_audit": {
+    "candidate_clusters": 10,
+    "maximum_pairs": 45,
+    "selection": "robust harmful first, robust redundant second, then lowest contribution per turnover",
+    "high_path_dependency_abs_interaction_fraction": 0.01,
+    "moderate_path_dependency_abs_interaction_fraction": 0.0025
+  },
+  "diagnostic_verdict_rules": {
+    "material_harmful_event_fraction": 0.10,
+    "material_harmful_historical_gain_fraction": 0.02,
+    "material_redundant_event_fraction": 0.15,
+    "material_redundant_turnover_fraction": 0.15,
+    "largely_justified_max_redundant_plus_harmful_fraction": 0.10,
+    "largely_justified_min_positive_or_essential_fraction": 0.60,
+    "priority": ["C", "B", "A", "D"],
+    "reporting_only": true
+  },
+  "audit_windows": {
+    "BOTTOM_2022": ["2022-06-01", "2022-12-31"],
+    "BOTTOM_2026": ["2026-02-01", "2026-06-30"]
+  },
+  "forward_return_horizons_calendar_days": [3, 7, 14, 30, 60, 90],
+  "seed": 42
+}

@@ -1,0 +1,36 @@
+{
+  "data_contract_pass": true,
+  "daily_signal_available_after_candle_close_violations": 0,
+  "tactical_trade_before_signal_available_violations": 0,
+  "signal_execution_before_availability_violations": 0,
+  "pre_formal_period_trade_count": 0,
+  "fixed_dca_integrity_rows": 14618,
+  "fixed_dca_integrity_mismatch_rows": 0,
+  "normal_dca_wrong_ledger_count": 0,
+  "tactical_trade_wrong_ledger_count": 0,
+  "tactical_sell_hard_floor_violations": 0,
+  "minimum_tactical_cash": 0.0,
+  "minimum_observed_dca_rate": 2.0,
+  "maximum_observed_dca_rate": 2.0,
+  "required_fixed_dca_rate": 2.0,
+  "external_contribution_spread": 0.0,
+  "buyback_one_shot_violation_groups": 0,
+  "cycle_transition_or_reset_violations": 0,
+  "stage4_upper_band_unexplained_daily_rows": 0,
+  "stage3_with_93pct_exposure_daily_rows": 0,
+  "daily_mark_to_market_floor_breach_rows_nonblocking": 294,
+  "daily_floor_semantics": "nonblocking: floor constrains tactical sells; later price drift is reported",
+  "prefix_invariance": {
+    "prefix_bars": 7309,
+    "prefix_end": "2023-05-03T04:00:00+00:00",
+    "prefix_trade_rows": 2839,
+    "full_matching_trade_rows": 2839,
+    "prefix_trades_identical": true
+  },
+  "model_a_reuse": {
+    "module": "crypto_backtest.engine.run_backtest",
+    "source_path": "C:\\Users\\denni\\Documents\\Codex\\2026-09-02\\files-pasted-by-the-user-look\\outputs\\crypto_backtest_system\\src\\crypto_backtest\\engine.py",
+    "source_sha256": "c5c7cb86eef7db624e67ff335aedacf913f8c36a058620b60a66b4cda3791556"
+  },
+  "pass": true
+}

@@ -1,0 +1,2 @@
+event_count,positive_raw_contribution_count,negative_raw_contribution_count,median_final_contribution,mean_final_contribution,median_btc_forward_return_30d,median_btc_forward_return_60d,median_dd_protection_pp,forward_outcome_usage
+34,17,17,-16.859777637117084,684.7033262369788,0.0377349958651849,0.1124133264497352,0.0,EX_POST_DIAGNOSTIC_ONLY

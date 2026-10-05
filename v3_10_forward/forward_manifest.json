@@ -1,0 +1,1018 @@
+{
+  "schema_version": "1.0",
+  "label": "FORWARD_PAPER_ONLY",
+  "updated_at_utc": "2026-10-05T10:02:24.202863+00:00",
+  "historical_cutoff": "2026-09-03T04:00:00+00:00",
+  "binance_server_time": "2026-10-05T10:02:19.632000+00:00",
+  "oos_start": "2026-09-03T08:00:00+00:00",
+  "oos_end": "2026-10-05T04:00:00+00:00",
+  "oos_rows": 192,
+  "historical_replay_count": 1,
+  "frozen_config_sha256": "6dab78c58a85783fa073892811f4d6d60ed8dc830adf4f6dfc1165960180a74e",
+  "frozen_hash_status": "PASS",
+  "append_only_hash_status": "PASS",
+  "data_contract": {
+    "source_switch_date": "2017-08-17T00:00:00+00:00",
+    "common_4h_contract": {
+      "assets": {
+        "BTC": {
+          "rows": 20001,
+          "start": "2017-08-17T04:00:00+00:00",
+          "end": "2026-10-05T07:59:59+00:00",
+          "duplicate_open_times": 0,
+          "nonpositive_close": 0
+        },
+        "ETH": {
+          "rows": 20001,
+          "start": "2017-08-17T04:00:00+00:00",
+          "end": "2026-10-05T07:59:59+00:00",
+          "duplicate_open_times": 0,
+          "nonpositive_close": 0
+        }
+      },
+      "common": {
+        "rows": 20001,
+        "start": "2017-08-17T04:00:00+00:00",
+        "end": "2026-10-05T04:00:00+00:00",
+        "is_monotonic": true,
+        "duplicate_open_times": 0
+      }
+    },
+    "binance_server_time": "2026-10-05T10:02:19.632000+00:00",
+    "historical_cutoff": "2026-09-03T04:00:00+00:00",
+    "oos_rows": 192,
+    "oos_start": "2026-09-03T08:00:00+00:00",
+    "oos_end": "2026-10-05T04:00:00+00:00",
+    "strictly_after_cutoff": true,
+    "completed_4h_only": true,
+    "signal_availability_violations": 0,
+    "future_label_columns": [],
+    "pass": true
+  },
+  "new_batch_observations": [
+    {
+      "symbol": "BTCUSDT",
+      "interval": "4h",
+      "rows": 192,
+      "first_open": "2026-09-03T08:00:00+00:00",
+      "last_open": "2026-10-05T04:00:00+00:00",
+      "last_close": "2026-10-05T07:59:59.999000+00:00",
+      "content_id": "a99ed43ea0388507",
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20261005T0400_a99ed43ea0388507.csv.gz",
+      "sha256": "5054b330385fe7a7bf66711b1e136ba61b8a8203092e22c9837a2aba53640c59"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "interval": "1d",
+      "rows": 32,
+      "first_open": "2026-09-03T00:00:00+00:00",
+      "last_open": "2026-10-04T00:00:00+00:00",
+      "last_close": "2026-10-04T23:59:59.999000+00:00",
+      "content_id": "66ef4f458eea2f95",
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20261004T0000_66ef4f458eea2f95.csv.gz",
+      "sha256": "dbc577d811b876979b1094a4a6290795c4bee31f9f4e6993d5e33a027cd0d5b7"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "interval": "4h",
+      "rows": 192,
+      "first_open": "2026-09-03T08:00:00+00:00",
+      "last_open": "2026-10-05T04:00:00+00:00",
+      "last_close": "2026-10-05T07:59:59.999000+00:00",
+      "content_id": "64b44a6e8627a8cd",
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20261005T0400_64b44a6e8627a8cd.csv.gz",
+      "sha256": "4323f5ef77e868d164f746f53abeedfc0861a1609fdefda9424643f7ed0f7336"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "interval": "1d",
+      "rows": 32,
+      "first_open": "2026-09-03T00:00:00+00:00",
+      "last_open": "2026-10-04T00:00:00+00:00",
+      "last_close": "2026-10-04T23:59:59.999000+00:00",
+      "content_id": "bf6c950e27529346",
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20261004T0000_bf6c950e27529346.csv.gz",
+      "sha256": "1b7ec4de65572fa697c17c3603b9201ff96c39c85de9bb9774229f3488d7ffbe"
+    }
+  ],
+  "immutable_raw_batches": [
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260903T0000_fb8871cf856a6b5d.csv.gz",
+      "sha256": "04b7e165c26d829a50dd2fc2ce7ec97ff95b5c8e33833719da3f8314f930c5a3",
+      "rows": 1,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-03T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260904T0000_f07b0867d5f3aa25.csv.gz",
+      "sha256": "284ffef5ee90b2f1b173dc0a87777442519b16a6523fe80717d7465e3c95bf96",
+      "rows": 2,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-04T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260905T0000_3d36740350661cea.csv.gz",
+      "sha256": "4749cf20d00ee4e8699f24f0449e7e5292a2993ac436b165d8f8e62331e63238",
+      "rows": 3,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-05T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260906T0000_e3aff62d75f3e72d.csv.gz",
+      "sha256": "fb00ab42e744c03493c45bbf70bcd99322ffae84bcfc60db3bca8b5e37b67377",
+      "rows": 4,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-06T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260907T0000_7ffdc2443dfcc2ae.csv.gz",
+      "sha256": "f824ed5332ca2cbc435cee6a9cf2ede9a3889ff5c0d44aa2f98263c5f1bc4f15",
+      "rows": 5,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-07T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260908T0000_77c82907d2abdb91.csv.gz",
+      "sha256": "efb9887ae89e674969b61a650a8b11b9d83503f5d0d15cc23782ae11423fa42e",
+      "rows": 6,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-08T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260909T0000_35a47f3dcf351c00.csv.gz",
+      "sha256": "bda29a17107eb6f1d83fe2924fe388bd941449475ca1f42be5b1990b55206ee8",
+      "rows": 7,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-09T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260910T0000_49b46e27e4b8587a.csv.gz",
+      "sha256": "414690c4b5e6b865325ce171940702474314e2f59f495e191416731634232514",
+      "rows": 8,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-10T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260911T0000_f47ea86a9abd1b6d.csv.gz",
+      "sha256": "255ce95a6b1f230075300b317fdd09a0c0b7680659f5c1132173269be7141010",
+      "rows": 9,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-11T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260913T0000_349885701c460e12.csv.gz",
+      "sha256": "b0b2a83fa407542dd198bf7a3ebcec399a063436db44d08a27a8ca61899dc3a3",
+      "rows": 11,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-13T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260914T0000_231d32f825a430d8.csv.gz",
+      "sha256": "1954d011e02129333d1729d32cb58949884c1baf6fe747e6a71682fe856c8488",
+      "rows": 12,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-14T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260915T0000_70362afe139a6b0c.csv.gz",
+      "sha256": "9191983bc2105d4dbb1351a2ed7374984e60cea67d9a0afe1f3097cb4b4c49a1",
+      "rows": 13,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-15T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260919T0000_5def1126d0e34cc4.csv.gz",
+      "sha256": "16e32045179f860dc89d0c5e4a9f7c5ee8ff7d663735b85b5ac911007a716503",
+      "rows": 17,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-19T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260920T0000_75d55e5d23cf504a.csv.gz",
+      "sha256": "17b471ef65183aa92d511ba5213f4defb007b9aaf8d0f9a3a6c623b823d1a453",
+      "rows": 18,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-20T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260921T0000_96a853de632c944f.csv.gz",
+      "sha256": "3a09c92d515ceba0aa54e0d7b36886cb6963b8836f41f1c930e31809f2290b0e",
+      "rows": 19,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-21T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260928T0000_ae3ec72301244502.csv.gz",
+      "sha256": "d5ae73775a7fe9ecb80a086c120d1c591d324053b20ae014eb9d7e92b78175e6",
+      "rows": 26,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-28T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260929T0000_183522efdae06a2b.csv.gz",
+      "sha256": "cd8195ee4528b95fe486ceb82748642ca8f8d84c0d785c97c571d7077beae66e",
+      "rows": 27,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-29T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20260930T0000_cb9cda0eff5a3685.csv.gz",
+      "sha256": "095e089d809e1d468312f5bd23fc33dce038575e940b0bd849a1957c43d352b1",
+      "rows": 28,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-30T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20261001T0000_513c58d37d2d9b94.csv.gz",
+      "sha256": "c515d0427aad072e7e49eddfe00f469a20c53ea84b111abaf6d36212d79967e6",
+      "rows": 29,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-10-01T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20261003T0000_f61c3d091b2c2a19.csv.gz",
+      "sha256": "0cd40a050ff19d132ee3ce001fe24a55bb31e43dc25a647d28deb0a10b90e5ec",
+      "rows": 31,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-10-03T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_1d_20260903T0000_20261004T0000_66ef4f458eea2f95.csv.gz",
+      "sha256": "dbc577d811b876979b1094a4a6290795c4bee31f9f4e6993d5e33a027cd0d5b7",
+      "rows": 32,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-10-04T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260904T0400_2711df57acfa32f0.csv.gz",
+      "sha256": "f787dcfc257f6a07137f283537b77bd280516d30e05e9560d3b2ae793a06d186",
+      "rows": 6,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-04T07:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260905T0000_0b73f1e6039f1d6d.csv.gz",
+      "sha256": "51df7f3d2c3ab99dcc070c5ad421b46f940fcf88a5ae8e523e483cd6b77a2f2d",
+      "rows": 11,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-05T03:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260906T0400_b3c9aac7154fd004.csv.gz",
+      "sha256": "69d3a2e387593cc7c3edaca2ccd22be08dd1807fd93aa00a2739f6ca38614354",
+      "rows": 18,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-06T07:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260907T0400_c5e4b871199796e5.csv.gz",
+      "sha256": "424bbfe3aeb035b0baccef13ab9216dd76dd283fdc6995d746f8ff805be807eb",
+      "rows": 24,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-07T07:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260908T0800_a7c8d58f845cc132.csv.gz",
+      "sha256": "88062f969ea27879df74e797af1a6e0804c17a1675ecd22167a4ec017371a479",
+      "rows": 31,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-08T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260909T0800_8fb3fdb4c92608f9.csv.gz",
+      "sha256": "b76ecea02210f92adcb2c7c48afef810f1ce8f2f889b132b7261ad7e218fc052",
+      "rows": 37,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-09T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260910T0800_b243f52b279cc432.csv.gz",
+      "sha256": "9a6c31c7714cd2c638d5d7db5562799ba1f3b033312fa895ff3d0340546ab8f7",
+      "rows": 43,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-10T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260911T0800_1c976b30c46a1dde.csv.gz",
+      "sha256": "7f4fe1287cd30eceb0e555f743de5e193e63cc6be91997652596696086f69324",
+      "rows": 49,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-11T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260912T1200_96f9d7e659f55128.csv.gz",
+      "sha256": "6af092fafb99a97b455703fa5ef6663da215798e9b31236cd2197f54e6182673",
+      "rows": 56,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-12T15:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260914T0400_a8f3aca8f723cf74.csv.gz",
+      "sha256": "179fceef886c02de7536e34209cb364fec4bbe90e881f7197f1275ca85bcfd80",
+      "rows": 66,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-14T07:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260915T0400_06755f8dd5e0175f.csv.gz",
+      "sha256": "7b78f6028ca59a54468381d42864eb52c492e938dfccfc776d3b6d21fafd981d",
+      "rows": 72,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-15T07:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260916T0800_7b67dafcf532021b.csv.gz",
+      "sha256": "d255f43db0ce4ecfbc08a6da5884dabfd2c4a988785f23dfc03b5a9acf59a4ab",
+      "rows": 79,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-16T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260920T0800_4156be0bfbf89829.csv.gz",
+      "sha256": "62f2a794a05649844fdda1be8db02646cfaef1df583aec4d25f462f0fd628302",
+      "rows": 103,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-20T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260921T0400_d3922c296a995d45.csv.gz",
+      "sha256": "2eb8183706e8199db1531e93356e04f76483bd2e9472ed02c2b3f7cd170cfbd7",
+      "rows": 108,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-21T07:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260922T0000_3744a443f023f6fc.csv.gz",
+      "sha256": "ca8af6fb57498bc6250f4e190118788485f392fa08daeaffc186c8fb596240a9",
+      "rows": 113,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-22T03:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260929T0800_3352f66c88a07211.csv.gz",
+      "sha256": "082d9fa98077a7a00732b95bae2f0f2766e2048c4a2fb2435bfaa89eaa6079a6",
+      "rows": 157,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-29T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20260930T0800_d815908adab24c16.csv.gz",
+      "sha256": "392581df07733a6962cc10765b9383a254310366833e1299683c9a5e78f6f239",
+      "rows": 163,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-30T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20261001T0800_311d8cd5ae8de497.csv.gz",
+      "sha256": "03ae0e2bb540910242db5947e1e36228f213f618cb3fc66db44fe7070a690d5c",
+      "rows": 169,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-10-01T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20261002T1200_4c5092f3aec0d360.csv.gz",
+      "sha256": "0c22e88f489ae28fb285a0d4be8f112bac3cd15d5e8706de6fd828982ac5aab2",
+      "rows": 176,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-10-02T15:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20261004T0000_7c5de7419d325579.csv.gz",
+      "sha256": "fe37c5c75a9d59138a6c416f2ca76dd46ef7f9c6b3b08893aaad73e4105e74e3",
+      "rows": 185,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-10-04T03:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_BTCUSDT_4h_20260903T0800_20261005T0400_a99ed43ea0388507.csv.gz",
+      "sha256": "5054b330385fe7a7bf66711b1e136ba61b8a8203092e22c9837a2aba53640c59",
+      "rows": 192,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-10-05T07:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260903T0000_7f33a3cada15bf3e.csv.gz",
+      "sha256": "be6fa8e70a84ee3185d3b256a7581ed6c7f6cedbae7aaeae8c871c83de642c51",
+      "rows": 1,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-03T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260904T0000_22dfa244fb3ec7fe.csv.gz",
+      "sha256": "f30f15da9346597397e3f306393ac766b18c32e35afd06eaa86f41259efac9c6",
+      "rows": 2,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-04T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260905T0000_f6c14f5373933be5.csv.gz",
+      "sha256": "2c1629404c483c6974d4c0ecd80f27c1796f6100a8994b85f0f8bef0f0c55880",
+      "rows": 3,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-05T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260906T0000_7446741542fc5fe7.csv.gz",
+      "sha256": "caf41344a49fc32f42945512f5c6a24dd4de8b5928cba8cb4d7c96dd3daee91d",
+      "rows": 4,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-06T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260907T0000_c7261151d515ca2e.csv.gz",
+      "sha256": "56a0460371fd94059010bb974701a296b8d71b4342766cddc68f6aedcf73507d",
+      "rows": 5,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-07T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260908T0000_6b13c10e9343d6ad.csv.gz",
+      "sha256": "041060459a43a09f5f5ebfc3289a60925b0186283b8fc24803e96304100c637e",
+      "rows": 6,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-08T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260909T0000_13ac8d1958705107.csv.gz",
+      "sha256": "2b0b7fc733379a9831c7fe134ff346b699d59864188a9cc7e4f48556f64a7604",
+      "rows": 7,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-09T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260910T0000_d17f63a34f688f71.csv.gz",
+      "sha256": "7e0c23506da1f40ef0365d45631e44aa16d9c3b6ff54a8dbf690643930f3d70c",
+      "rows": 8,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-10T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260911T0000_711622229af1e814.csv.gz",
+      "sha256": "4ce07bcfb8af3ddaff2821a6f2cba7b6083d1fc0a7d8288c22dd9ef7d2d1be57",
+      "rows": 9,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-11T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260913T0000_0ae847f4273db9f9.csv.gz",
+      "sha256": "b240e6a6a2263cc96a978125b7ce756c8b32a56c848ef12a7c5bee661fbe0242",
+      "rows": 11,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-13T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260914T0000_18bd828f3d064481.csv.gz",
+      "sha256": "4d2e2024ad9a1a342ea3f58c0b4704ff1e37bb9db25f4463918cf7cd4c325a52",
+      "rows": 12,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-14T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260915T0000_2f566781df97e9c4.csv.gz",
+      "sha256": "e19549a6bd91922316479520dde3ce7a7ccc44066ca5f85a2dc0261b776b52b6",
+      "rows": 13,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-15T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260919T0000_1bc488e6b21e8568.csv.gz",
+      "sha256": "078a4098a7f023a3fadbad066af84076ff94b321cdfae8503dea31bbaa0c1969",
+      "rows": 17,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-19T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260920T0000_5d585fa86bcaf7e3.csv.gz",
+      "sha256": "abd815beb29f9a556ca0a3445348d26cb94889c209deab9922390ea852be7a4b",
+      "rows": 18,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-20T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260921T0000_6e309c68dd515d1b.csv.gz",
+      "sha256": "7763de2be9503ef0dbbff8d70817835a5f5420d5113b2007f9b4f4b7685a000c",
+      "rows": 19,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-21T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260928T0000_84658d60d926ea3d.csv.gz",
+      "sha256": "8fd3735bf11e86b413ce5e10c573918e609e03dee81f0cf0b851c9cefe4b1853",
+      "rows": 26,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-28T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260929T0000_66d93c5a3ed019a0.csv.gz",
+      "sha256": "92e227a649802647f08cff6360367527ed1c984f9669f10cbb6fe08c5df12540",
+      "rows": 27,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-29T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20260930T0000_818f2ef1ac5195c1.csv.gz",
+      "sha256": "ec5a89f7231bdb2d830d70eb53c1fe472033602408e74c72c81da57c49650879",
+      "rows": 28,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-09-30T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20261001T0000_8164af7b0cc0bd25.csv.gz",
+      "sha256": "167ed7eeb8b821300be97bf139cf58f02191ce9539352ffc4e9d5c0ae37fb5f9",
+      "rows": 29,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-10-01T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20261003T0000_ed938e797351e0ff.csv.gz",
+      "sha256": "257c2a13868a2ea2f49531d85825badab10130db94fe11a634be993b4f69013f",
+      "rows": 31,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-10-03T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_1d_20260903T0000_20261004T0000_bf6c950e27529346.csv.gz",
+      "sha256": "1b7ec4de65572fa697c17c3603b9201ff96c39c85de9bb9774229f3488d7ffbe",
+      "rows": 32,
+      "start": "2026-09-03T00:00:00+00:00",
+      "end": "2026-10-04T23:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260904T0400_03a7e9d5e6614bb5.csv.gz",
+      "sha256": "0e45051df3b2c7635c6f630e0ffe0082fb229cd96b6d0338a9ea3b22ece169e2",
+      "rows": 6,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-04T07:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260905T0000_0cd5c005e3d64042.csv.gz",
+      "sha256": "db8c968d4b32451fa9d97f0fa5f9ec5768ea341f7ab3c01ecc73dab3a84e565d",
+      "rows": 11,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-05T03:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260906T0400_9822c51730ad2447.csv.gz",
+      "sha256": "8ee5ad6b8ad36fdb70c0b195ae04a797648de1368e5e83b8b494d3c191a656f0",
+      "rows": 18,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-06T07:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260907T0400_a95d9dff7c2ff7a5.csv.gz",
+      "sha256": "344cc30bbcca4aac70c234adecaa9b0467b5c1b261bfaf94207fa715dcaac056",
+      "rows": 24,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-07T07:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260908T0800_1554d41151505e39.csv.gz",
+      "sha256": "aa6f930e97b9c6afb4bf09f8ccf6a7f7003f958b8027f23ab83ebd5994012699",
+      "rows": 31,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-08T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260909T0800_28213e1f11313a38.csv.gz",
+      "sha256": "c3abec571517ee45e91e7a9bb7e99177e2500931548b81af6d7a750c7d986d56",
+      "rows": 37,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-09T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260910T0800_10d483aa1def58c3.csv.gz",
+      "sha256": "eb3cf5af6636c07836e2aeecff54b9676162291637a8efc71352b32ba5083bf6",
+      "rows": 43,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-10T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260911T0800_57065b147785073e.csv.gz",
+      "sha256": "9c122ad7250f6541662786300f141e788dce797d6863291694f851ee91ebb48a",
+      "rows": 49,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-11T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260912T1200_ee7ef7dd6dfd3f95.csv.gz",
+      "sha256": "73dfe5cc9443f32b7f3cb035553fc1121365ba47f588dfa09a2b48a68b2ba2be",
+      "rows": 56,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-12T15:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260914T0400_d7d8bf9bcf55706e.csv.gz",
+      "sha256": "9b3715eba6d1ed8e182d5667c918f9a870a2ac6104673b0d81a474e3a9f782fc",
+      "rows": 66,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-14T07:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260915T0400_5c0bbae5bde255c5.csv.gz",
+      "sha256": "a485a45844bc5d5a12e8a859f7475f01691dc05b9115a6611933b77f2303b5fe",
+      "rows": 72,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-15T07:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260916T0800_f11c33b191ffc51b.csv.gz",
+      "sha256": "f4ef1671949dd2a74b0f7e248a9a8c5ddd9fbcbdc458a5c0f2d45bcadf1e5045",
+      "rows": 79,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-16T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260920T0800_071e81cbaa842564.csv.gz",
+      "sha256": "a4754790fec4985aed6d4ab7428cfbe0e4ea6eadb1b90a69bbfe45d3e4ea3f5e",
+      "rows": 103,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-20T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260921T0400_9860f8cd1dbce9f1.csv.gz",
+      "sha256": "822ec5ff88ed00dda93508ef0922266e95f70486a8ef43e84938f4c79b488715",
+      "rows": 108,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-21T07:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260922T0000_d6401d72570b4911.csv.gz",
+      "sha256": "19f344db25b6b9d1ac7e10f58281ccbb496dfde2ff90b96ae3f7dced596dfc47",
+      "rows": 113,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-22T03:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260929T0800_988db05a7c6b83ee.csv.gz",
+      "sha256": "21190fa4019555ec21b8b0c8c332d0f693b571149ef03aa6d0d03e4aace4c406",
+      "rows": 157,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-29T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20260930T0800_6f0477555825a566.csv.gz",
+      "sha256": "a14ea27dcb221ae740897bba95cf1445e36711b29d9721cddd2bb2d34df09b9c",
+      "rows": 163,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-09-30T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20261001T0800_bbddb777969bca33.csv.gz",
+      "sha256": "0b073f3c0e3ed440e4cf364c4d2941b7c15160aa44831a8f2ba074c45a250423",
+      "rows": 169,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-10-01T11:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20261002T1200_281fd8f9b6890749.csv.gz",
+      "sha256": "e660737826ba665c61da5a2b23778163a02ddbd2423e472351972b3e11242644",
+      "rows": 176,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-10-02T15:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20261004T0000_10a38abdb26cd123.csv.gz",
+      "sha256": "e587cf5622859c86cb20054fa62046fe5c1cc42ea1382cfd98b971a821ab82eb",
+      "rows": 185,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-10-04T03:59:59+00:00"
+    },
+    {
+      "path": "v3_10_forward/data/raw/binance_ETHUSDT_4h_20260903T0800_20261005T0400_64b44a6e8627a8cd.csv.gz",
+      "sha256": "4323f5ef77e868d164f746f53abeedfc0861a1609fdefda9424643f7ed0f7336",
+      "rows": 192,
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-10-05T07:59:59+00:00"
+    }
+  ],
+  "append_results": {
+    "Q": {
+      "appended_rows": 7,
+      "last_record_hash": "c2c81c5bfba5c9a85de4dac923a5d0ac75fcd82bdb09fa42ae1ecf09d392b3a5"
+    },
+    "B": {
+      "appended_rows": 7,
+      "last_record_hash": "b9c7d24eef814a2c008b4c62c8c46c2790447b1a94556403433c13b74f84f276"
+    },
+    "trades": {
+      "appended_rows": 0,
+      "last_record_hash": "05e78524422c36d47ede141545ac10b3e78a1d9070a038c7a4e9f87f7653d95c"
+    },
+    "dca": {
+      "appended_rows": 7,
+      "last_record_hash": "5575f48080038b918f62cd8ffabdb2b774d539ce4c4cd0868f2059f2ca1b4e1d"
+    },
+    "candidates": {
+      "appended_rows": 0,
+      "last_record_hash": "GENESIS"
+    },
+    "outcomes": {
+      "appended_rows": 0,
+      "last_record_hash": "GENESIS"
+    },
+    "signals": {
+      "appended_rows": 2,
+      "last_record_hash": "139d5e1c4476476b2b738f07711227c66bf152c8174d6f9c5b941f561fc7d1f0"
+    },
+    "exceptions": {
+      "appended_rows": 0,
+      "last_record_hash": "576ea4a3fc58a877e01713a1d84b7d19e673bfb8c561b0dfb48c3238d7bd84cf"
+    },
+    "daily": {
+      "appended_rows": 1,
+      "last_record_hash": "75907d1986922950cb4150433e029a3a6399b9469eeb12fa1d28d1bd6090f3e2"
+    },
+    "monthly": {
+      "appended_rows": 0,
+      "last_record_hash": "0cadfe6f4dbc8cb999a71b00ec46ccc7fc24504d64f50c0a34d7659096074c74"
+    }
+  },
+  "evaluation": {
+    "verdict": "D. V3.10 FORWARD SAFETY FAIL",
+    "checkpoint_mature": false,
+    "oos_calendar_days": 32.0,
+    "resolved_candidate_count": 0,
+    "candidate_count": 0,
+    "q_twr_return": 0.0973847169356945,
+    "v31_twr_return": 0.09725721969473056,
+    "q_max_drawdown": -0.04853698526707917,
+    "v31_max_drawdown": -0.04855935539946221,
+    "median_candidate_60d_return_edge": NaN,
+    "median_candidate_60d_drawdown_edge": NaN,
+    "stage3_delay_tail_risk_warning": false,
+    "checks": {
+      "OOS_180_DAYS": false,
+      "RESOLVED_CANDIDATES_GTE_3": false,
+      "OVERALL_DD_WORSENING_LTE_3PP": true,
+      "NO_LOWER_RETURN_AND_WORSE_DD": true,
+      "MEDIAN_60D_EDGE_NOT_BOTH_NEGATIVE": true,
+      "NO_EARLY_SAFETY_FAIL": false
+    }
+  },
+  "current_engine_summaries": {
+    "A": {
+      "capital_test": "forward_paper_only",
+      "strategy": "FORWARD DCA PLANNER - V3.1 FIXED DCA",
+      "variant": "primary",
+      "cost_case": "primary",
+      "cash_protection": false,
+      "sell_order": "fixed_62_5_37_5",
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-10-05T04:00:00+00:00",
+      "initial_capital": 20000.0,
+      "periodic_external_contributions": 384.0,
+      "external_contributions": 20384.0,
+      "final_portfolio_value": 22766.03510493761,
+      "net_profit": 2382.0351049376113,
+      "xirr": 2.5955722946128867,
+      "time_weighted_cagr": 2.5944351199495825,
+      "maximum_drawdown": -0.06306816986386932,
+      "annualized_volatility": 0.35788729100063854,
+      "sharpe": 3.7340814218571303,
+      "sortino": 4.144146205473456,
+      "calmar": 41.136997086638,
+      "ulcer_index": 0.02989896147770826,
+      "turnover": 0.017854370599587877,
+      "total_trading_costs": 0.5719704902808025,
+      "average_cash_ratio": 0.020174442431327072,
+      "minimum_cash_ratio": 0.018822680173210232,
+      "average_total_cash_ratio": 0.020367909356212213,
+      "average_tactical_cash": 0.0,
+      "average_tactical_cash_ratio": 0.0,
+      "time_in_tactical_cash": 0.0,
+      "cash_drag": 0.0022491152321444385,
+      "cash_drag_usd_approx": 48.01807932919599,
+      "sell_stage_1_count": 0,
+      "sell_stage_2_count": 0,
+      "sell_stage_3_count": 0,
+      "sell_stage_4_count": 0,
+      "ahr_030_035_buy_count": 0,
+      "ahr_below_030_buy_count": 0,
+      "ahr_extreme_buy_count": 0,
+      "right_confirmation_count": 0,
+      "dca_cash_protection_slowdowns": 0,
+      "dca_cash_shortfall_count": 0,
+      "ever_normal_cash_zero": false,
+      "first_normal_cash_depletion": ""
+    },
+    "B": {
+      "capital_test": "forward_paper_only",
+      "strategy": "FORWARD SHADOW - V3.1 MODEL B",
+      "variant": "primary",
+      "cost_case": "primary",
+      "cash_protection": false,
+      "sell_order": "fixed_62_5_37_5",
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-10-05T04:00:00+00:00",
+      "initial_capital": 20000.0,
+      "periodic_external_contributions": 384.0,
+      "external_contributions": 20384.0,
+      "final_portfolio_value": 22351.13992950279,
+      "net_profit": 1967.1399295027913,
+      "xirr": 1.906055519744064,
+      "time_weighted_cagr": 1.9006274093000237,
+      "maximum_drawdown": -0.04855935539946221,
+      "annualized_volatility": 0.29950033067276993,
+      "sharpe": 3.686400718175594,
+      "sortino": 3.957087909617282,
+      "calmar": 39.14029322804958,
+      "ulcer_index": 0.02338893953496329,
+      "turnover": 0.4978892316440312,
+      "total_trading_costs": 15.6863238100023,
+      "average_cash_ratio": 0.01641817207545704,
+      "minimum_cash_ratio": 0.01536032697089823,
+      "average_total_cash_ratio": 0.14278109356191326,
+      "average_tactical_cash": 2592.053570358477,
+      "average_tactical_cash_ratio": 0.12616621460464675,
+      "time_in_tactical_cash": 1.0,
+      "cash_drag": 0.017808797830364487,
+      "cash_drag_usd_approx": 373.92719039279007,
+      "sell_stage_1_count": 0,
+      "sell_stage_2_count": 0,
+      "sell_stage_3_count": 0,
+      "sell_stage_4_count": 0,
+      "ahr_030_035_buy_count": 0,
+      "ahr_below_030_buy_count": 0,
+      "ahr_extreme_buy_count": 0,
+      "right_confirmation_count": 0,
+      "dca_cash_protection_slowdowns": 0,
+      "dca_cash_shortfall_count": 0,
+      "ever_normal_cash_zero": false,
+      "first_normal_cash_depletion": ""
+    },
+    "Q": {
+      "capital_test": "forward_paper_only",
+      "strategy": "FORWARD CHAMPION - V3.10 MODEL Q",
+      "variant": "primary",
+      "cost_case": "primary",
+      "cash_protection": false,
+      "sell_order": "fixed_62_5_37_5",
+      "start": "2026-09-03T08:00:00+00:00",
+      "end": "2026-10-05T04:00:00+00:00",
+      "initial_capital": 20000.0,
+      "periodic_external_contributions": 384.0,
+      "external_contributions": 20384.0,
+      "final_portfolio_value": 22353.702286297994,
+      "net_profit": 1969.7022862979939,
+      "xirr": 1.9099145719587667,
+      "time_weighted_cagr": 1.904496925621992,
+      "maximum_drawdown": -0.04853698526707917,
+      "annualized_volatility": 0.2998862415823497,
+      "sharpe": 3.6864647103997568,
+      "sortino": 3.956272531213548,
+      "calmar": 39.23805558055006,
+      "ulcer_index": 0.023379987537952694,
+      "turnover": 0.49852244280635466,
+      "total_trading_costs": 15.707663315893942,
+      "average_cash_ratio": 0.015582333726950183,
+      "minimum_cash_ratio": 0.014577446337711068,
+      "average_total_cash_ratio": 0.14211730656775934,
+      "average_tactical_cash": 2595.7132136965715,
+      "average_tactical_cash_ratio": 0.12633828276228912,
+      "time_in_tactical_cash": 1.0,
+      "cash_drag": 0.017737154459371185,
+      "cash_drag_usd_approx": 372.4558651871044,
+      "sell_stage_1_count": 0,
+      "sell_stage_2_count": 0,
+      "sell_stage_3_count": 0,
+      "sell_stage_4_count": 0,
+      "ahr_030_035_buy_count": 0,
+      "ahr_below_030_buy_count": 0,
+      "ahr_extreme_buy_count": 0,
+      "right_confirmation_count": 0,
+      "dca_cash_protection_slowdowns": 0,
+      "dca_cash_shortfall_count": 0,
+      "ever_normal_cash_zero": false,
+      "first_normal_cash_depletion": ""
+    }
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "outputs_sha256": {
+    "01_forward_equity.png": "65ecd1abb0078fb52e581bc94440d0ce92cc65731cf15b38f825f77baa8aa89d",
+    "02_forward_drawdown.png": "10a505d83d90286caed4d6fbe4888cfc87f3f0b6b3c1680189d2978169a2afee",
+    "03_forward_exposure.png": "8685ce2c331fe592ff77233763217c434cb92432b678f2710f9e1766587aa8db",
+    "04_stage3_candidate_history.png": "8b60600d0cc0535be15541f2470b18941340704b5b9e8808434982753435a538",
+    "05_forward_state_timeline.png": "e7e223a2959b7224a329c386c744256dd4e70eb50dd625079e2763a3675bb027",
+    "06_forward_turnover.png": "8939afc23d47936c892ddef6047781c5298e6310a651f4a8198b84ab309f5ff9",
+    "DAILY_FORWARD_STATUS.md": "999c50ca01243e6111e7999e25826f005dc0d5a5c08907c428807775197828a8",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260903T0000_fb8871cf856a6b5d.csv.gz": "04b7e165c26d829a50dd2fc2ce7ec97ff95b5c8e33833719da3f8314f930c5a3",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260904T0000_f07b0867d5f3aa25.csv.gz": "284ffef5ee90b2f1b173dc0a87777442519b16a6523fe80717d7465e3c95bf96",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260905T0000_3d36740350661cea.csv.gz": "4749cf20d00ee4e8699f24f0449e7e5292a2993ac436b165d8f8e62331e63238",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260906T0000_e3aff62d75f3e72d.csv.gz": "fb00ab42e744c03493c45bbf70bcd99322ffae84bcfc60db3bca8b5e37b67377",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260907T0000_7ffdc2443dfcc2ae.csv.gz": "f824ed5332ca2cbc435cee6a9cf2ede9a3889ff5c0d44aa2f98263c5f1bc4f15",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260908T0000_77c82907d2abdb91.csv.gz": "efb9887ae89e674969b61a650a8b11b9d83503f5d0d15cc23782ae11423fa42e",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260909T0000_35a47f3dcf351c00.csv.gz": "bda29a17107eb6f1d83fe2924fe388bd941449475ca1f42be5b1990b55206ee8",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260910T0000_49b46e27e4b8587a.csv.gz": "414690c4b5e6b865325ce171940702474314e2f59f495e191416731634232514",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260911T0000_f47ea86a9abd1b6d.csv.gz": "255ce95a6b1f230075300b317fdd09a0c0b7680659f5c1132173269be7141010",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260913T0000_349885701c460e12.csv.gz": "b0b2a83fa407542dd198bf7a3ebcec399a063436db44d08a27a8ca61899dc3a3",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260914T0000_231d32f825a430d8.csv.gz": "1954d011e02129333d1729d32cb58949884c1baf6fe747e6a71682fe856c8488",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260915T0000_70362afe139a6b0c.csv.gz": "9191983bc2105d4dbb1351a2ed7374984e60cea67d9a0afe1f3097cb4b4c49a1",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260919T0000_5def1126d0e34cc4.csv.gz": "16e32045179f860dc89d0c5e4a9f7c5ee8ff7d663735b85b5ac911007a716503",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260920T0000_75d55e5d23cf504a.csv.gz": "17b471ef65183aa92d511ba5213f4defb007b9aaf8d0f9a3a6c623b823d1a453",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260921T0000_96a853de632c944f.csv.gz": "3a09c92d515ceba0aa54e0d7b36886cb6963b8836f41f1c930e31809f2290b0e",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260928T0000_ae3ec72301244502.csv.gz": "d5ae73775a7fe9ecb80a086c120d1c591d324053b20ae014eb9d7e92b78175e6",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260929T0000_183522efdae06a2b.csv.gz": "cd8195ee4528b95fe486ceb82748642ca8f8d84c0d785c97c571d7077beae66e",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20260930T0000_cb9cda0eff5a3685.csv.gz": "095e089d809e1d468312f5bd23fc33dce038575e940b0bd849a1957c43d352b1",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20261001T0000_513c58d37d2d9b94.csv.gz": "c515d0427aad072e7e49eddfe00f469a20c53ea84b111abaf6d36212d79967e6",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20261003T0000_f61c3d091b2c2a19.csv.gz": "0cd40a050ff19d132ee3ce001fe24a55bb31e43dc25a647d28deb0a10b90e5ec",
+    "data/raw/binance_BTCUSDT_1d_20260903T0000_20261004T0000_66ef4f458eea2f95.csv.gz": "dbc577d811b876979b1094a4a6290795c4bee31f9f4e6993d5e33a027cd0d5b7",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260904T0400_2711df57acfa32f0.csv.gz": "f787dcfc257f6a07137f283537b77bd280516d30e05e9560d3b2ae793a06d186",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260905T0000_0b73f1e6039f1d6d.csv.gz": "51df7f3d2c3ab99dcc070c5ad421b46f940fcf88a5ae8e523e483cd6b77a2f2d",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260906T0400_b3c9aac7154fd004.csv.gz": "69d3a2e387593cc7c3edaca2ccd22be08dd1807fd93aa00a2739f6ca38614354",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260907T0400_c5e4b871199796e5.csv.gz": "424bbfe3aeb035b0baccef13ab9216dd76dd283fdc6995d746f8ff805be807eb",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260908T0800_a7c8d58f845cc132.csv.gz": "88062f969ea27879df74e797af1a6e0804c17a1675ecd22167a4ec017371a479",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260909T0800_8fb3fdb4c92608f9.csv.gz": "b76ecea02210f92adcb2c7c48afef810f1ce8f2f889b132b7261ad7e218fc052",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260910T0800_b243f52b279cc432.csv.gz": "9a6c31c7714cd2c638d5d7db5562799ba1f3b033312fa895ff3d0340546ab8f7",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260911T0800_1c976b30c46a1dde.csv.gz": "7f4fe1287cd30eceb0e555f743de5e193e63cc6be91997652596696086f69324",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260912T1200_96f9d7e659f55128.csv.gz": "6af092fafb99a97b455703fa5ef6663da215798e9b31236cd2197f54e6182673",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260914T0400_a8f3aca8f723cf74.csv.gz": "179fceef886c02de7536e34209cb364fec4bbe90e881f7197f1275ca85bcfd80",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260915T0400_06755f8dd5e0175f.csv.gz": "7b78f6028ca59a54468381d42864eb52c492e938dfccfc776d3b6d21fafd981d",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260916T0800_7b67dafcf532021b.csv.gz": "d255f43db0ce4ecfbc08a6da5884dabfd2c4a988785f23dfc03b5a9acf59a4ab",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260920T0800_4156be0bfbf89829.csv.gz": "62f2a794a05649844fdda1be8db02646cfaef1df583aec4d25f462f0fd628302",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260921T0400_d3922c296a995d45.csv.gz": "2eb8183706e8199db1531e93356e04f76483bd2e9472ed02c2b3f7cd170cfbd7",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260922T0000_3744a443f023f6fc.csv.gz": "ca8af6fb57498bc6250f4e190118788485f392fa08daeaffc186c8fb596240a9",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260929T0800_3352f66c88a07211.csv.gz": "082d9fa98077a7a00732b95bae2f0f2766e2048c4a2fb2435bfaa89eaa6079a6",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20260930T0800_d815908adab24c16.csv.gz": "392581df07733a6962cc10765b9383a254310366833e1299683c9a5e78f6f239",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20261001T0800_311d8cd5ae8de497.csv.gz": "03ae0e2bb540910242db5947e1e36228f213f618cb3fc66db44fe7070a690d5c",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20261002T1200_4c5092f3aec0d360.csv.gz": "0c22e88f489ae28fb285a0d4be8f112bac3cd15d5e8706de6fd828982ac5aab2",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20261004T0000_7c5de7419d325579.csv.gz": "fe37c5c75a9d59138a6c416f2ca76dd46ef7f9c6b3b08893aaad73e4105e74e3",
+    "data/raw/binance_BTCUSDT_4h_20260903T0800_20261005T0400_a99ed43ea0388507.csv.gz": "5054b330385fe7a7bf66711b1e136ba61b8a8203092e22c9837a2aba53640c59",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260903T0000_7f33a3cada15bf3e.csv.gz": "be6fa8e70a84ee3185d3b256a7581ed6c7f6cedbae7aaeae8c871c83de642c51",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260904T0000_22dfa244fb3ec7fe.csv.gz": "f30f15da9346597397e3f306393ac766b18c32e35afd06eaa86f41259efac9c6",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260905T0000_f6c14f5373933be5.csv.gz": "2c1629404c483c6974d4c0ecd80f27c1796f6100a8994b85f0f8bef0f0c55880",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260906T0000_7446741542fc5fe7.csv.gz": "caf41344a49fc32f42945512f5c6a24dd4de8b5928cba8cb4d7c96dd3daee91d",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260907T0000_c7261151d515ca2e.csv.gz": "56a0460371fd94059010bb974701a296b8d71b4342766cddc68f6aedcf73507d",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260908T0000_6b13c10e9343d6ad.csv.gz": "041060459a43a09f5f5ebfc3289a60925b0186283b8fc24803e96304100c637e",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260909T0000_13ac8d1958705107.csv.gz": "2b0b7fc733379a9831c7fe134ff346b699d59864188a9cc7e4f48556f64a7604",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260910T0000_d17f63a34f688f71.csv.gz": "7e0c23506da1f40ef0365d45631e44aa16d9c3b6ff54a8dbf690643930f3d70c",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260911T0000_711622229af1e814.csv.gz": "4ce07bcfb8af3ddaff2821a6f2cba7b6083d1fc0a7d8288c22dd9ef7d2d1be57",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260913T0000_0ae847f4273db9f9.csv.gz": "b240e6a6a2263cc96a978125b7ce756c8b32a56c848ef12a7c5bee661fbe0242",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260914T0000_18bd828f3d064481.csv.gz": "4d2e2024ad9a1a342ea3f58c0b4704ff1e37bb9db25f4463918cf7cd4c325a52",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260915T0000_2f566781df97e9c4.csv.gz": "e19549a6bd91922316479520dde3ce7a7ccc44066ca5f85a2dc0261b776b52b6",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260919T0000_1bc488e6b21e8568.csv.gz": "078a4098a7f023a3fadbad066af84076ff94b321cdfae8503dea31bbaa0c1969",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260920T0000_5d585fa86bcaf7e3.csv.gz": "abd815beb29f9a556ca0a3445348d26cb94889c209deab9922390ea852be7a4b",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260921T0000_6e309c68dd515d1b.csv.gz": "7763de2be9503ef0dbbff8d70817835a5f5420d5113b2007f9b4f4b7685a000c",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260928T0000_84658d60d926ea3d.csv.gz": "8fd3735bf11e86b413ce5e10c573918e609e03dee81f0cf0b851c9cefe4b1853",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260929T0000_66d93c5a3ed019a0.csv.gz": "92e227a649802647f08cff6360367527ed1c984f9669f10cbb6fe08c5df12540",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20260930T0000_818f2ef1ac5195c1.csv.gz": "ec5a89f7231bdb2d830d70eb53c1fe472033602408e74c72c81da57c49650879",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20261001T0000_8164af7b0cc0bd25.csv.gz": "167ed7eeb8b821300be97bf139cf58f02191ce9539352ffc4e9d5c0ae37fb5f9",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20261003T0000_ed938e797351e0ff.csv.gz": "257c2a13868a2ea2f49531d85825badab10130db94fe11a634be993b4f69013f",
+    "data/raw/binance_ETHUSDT_1d_20260903T0000_20261004T0000_bf6c950e27529346.csv.gz": "1b7ec4de65572fa697c17c3603b9201ff96c39c85de9bb9774229f3488d7ffbe",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260904T0400_03a7e9d5e6614bb5.csv.gz": "0e45051df3b2c7635c6f630e0ffe0082fb229cd96b6d0338a9ea3b22ece169e2",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260905T0000_0cd5c005e3d64042.csv.gz": "db8c968d4b32451fa9d97f0fa5f9ec5768ea341f7ab3c01ecc73dab3a84e565d",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260906T0400_9822c51730ad2447.csv.gz": "8ee5ad6b8ad36fdb70c0b195ae04a797648de1368e5e83b8b494d3c191a656f0",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260907T0400_a95d9dff7c2ff7a5.csv.gz": "344cc30bbcca4aac70c234adecaa9b0467b5c1b261bfaf94207fa715dcaac056",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260908T0800_1554d41151505e39.csv.gz": "aa6f930e97b9c6afb4bf09f8ccf6a7f7003f958b8027f23ab83ebd5994012699",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260909T0800_28213e1f11313a38.csv.gz": "c3abec571517ee45e91e7a9bb7e99177e2500931548b81af6d7a750c7d986d56",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260910T0800_10d483aa1def58c3.csv.gz": "eb3cf5af6636c07836e2aeecff54b9676162291637a8efc71352b32ba5083bf6",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260911T0800_57065b147785073e.csv.gz": "9c122ad7250f6541662786300f141e788dce797d6863291694f851ee91ebb48a",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260912T1200_ee7ef7dd6dfd3f95.csv.gz": "73dfe5cc9443f32b7f3cb035553fc1121365ba47f588dfa09a2b48a68b2ba2be",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260914T0400_d7d8bf9bcf55706e.csv.gz": "9b3715eba6d1ed8e182d5667c918f9a870a2ac6104673b0d81a474e3a9f782fc",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260915T0400_5c0bbae5bde255c5.csv.gz": "a485a45844bc5d5a12e8a859f7475f01691dc05b9115a6611933b77f2303b5fe",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260916T0800_f11c33b191ffc51b.csv.gz": "f4ef1671949dd2a74b0f7e248a9a8c5ddd9fbcbdc458a5c0f2d45bcadf1e5045",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260920T0800_071e81cbaa842564.csv.gz": "a4754790fec4985aed6d4ab7428cfbe0e4ea6eadb1b90a69bbfe45d3e4ea3f5e",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260921T0400_9860f8cd1dbce9f1.csv.gz": "822ec5ff88ed00dda93508ef0922266e95f70486a8ef43e84938f4c79b488715",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260922T0000_d6401d72570b4911.csv.gz": "19f344db25b6b9d1ac7e10f58281ccbb496dfde2ff90b96ae3f7dced596dfc47",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260929T0800_988db05a7c6b83ee.csv.gz": "21190fa4019555ec21b8b0c8c332d0f693b571149ef03aa6d0d03e4aace4c406",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20260930T0800_6f0477555825a566.csv.gz": "a14ea27dcb221ae740897bba95cf1445e36711b29d9721cddd2bb2d34df09b9c",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20261001T0800_bbddb777969bca33.csv.gz": "0b073f3c0e3ed440e4cf364c4d2941b7c15160aa44831a8f2ba074c45a250423",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20261002T1200_281fd8f9b6890749.csv.gz": "e660737826ba665c61da5a2b23778163a02ddbd2423e472351972b3e11242644",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20261004T0000_10a38abdb26cd123.csv.gz": "e587cf5622859c86cb20054fa62046fe5c1cc42ea1382cfd98b971a821ab82eb",
+    "data/raw/binance_ETHUSDT_4h_20260903T0800_20261005T0400_64b44a6e8627a8cd.csv.gz": "4323f5ef77e868d164f746f53abeedfc0861a1609fdefda9424643f7ed0f7336",
+    "forward_candidate_outcomes.csv": "59b57eca05a13ed5d0f8e99cd7d8be954c72e7044b0bd23bfa8824b68f659330",
+    "forward_config_frozen.json": "6dab78c58a85783fa073892811f4d6d60ed8dc830adf4f6dfc1165960180a74e",
+    "forward_daily_metrics.csv": "6b52809fbd539f1ca023fba2bd51cd81af18f4481538c9fdbb2a3a81b1fbbbda",
+    "forward_execution_exceptions.csv": "6fc4649de24f84209b3f32b51ee8c95abf97046f5e87c08407f343d5e00e7eb9",
+    "forward_fixed_dca_log.csv": "4963091a208e57e664412225a759e83a929026778b45f49dc96ef56e2150b68e",
+    "FORWARD_INFRASTRUCTURE_PATCH_001.md": "cc6cab62d99e22e482d742680d965b5e6472c677423b2dfce27091ca04e6017d",
+    "FORWARD_INFRASTRUCTURE_PATCH_002.md": "3f0e47ae940d5db68cdec6d7629afb10b0cdce425a96349ef77ee611e139732e",
+    "FORWARD_INFRASTRUCTURE_PATCH_003.md": "8ac7153cbab1b40f84debea3fca1aa55c77c565333d1b98cb976b7cae564a05d",
+    "FORWARD_INFRASTRUCTURE_PATCH_004.md": "d1ca4026512c5978381ac51dd568119ab675dda842281c64c145220de9afcb87",
+    "FORWARD_MONTHLY_2026_09.md": "d0a7981f7cd8ccfc6cf851f23e707e6117c0f4fd00b3aa80ea192483aa70f38f",
+    "forward_monthly_metrics.csv": "d81149d50212fc503814c8c03b9b6e7a6872653f7321cd398cc95deda4c5a0e2",
+    "forward_signal_log.csv": "29d544efe1c22b1138d586ff3ac4636c6819eb593fb158a255ae62b79a72c7d4",
+    "forward_stage3_candidates.csv": "d8fbe14b412a57463e2b2486cd73fc908946c45325252b0e2bc34803c3d0dc1f",
+    "forward_trade_log_v310.csv": "ccb5e6f1418b20abc0b8389490e86662f6393fe8d1dbf67d50087876eb9ce76f",
+    "forward_v310_portfolio.csv": "636a4483da132c3217610f39523ca940e39d330a472415cc06f9fa557dba8f49",
+    "forward_v310_state.json": "91f1abafc8005404cdd78cb8dd71bf3a66c9a256a1e7cc57d107597f7edeb1c7",
+    "forward_v31_shadow_portfolio.csv": "b1e3f07294e9f6b0a3ab4380222492163e762e657a5f09553bb18a59ecdf3cd8",
+    "infrastructure_patch_001/forward_daily_metrics.csv": "11dd11692c478f729337cdb3680bcbbe13e203a31dfbef830ff478d373c0a08c",
+    "infrastructure_patch_001/FORWARD_MONTHLY_2026_09.md": "876254201cac4bba0a57fc1cf82c733ff31e594986a61c15fdb1626a439bd9ca",
+    "infrastructure_patch_001/forward_monthly_metrics.csv": "868e6f970525be89d36f6aafc41f2550c4f72aa549a7981913f110ef03f0152e",
+    "infrastructure_patch_002/forward_trade_log_v310.csv": "1769a51425df503778a98641c39a9706789b3e0e7f5b3790de5ef2c962af7fb5",
+    "prelaunch_failures/forward_candidate_outcomes.csv": "59b57eca05a13ed5d0f8e99cd7d8be954c72e7044b0bd23bfa8824b68f659330",
+    "prelaunch_failures/forward_daily_metrics.csv": "d9ed4116acb9d4f0cb9f10bcbf2755867ff9ba72b4e321fcaeed01fed30a0491",
+    "prelaunch_failures/forward_execution_exceptions.csv": "ce5eafe1bddad0b940caeb980fc1469ad62686c6562526a0a816dbe1682f0583",
+    "prelaunch_failures/forward_execution_exceptions_1.csv": "66ca98efb84ac1d4a4c924d32d01f20ded2383d611602e567038ec75e9a8428d",
+    "prelaunch_failures/forward_fixed_dca_log.csv": "bec10a2a8b42bcf277b4c5b700b69856691e1075a8f67764159b22c7f5bfefaa",
+    "prelaunch_failures/forward_monthly_metrics.csv": "295bf745e394858dbcb31371ee7c75d01ae60c177f7a3188aec67ec9783ecade",
+    "prelaunch_failures/forward_signal_log.csv": "5c3d682358940aab3662ff5776cfec74dca24597c8165bbf2811fa22765b8e0d",
+    "prelaunch_failures/forward_stage3_candidates.csv": "d8fbe14b412a57463e2b2486cd73fc908946c45325252b0e2bc34803c3d0dc1f",
+    "prelaunch_failures/forward_trade_log_v310.csv": "53bd4fc4e601c840a1bcbcdb84b9bcb0a9ac38c3bd343e4dbdd082b903a41d47",
+    "prelaunch_failures/forward_v310_portfolio.csv": "ff4b5982dbebfa4617d454c579e745bc6d6eab59a2ba9530a4d163a9ae503f40",
+    "prelaunch_failures/forward_v31_shadow_portfolio.csv": "4cee4a32df8c663d3740f45778f1df4c09aaf859f9d15669398718aa39089d24",
+    "prelaunch_failures/prelaunch_initialization_exceptions.csv": "e64d479aad4686aa9795672d201c3f8b97adf9ff1377025c084abf46ec7abb7a",
+    "V310_FORWARD_CHECKPOINT.md": "7911033dc8012a51670823513a7ca7df763d2035a3b36974639170271fdd9b8c"
+  }
+}

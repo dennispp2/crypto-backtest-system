@@ -1,0 +1,2 @@
+record_id,month,observations,q_ending_value,v31_ending_value,q_month_return,v31_month_return,return_edge,q_max_drawdown,v31_max_drawdown,drawdown_edge,q_mean_exposure,v31_mean_exposure,prev_record_hash,record_hash
+MONTHLY:2026-09,2026-09,2,20345.995330955644,20345.717914032095,0.01729976654778209,0.01728589570160466,1.3870846177432838e-05,-0.005032759618407656,-0.005047725291870031,1.4965673462374873e-05,0.46030245903397665,0.46017788717792774,GENESIS,3b104fbbafccb805cfee4423a6dbfca7069f65c78417d3e23909dd2ace83942e

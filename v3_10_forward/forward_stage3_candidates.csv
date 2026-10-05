@@ -1,0 +1,1 @@
+record_id,candidate_id,candidate_date,candidate_execution_date,original_v31_state,candidate_reason,btc_close,sma20,sma50,sma200,close_vs_sma50,sma20_vs_sma50,close_vs_sma200,confirmation_close_1,eligibility_started_at,prev_record_hash,record_hash

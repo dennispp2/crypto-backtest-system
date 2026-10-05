@@ -1,0 +1,31 @@
+{
+  "data_contract_pass": true,
+  "sma_uses_only_completed_daily_data": true,
+  "bollinger_uses_only_completed_daily_data": true,
+  "ahr999_uses_no_future_row": true,
+  "ai_feature_columns_exactly_seven": true,
+  "ai_features_are_t_or_earlier_by_formula": true,
+  "ai_training_label_cutoff_violations": 0,
+  "model_2022_future_label_violations": 0,
+  "immature_labels_used_for_training": 0,
+  "signal_execution_before_availability_violations": 0,
+  "tactical_execution_before_next_bar_violations": 0,
+  "same_row_future_label_in_prediction_features": false,
+  "fixed_dca_row_integrity_pass": true,
+  "fixed_dca_mismatch_models": 0,
+  "illegal_fsm_transition_count": 0,
+  "tactical_sell_floor_violations": 0,
+  "tactical_gap_guard_violations": 0,
+  "tactical_minimum_usd_guard_violations": 0,
+  "ai_direct_trade_count": 0,
+  "ai_transition_scope_violations": 0,
+  "confirmed_cycle_aborted_count": 0,
+  "prefix_invariance": {
+    "model_a_trade_prefix_identical": true,
+    "model_b_trade_prefix_identical": true,
+    "model_c_trade_prefix_identical": true
+  },
+  "minimum_observed_fixed_dca_rate": 2.0,
+  "maximum_observed_fixed_dca_rate": 2.0,
+  "pass": true
+}

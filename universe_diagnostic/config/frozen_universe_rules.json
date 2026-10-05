@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "diagnostic_name": "Fixed DCA Universe Diagnostic",
+  "separation_contract": "Independent of V3 Macro FSM and all hedge logic",
+  "timezone": "UTC",
+  "warmup_start": "2019-01-01T00:00:00Z",
+  "formal_starts": [
+    "2020-01-01T00:00:00Z",
+    "2021-01-01T00:00:00Z",
+    "2022-01-01T00:00:00Z",
+    "2023-01-01T00:00:00Z"
+  ],
+  "formal_end_source": "V2 Fixed DCA Champion summary end timestamp",
+  "initial_capital_usd": 20000.0,
+  "initial_crypto_fraction": 0.7,
+  "initial_cash_fraction": 0.3,
+  "external_contribution_per_4h_usd": 2.0,
+  "universes": {
+    "U1": {
+      "label": "BTC ONLY",
+      "weights": {"BTC": 1.0, "ETH": 0.0, "BNB": 0.0},
+      "initial_allocation_usd": {"BTC": 14000.0, "ETH": 0.0, "BNB": 0.0, "USD": 6000.0}
+    },
+    "U2": {
+      "label": "BTC + ETH",
+      "weights": {"BTC": 0.625, "ETH": 0.375, "BNB": 0.0},
+      "initial_allocation_usd": {"BTC": 8750.0, "ETH": 5250.0, "BNB": 0.0, "USD": 6000.0}
+    },
+    "U3": {
+      "label": "BTC + ETH + BNB",
+      "weights": {"BTC": 0.5, "ETH": 0.3, "BNB": 0.2},
+      "initial_allocation_usd": {"BTC": 7000.0, "ETH": 4200.0, "BNB": 2800.0, "USD": 6000.0}
+    }
+  },
+  "forbidden_features": [
+    "tactical_sell",
+    "tactical_buyback",
+    "macro_regime",
+    "dynamic_dca",
+    "cash_protection",
+    "market_timing",
+    "annual_rebalance"
+  ],
+  "comparison_pairs": [["U3", "U1"], ["U3", "U2"], ["U2", "U1"]],
+  "verdict_gates_frozen_before_results": {
+    "strong_bnb_dependency": {
+      "all_required": [
+        "U3 2020 BNB net-profit share >= 50%",
+        "removing BNB reduces U3 2020 ending value by >= 25%",
+        "the 2020 U3-vs-U2 ending-value uplift is >= 2x the median absolute uplift across 2021/2022/2023 starts"
+      ]
+    },
+    "robust_across_universes": {
+      "all_required": [
+        "every universe/start has positive total net profit",
+        "U3 2020 BNB net-profit share < 30%",
+        "removing BNB reduces U3 2020 ending value by < 10%"
+      ]
+    },
+    "partial_bnb_dependency": "all other passing diagnostic outcomes"
+  }
+}

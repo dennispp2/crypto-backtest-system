@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "label": "FORWARD_PAPER_ONLY",
+  "strategy": "BTC+ETH V3.10 Frozen Champion",
+  "champion": "V3.10 Model Q",
+  "comparator": "V3.1 Model B",
+  "historical_cutoff": "2026-09-03T04:00:00+00:00",
+  "normalized_initial_value_usd": 20000.0,
+  "normalization": "scale each model's exact cutoff holdings and cash ledgers to USD 20,000; preserve all FSM and candidate state",
+  "external_contribution_per_4h_usd": 2.0,
+  "data_source": "Binance Spot public REST klines",
+  "symbols": ["BTCUSDT", "ETHUSDT"],
+  "intervals": ["4h", "1d"],
+  "candidate_outcomes": [
+    "REJECTED_FALSE_BEAR",
+    "CONFIRMED_STAGE3",
+    "SMA200_HARD_FAILURE",
+    "STAGE4_OVERRIDE",
+    "CRASH_OVERRIDE",
+    "OPEN_UNRESOLVED"
+  ],
+  "candidate_horizons_calendar_days": [3, 7, 14, 30, 60, 90],
+  "checkpoint": {
+    "minimum_oos_calendar_days": 180,
+    "minimum_resolved_candidates": 3,
+    "ideal_candidate_counts": [5, 10]
+  },
+  "evaluation_gates": {
+    "candidate_delay_drawdown_worse_than_v31_warning_pp": 5.0,
+    "overall_drawdown_worse_than_v31_max_pp": 3.0,
+    "reject_simultaneously_lower_return_and_worse_drawdown": true,
+    "median_candidate_60d_return_and_drawdown_both_negative_fail": true
+  },
+  "prohibited": [
+    "historical parameter search",
+    "V3.11 or later strategy creation",
+    "human intervention in the paper portfolio",
+    "incomplete-candle execution",
+    "rewriting an append-only record",
+    "using forward outcomes as trading inputs"
+  ],
+  "request_path": "C:/Users/denni/.codex/attachments/8ca02e13-46e1-43aa-ad0a-90e9c80a5fb5/pasted-text.txt",
+  "request_sha256": "3397F5B08838C0FB05B1E88CD317C3EEF890C2F92870BB44236C54FBB90C7294"
+}

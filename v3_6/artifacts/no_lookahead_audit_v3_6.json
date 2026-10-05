@@ -1,0 +1,23 @@
+{
+  "no_lookahead_pass": true,
+  "execution_integrity_pass": true,
+  "checks": {
+    "data_contract_pass": true,
+    "signal_available_no_later_than_execution": true,
+    "completed_daily_features_only": true,
+    "tactical_execution_next_4h_or_later": true,
+    "no_future_columns_in_execution_frame": true,
+    "fixed_dca_row_integrity": true,
+    "fsm_legal": true,
+    "v31_replay_exact": true,
+    "prefix_invariance": true,
+    "no_same_timestamp_opposite_tactical_action": true,
+    "v36_engine_has_no_v32_v35_inheritance": true,
+    "no_future_tokens_in_execution_sources": true
+  },
+  "timing_violations": 0,
+  "completed_feature_violations": 0,
+  "same_timestamp_opposite_tactical_action_violations": 0,
+  "forbidden_inheritance_tokens": [],
+  "future_tokens": []
+}

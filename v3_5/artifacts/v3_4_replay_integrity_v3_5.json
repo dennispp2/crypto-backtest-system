@@ -1,0 +1,9 @@
+{
+  "headline_absolute_differences": {
+    "final_portfolio_value": 0.0,
+    "twr_cagr": 0.0,
+    "maximum_drawdown": 0.0,
+    "calmar": 0.0
+  },
+  "pass": true
+}

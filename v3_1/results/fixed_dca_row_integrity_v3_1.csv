@@ -1,0 +1,4 @@
+model,strategy,reference_rows,rows,keys_exact,numeric_max_abs_delta,all_match
+A,MODEL A - BTC+ETH Fixed DCA,4973,4973,True,0.0,True
+B,MODEL B - BTC+ETH Fixed DCA + V3.1 FSM,4973,4973,True,0.0,True
+C,MODEL C - BTC+ETH Fixed DCA + V3.1 FSM + Bear Risk AI,4973,4973,True,0.0,True

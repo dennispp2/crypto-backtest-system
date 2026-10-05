@@ -1,0 +1,12 @@
+{
+  "pass": true,
+  "fixed_dca_row_integrity": true,
+  "v3_1_row_integrity": true,
+  "fsm_audit": true,
+  "prefix_invariance": {
+    "model_h0_trade_prefix_identical": true,
+    "model_a_trade_prefix_identical": true,
+    "model_b_trade_prefix_identical": true,
+    "model_d_trade_prefix_identical": true
+  }
+}

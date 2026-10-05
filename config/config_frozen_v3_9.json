@@ -1,0 +1,103 @@
+{
+  "schema_version": "3.9",
+  "strategy_version": "BTC+ETH Macro Hedge V3.9 - V3.1 Bull Persistence / Bear Re-entry Guard",
+  "frozen_at_utc": "2026-09-03T16:39:28Z",
+  "frozen_before_formal_run": true,
+  "base_version": "V3.1 Model B",
+  "base_config_path": "config/config_frozen_v3_1.json",
+  "base_config_sha256": "50ADC23C620D068087842CA574F8D4F87A8B6DE3D96EBCA0392184C43574BC84",
+  "base_engine_path": "src/crypto_backtest/v31_engine.py",
+  "base_engine_sha256": "EA91309E5821431210998CF2289965ADAD8991CC97005105CCEAB9037AEAE2A1",
+  "request_sha256": "BB40F9D90494E3457A30BE32F4839B0CB5B43D9E4C5DE5EDE9988125139490D2",
+  "timezone": "UTC",
+  "formal_start": "2020-01-01T00:00:00Z",
+  "formal_end": "latest_complete_common_4h_bar",
+  "rolling_starts": ["2020-01-01", "2021-01-01", "2022-01-01", "2023-01-01"],
+  "models": {
+    "H0": "Initial Only - no DCA, no tactical trading",
+    "A": "V3.1 Fixed DCA",
+    "B": "V3.1 Frozen Model B",
+    "P": "V3.9 Bull Persistence Challenger"
+  },
+  "bull_persistence_guard": {
+    "activation": "challenger V3.1 engine confirms NEW_BULL_ALL_SEVEN_GATES",
+    "healthy_bull_all_required": [
+      "BTC completed daily close > SMA200",
+      "SMA200[t] > SMA200[t-20]",
+      "SMA50 > SMA200",
+      "BTC completed daily close > SMA50",
+      "no V3.1 Crash L1 raw signal",
+      "no V3.1 Crash L2 raw signal"
+    ],
+    "sma200_slope_lookback_completed_days": 20,
+    "bear_reentry_confirmation_completed_closes": 3,
+    "bear_reentry_all_required": [
+      "BTC completed daily close < SMA50",
+      "SMA20 < SMA50"
+    ],
+    "sma200_hard_failure_completed_closes": 3,
+    "suppress_when_guard_on": ["TACTICAL_SELL_DRIFT"],
+    "stage1_stage2_execute_and_preserve_persistence": true,
+    "stage3_becomes_candidate_while_persistence_latched": true,
+    "stage4_priority": "shadow V3.1 Stage4 must execute immediately and terminate persistence",
+    "crash_l1_l2_priority": "challenger V3.1 Crash L1/L2 must execute immediately and terminate persistence",
+    "new_exposure_targets": [],
+    "new_bull_redeploy": "unchanged V3.1",
+    "ahr999_buyback": "unchanged V3.1"
+  },
+  "audit_conventions": {
+    "stage3_confirmation_includes_candidate_close": true,
+    "candidate_rejected_on_first_break_of_required_close_sequence": true,
+    "sma200_hard_failure_only_releases_guard_and_does_not_create_a_new_trade_or_target": true,
+    "stage4_shadow_priority_reason": "Original V3.1 may already be BEAR while P is protected; its same-date Stage4 is authoritative and cannot be suppressed",
+    "forward_returns": "ex-post audit only; never present in execution frame",
+    "period_drawdown_basis": "cash-flow-adjusted unit_nav, reset to first observation in each window",
+    "event_windows": {
+      "COVID": ["2020-03-01", "2020-04-30"],
+      "MAY_2021": ["2021-05-10", "2021-05-31"],
+      "NOV_2021_JUN_2022": ["2021-11-01", "2022-06-30"],
+      "SEP_2021_JUN_2022_PEAK_AUDIT": ["2021-09-01", "2022-06-30"],
+      "BULL_2023": ["2023-01-01", "2023-12-31"],
+      "BULL_2024": ["2024-01-01", "2024-12-31"],
+      "BULL_PARTICIPATION": ["2023-01-01", "2025-10-31"],
+      "CORRECTION_2025_2026": ["2025-01-01", "end"]
+    }
+  },
+  "baseline_replay_tolerances": {
+    "final_portfolio_value_reference": 348746.8528777533,
+    "final_portfolio_value_abs_usd": 0.01,
+    "twr_cagr_reference": 0.4769146261923145,
+    "maximum_drawdown_reference": -0.3951313419600695,
+    "calmar_reference": 1.2069774668507813,
+    "tactical_events_reference": 106,
+    "tactical_turnover_reference": 9.367689873226654,
+    "metric_abs_tolerance": 1e-10
+  },
+  "promotion_gates": {
+    "G0_integrity_all_pass": true,
+    "G1_bull_average_exposure_delta_min_pp": 10.0,
+    "G2_bull_time_exposure_gte_85_delta_min_pp": 15.0,
+    "G3_final_portfolio_min_usd": 348746.85,
+    "G4_twr_cagr_min": 0.475,
+    "G5_2021nov_2022jun_drawdown_worsening_max_pp": 2.0,
+    "G6_2025_2026_drawdown_worsening_max_pp": 2.0,
+    "G7_covid_drawdown_worsening_max_pp": 1.0,
+    "G8_may_2021_drawdown_worsening_max_pp": 1.0,
+    "G9_stage4_2025_11_integrity": true,
+    "G10_crash_l1_l2_not_suppressed": true,
+    "G11_calmar_not_below_v31": true,
+    "G12_tactical_turnover_increase_max_fraction": 0.10
+  },
+  "post_backtest_only": true,
+  "prohibited": [
+    "AI",
+    "V3.4 through V3.8 strategy logic",
+    "Crash Level 3",
+    "new AHR threshold or cooldown",
+    "new bull requalification",
+    "cooldown or anti-whipsaw",
+    "duplicate suppression or sticky base",
+    "post-result parameter search",
+    "V3.10 creation"
+  ]
+}

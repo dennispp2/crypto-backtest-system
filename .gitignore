@@ -1,0 +1,35 @@
+# Local runtimes and generated application builds.
+.venv/
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
+**/.ruff_cache/
+**/build/
+**/dist/
+*.egg-info/
+
+# Monitor settings and operational state stay on this machine.
+/CryptoForwardMonitor/config.json
+/CryptoForwardMonitor/data/
+/CryptoForwardMonitor/archive/
+/CryptoForwardMonitor/logs/
+
+# Existing ZIP delivery bundles duplicate the versioned evidence below.
+/crypto*_complete.zip
+/crypto*_complete*.sha256
+
+# Credentials, editor state, and temporary files.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.vscode/
+.idea/
+*.tmp
+*.lock
+Thumbs.db
+Desktop.ini
+
+# Local GitHub publication receipt.
+/artifacts/github_publish_receipt.json

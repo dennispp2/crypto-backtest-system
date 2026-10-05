@@ -1,0 +1,1 @@
+record_id,candidate_id,record_type,outcome,resolution_date,resolution_reason,confirmation_count,horizon_days,maturity_date,q_return,v31_return,return_edge_q_minus_v31,q_local_max_drawdown,v31_local_max_drawdown,drawdown_edge_q_minus_v31,prev_record_hash,record_hash

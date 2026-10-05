@@ -1,0 +1,2066 @@
+請建立：
+
+BTC+ETH V3.1 Tactical Event / Round-Trip Necessity Audit
+— Counterfactual Attribution Research
+
+IMPORTANT：
+
+這不是新交易策略。
+不要命名為 V3.9 Strategy。
+不要修改 V3.1。
+不要建立新的 Cooldown。
+不要建立新的交易規則。
+
+本研究唯一目的：
+
+回答：
+
+「V3.1 的 106 個 Tactical Events 中，
+哪些交易真的增加最終財富？
+哪些交易真的降低風險？
+哪些只是增加 Turnover？
+哪些甚至有負貢獻？」
+
+本研究為：
+
+DIAGNOSTIC / COUNTERFACTUAL ATTRIBUTION ONLY。
+
+不得直接將事後結果轉換成交易規則。
+
+==================================================
+0. 研究背景
+==================================================
+
+正式 Baseline：
+
+V3.1 Model B
+
+目前 Frozen Baseline：
+
+Final Portfolio Value：
+约 US$348,746.85
+
+TWR CAGR：
+约 47.69%
+
+Maximum Drawdown：
+约 -39.51%
+
+Calmar：
+约 1.207
+
+Tactical Event Count：
+106
+
+Tactical Trade Rows：
+212
+
+Tactical Turnover：
+约 9.3677x
+
+V3.7 / V3.8 已证明：
+
+固定时间 Cooldown
+可以减少部分 Whipsaw，
+
+但是同时可能牺牲有效的 AHR999 底部曝险。
+
+因此本轮：
+
+不再猜：
+
+1 day
+2 days
+3 days
+5 days
+7 days
+14 days
+
+而直接测试：
+
+每一笔交易本身的经济贡献。
+
+==================================================
+一、Universe
+==================================================
+
+只使用：
+
+BTC
+ETH
+
+Allocation：
+
+BTC 62.5%
+ETH 37.5%
+
+完全排除：
+
+BNB
+其他 Altcoins。
+
+==================================================
+二、Formal Period
+==================================================
+
+使用与 V3.1 完全相同：
+
+Formal Start：
+2020-01-01
+
+End：
+最新完整数据
+
+Warm-up：
+至少 2019-01-01。
+
+==================================================
+三、Baseline Integrity
+==================================================
+
+首先重新执行：
+
+V3.1 Model B。
+
+必须精确重现：
+
+Final Portfolio Value
+≈ US$348,746.85
+
+TWR CAGR
+≈47.69%
+
+Maximum Drawdown
+≈-39.51%
+
+Tactical Event Count
+=106
+
+Tactical Trade Count
+=212
+
+Tactical Turnover
+≈9.3677x
+
+Fixed DCA：
+
+US$2 / 4H
+
+必须与原 V3.1 ledger
+逐笔完全一致。
+
+若无法重现：
+
+V31_BASELINE_REPLAY = FAIL
+
+立即停止 Audit。
+
+==================================================
+四、冻结 V3.1 Shadow Signal History
+==================================================
+
+建立：
+
+V31_FROZEN_SHADOW_HISTORY
+
+保存 V3.1 每一天：
+
+macro_state
+stage
+cycle_id
+crash_state
+new_bull_state
+active_target
+desired_action
+signal_type
+target_exposure
+
+以及每个 Tactical Event：
+
+event_id
+signal_date
+execution_date
+action
+reason
+signal_type
+exposure_before
+target_exposure
+BTC notional
+ETH notional
+total gross notional
+fee
+slippage。
+
+IMPORTANT：
+
+Counterfactual Simulation
+不得重新计算一套不同的 Macro FSM。
+
+也就是说：
+
+无论某一笔交易被删除以后
+实际持仓如何改变，
+
+Shadow：
+
+State
+Stage
+Cycle
+Crash
+NEW_BULL
+Target
+Signal Date
+
+全部保持与原始 V3.1 完全一致。
+
+==================================================
+五、Tactical Event定义
+==================================================
+
+一个 Tactical Event：
+
+是一个 portfolio-level decision。
+
+例如：
+
+25% →35%
+
+即使 trade_log 中：
+
+BTC一列
+ETH一列
+
+也只能视为：
+
+一个 Event。
+
+删除时：
+
+必须 BTC + ETH 两个 legs
+一起删除。
+
+禁止测试：
+
+只删除 BTC
+或
+只删除 ETH。
+
+==================================================
+六、Fixed DCA绝对不能删除
+==================================================
+
+Counterfactual Audit：
+
+只测试：
+
+Tactical Events。
+
+不得删除：
+
+Fixed DCA。
+
+不得删除：
+
+Initial Allocation。
+
+所有 Counterfactual：
+
+Fixed DCA必须和 Baseline
+逐笔一致。
+
+==================================================
+七、Phase 1：
+Leave-One-Event-Out Audit
+==================================================
+
+对 V3.1：
+
+全部 106 Tactical Events
+
+逐一建立：
+
+COUNTERFACTUAL_i
+
+方法：
+
+Baseline：
+
+所有106个 Event正常执行。
+
+Counterfactual_i：
+
+只删除 Event i。
+
+其余 Shadow Signal History
+保持完全相同。
+
+总共至少执行：
+
+106个
+Leave-One-Event-Out simulations。
+
+简称：
+
+LOEO。
+
+==================================================
+八、删除 Event后的实际执行原则
+==================================================
+
+假设 Baseline：
+
+Day A：
+25 →35 Buy
+
+Day B：
+35 →25 Risk Sell
+
+如果 Counterfactual：
+
+删除 Day A 的 Buy，
+
+那么 Day B：
+
+Shadow Risk Sell
+仍然存在。
+
+但是实际 Exposure
+可能已经 <=25%。
+
+这时：
+
+记录：
+
+SHADOW_SELL_PRESENT
+NO_TRADE_ALREADY_AT_OR_BELOW_TARGET
+
+不得强迫产生不存在的仓位
+再卖一次。
+
+也就是说：
+
+Shadow Signal不变，
+
+Actual Execution
+根据 Counterfactual实际持仓
+决定成交数量。
+
+==================================================
+九、Risk Sell规则
+==================================================
+
+除了正在被测试删除的 Event本身，
+
+所有后续 Risk Sell：
+
+必须按照原始 V3.1 Shadow Target执行。
+
+如果实际曝险：
+
+高于Target
+
+→卖到Target。
+
+如果实际曝险：
+
+已经低于或等于Target
+
+→0成交。
+
+不得：
+
+改变Signal
+改变State
+改变Target。
+
+==================================================
+十、后续Buy / Right-side / NEW_BULL
+==================================================
+
+除测试 Event本身外：
+
+后续所有：
+
+AHR Buy
+Right-side Buy
+NEW_BULL Redeploy
+
+仍照 Frozen Shadow History执行。
+
+Target：
+
+使用原始 V3.1 Shadow Target。
+
+因此 Counterfactual持仓
+最终可以在后续重新与Baseline
+接近同步。
+
+==================================================
+十一、Resynchronization Audit
+==================================================
+
+每个 LOEO Simulation：
+
+记录：
+
+first_resync_date
+
+定义为：
+
+Counterfactual
+与 Baseline 的
+
+Crypto Exposure差
+
+绝对值：
+
+<=0.50 percentage points
+
+连续：
+
+3 completed daily closes。
+
+同时记录：
+
+days_to_resync。
+
+如果直到样本结束
+都没有resync：
+
+标记：
+
+NOT_RESYNCED。
+
+==================================================
+十二、Event Marginal Contribution
+==================================================
+
+对每个 Event i：
+
+定义：
+
+Final Wealth Contribution_i
+=
+Baseline Final Value
+-
+Counterfactual_i Final Value
+
+解释：
+
+Contribution > 0
+
+代表：
+
+删除这笔交易后资产变少
+
+→该 Event 对最终财富
+有正贡献。
+
+Contribution < 0
+
+代表：
+
+删除这笔交易后资产反而增加
+
+→该 Event
+历史上具有负贡献。
+
+另外输出：
+
+Contribution % of Baseline Final。
+
+==================================================
+十三、Return Contribution
+==================================================
+
+每一个 Event输出：
+
+delta_final_value
+
+delta_final_value_pct
+
+delta_twr_cagr_pp
+
+delta_xirr_pp
+
+delta_sharpe
+
+delta_sortino
+
+delta_calmar。
+
+定义方向必须统一。
+
+报告明确注明：
+
+正数到底代表：
+
+Baseline Event有利
+
+还是：
+
+Delete Event有利。
+
+禁止混淆。
+
+==================================================
+十四、Risk Contribution
+==================================================
+
+每个 Event输出：
+
+counterfactual_max_dd
+
+delta_max_dd_pp
+
+以及：
+
+Local Event Drawdown。
+
+同时计算：
+
+7d
+30d
+60d
+90d
+
+从 Event execution开始的：
+
+Counterfactual vs Baseline
+Portfolio Drawdown。
+
+==================================================
+十五、Local Portfolio Contribution
+==================================================
+
+每笔 Event：
+
+比较：
+
+7 days
+
+30 days
+
+60 days
+
+90 days
+
+180 days
+
+以及：
+
+next major macro transition
+
+时：
+
+Baseline Portfolio Value
+
+Counterfactual Portfolio Value
+
+Difference。
+
+目的：
+
+判断它是：
+
+短期有价值
+
+还是：
+
+长期通过复利有价值。
+
+==================================================
+十六、Exposure Contribution
+==================================================
+
+每笔删除测试：
+
+计算：
+
+crypto_exposure_days_lost_or_added
+
+定义：
+
+从 Event执行
+到 Resynchronization
+
+每日：
+
+Counterfactual Crypto Exposure
+-
+Baseline Crypto Exposure
+
+积分。
+
+输出：
+
+net_crypto_exposure_day_difference。
+
+==================================================
+十七、Turnover / Cost Contribution
+==================================================
+
+每笔Event删除：
+
+计算：
+
+tactical_events_removed_direct
+
+tactical_events_removed_indirect
+
+tactical_trade_rows_removed
+
+gross_notional_saved
+
+turnover_saved
+
+fees_saved
+
+slippage_saved
+
+total_trading_cost_saved。
+
+注意：
+
+若删除一个 Buy
+导致后面的 Sell变成：
+
+NO_TRADE_ALREADY_BELOW_TARGET
+
+该Sell属于：
+
+indirectly_removed_event。
+
+必须记录。
+
+==================================================
+十八、非常重要：
+不能只测单笔Event
+==================================================
+
+单笔Event存在路径交互。
+
+所以 Phase 2：
+
+建立：
+
+ROUND-TRIP / TRADE-CLUSTER AUDIT。
+
+==================================================
+十九、Round-Trip Cluster自动识别
+==================================================
+
+根据原始 V3.1 Event Log：
+
+自动识别 Tactical Clusters。
+
+一个 Cluster可包含：
+
+Risk Sell
+→ AHR Buy
+→ Risk Sell
+
+或：
+
+AHR Buy
+→ Risk Sell
+→ AHR Buy
+
+或：
+
+25 →35
+→25
+
+或：
+
+25 →35
+→50
+→25
+
+等。
+
+不要只使用固定日期。
+
+==================================================
+二十、Round-Trip Cluster边界
+==================================================
+
+Cluster Start：
+
+发生 Tactical Action
+使 Exposure明显偏离
+前一个稳定目标。
+
+Cluster End：
+
+满足以下任一：
+
+A.
+Exposure回到Cluster Start前的目标附近
+±0.5pp
+
+B.
+出现 Right-side structural transition
+
+C.
+出现 NEW_BULL
+
+D.
+出现新的 Macro Cycle
+
+E.
+连续30日没有新的Tactical Event。
+
+同时输出：
+
+cluster_duration_days。
+
+==================================================
+二十一、短期Whipsaw标签
+==================================================
+
+额外标记：
+
+opposite_action_within_3_closes
+
+opposite_action_within_7_days
+
+opposite_action_within_14_days
+
+但这些：
+
+只作标签。
+
+不得用于定义交易规则。
+
+==================================================
+二十二、Phase 2：
+Leave-One-Cluster-Out
+==================================================
+
+对每一个识别出的：
+
+Tactical Cluster
+
+建立：
+
+LOCO Simulation。
+
+删除：
+
+该 Cluster中的 Tactical Execution。
+
+其他 Frozen Shadow History：
+
+全部保持不变。
+
+简称：
+
+LOCO
+Leave-One-Cluster-Out。
+
+==================================================
+二十三、Cluster Counterfactual执行
+==================================================
+
+删除Cluster期间：
+
+固定 DCA仍正常执行。
+
+Shadow Signals仍正常记录。
+
+Cluster中指定 Tactical Actions：
+
+不成交。
+
+Cluster结束后：
+
+恢复执行所有 Shadow Orders。
+
+不得重新计算不同FSM。
+
+==================================================
+二十四、Cluster Contribution
+==================================================
+
+每个Cluster输出：
+
+cluster_id
+
+start_date
+end_date
+duration_days
+
+events_inside
+
+signal_types
+
+start_exposure
+max_exposure
+end_exposure
+
+gross_notional
+
+turnover
+
+cost
+
+Baseline Final Value
+
+Counterfactual Final Value
+
+Final Wealth Contribution
+
+CAGR Contribution
+
+Max DD Contribution
+
+Local DD Contribution。
+
+==================================================
+二十五、2022重点Audit
+==================================================
+
+特别显示：
+
+2022-06-01
+至
+2022-12-31
+
+但是：
+
+日期只用于报告与可视化。
+
+禁止进入交易逻辑。
+
+重点识别：
+
+25↔35
+
+35→25→35
+
+AHR Value Buy
+快速被 Risk Sell撤销
+
+的完整 Cluster。
+
+==================================================
+二十六、2026重点Audit
+==================================================
+
+重点显示：
+
+2026-02-01
+至
+2026-06-30。
+
+同样：
+
+只作Audit。
+
+重点检查：
+
+大量25↔35来回。
+
+==================================================
+二十七、交易类别分析
+==================================================
+
+所有106个Events：
+
+按 Signal Type分组：
+
+AHR Value Buy
+
+Right-side Buy
+
+NEW_BULL Redeploy
+
+Stage Risk Sell
+
+Crash Sell
+
+Bearish Rebreak
+
+其他原 V3.1 Tactical Signal。
+
+每类输出：
+
+count
+
+median final contribution
+
+mean final contribution
+
+median local contribution
+
+median turnover
+
+median cost
+
+positive-contribution fraction
+
+negative-contribution fraction。
+
+==================================================
+二十八、分类只是诊断，不是策略
+==================================================
+
+建立五种诊断分类：
+
+A.
+RETURN_ESSENTIAL
+
+B.
+RISK_ESSENTIAL
+
+C.
+REDUNDANT
+
+D.
+HARMFUL
+
+E.
+MIXED / UNCERTAIN
+
+IMPORTANT：
+
+这些只是：
+
+historical diagnostic labels。
+
+不得直接转成：
+
+未来自动交易规则。
+
+==================================================
+二十九、RETURN_ESSENTIAL定义
+==================================================
+
+一个 Event / Cluster：
+
+如果删除后：
+
+Final Portfolio明显下降
+
+或：
+
+CAGR明显下降
+
+而：
+
+DD没有获得足够改善，
+
+则：
+
+RETURN_ESSENTIAL。
+
+输出Raw Data，
+
+不要只输出标签。
+
+==================================================
+三十、RISK_ESSENTIAL定义
+==================================================
+
+如果删除后：
+
+Overall Max DD
+
+或：
+
+对应 Event Local DD
+
+明显恶化，
+
+则：
+
+RISK_ESSENTIAL。
+
+特别注意：
+
+Risk Sell类Event
+优先检查此项。
+
+==================================================
+三十一、REDUNDANT定义
+==================================================
+
+如果删除后：
+
+Final Wealth几乎不变
+
+CAGR几乎不变
+
+DD几乎不变
+
+但是：
+
+Turnover下降
+Cost下降
+
+则：
+
+REDUNDANT。
+
+==================================================
+三十二、HARMFUL定义
+==================================================
+
+如果删除后：
+
+Final Wealth提高
+
+同时：
+
+DD没有实质恶化，
+
+则：
+
+HARMFUL。
+
+==================================================
+三十三、MIXED定义
+==================================================
+
+例如：
+
+删除后：
+
+Final Wealth增加
+
+但 DD明显恶化
+
+或者：
+
+Final Wealth下降
+
+但 DD明显改善。
+
+归类：
+
+MIXED。
+
+禁止强行定义好坏。
+
+==================================================
+三十四、不要用单一主观Threshold隐藏原始结果
+==================================================
+
+所有分类之外：
+
+必须同时输出Raw：
+
+Final Value Impact
+
+CAGR Impact
+
+DD Impact
+
+Local DD Impact
+
+Turnover Saved
+
+Cost Saved。
+
+这样用户可以自行调整：
+
+什么叫「值得」。
+
+==================================================
+三十五、建议诊断Threshold
+==================================================
+
+这些Threshold：
+
+只用于报告辅助分类。
+
+不得用于交易。
+
+REDUNDANT候选：
+
+abs(final_value_impact)
+<=0.25% of Baseline Final
+
+AND
+
+abs(max_dd_impact)
+<=0.25 percentage points。
+
+HARMFUL候选：
+
+Delete后 Final提高
+>=0.25%
+
+AND
+
+DD恶化
+<0.25pp。
+
+RETURN_ESSENTIAL候选：
+
+Delete后 Final下降
+>=1.0%
+
+且DD改善
+<1pp。
+
+RISK_ESSENTIAL候选：
+
+Delete后：
+
+Overall或Local DD
+恶化 >=1pp。
+
+其他：
+
+MIXED / UNCERTAIN。
+
+==================================================
+三十六、必须进行Sensitivity Classification
+==================================================
+
+为了避免0.25% / 1%阈值人为决定：
+
+额外使用：
+
+Loose
+Base
+Strict
+
+三套诊断阈值。
+
+如果某 Event：
+
+三套分类都相同，
+
+标记：
+
+ROBUST_CLASSIFICATION = TRUE。
+
+否则：
+
+FALSE。
+
+这些都不能进入交易引擎。
+
+==================================================
+三十七、Non-Additivity警告
+==================================================
+
+IMPORTANT：
+
+106个 Leave-One-Out Contribution
+
+不能直接相加。
+
+因为交易之间存在：
+
+interaction
+path dependency
+capital compounding。
+
+报告必须明确写：
+
+LOEO contributions are non-additive.
+
+不得声称：
+
+所有Event贡献相加
+等于策略总收益。
+
+==================================================
+三十八、Interaction Audit
+==================================================
+
+从：
+
+LOEO + LOCO
+
+筛出：
+
+最可能 REDUNDANT / HARMFUL
+的前10个 Clusters。
+
+对这10个：
+
+进行 pairwise deletion audit。
+
+最多：
+
+45组组合。
+
+目的：
+
+检查：
+
+单独删除A没问题
+
+单独删除B没问题
+
+但是：
+
+A+B一起删除
+是否产生巨大副作用。
+
+==================================================
+三十九、不要自动生成新策略
+==================================================
+
+IMPORTANT：
+
+即使发现：
+
+10个HARMFUL交易
+
+也不要自动：
+
+删除它们
+建立新Champion
+
+或创建：
+
+V3.9
+V4.0。
+
+因为：
+
+这是使用历史未来结果
+做的事后归因。
+
+它只能帮助：
+
+发现未来值得研究的
+普遍结构。
+
+==================================================
+四十、真正要找的是结构
+==================================================
+
+最终报告不要只写：
+
+2022-06-19这笔不好。
+
+要尝试找：
+
+跨年份共同特征。
+
+例如：
+
+AHR Buy后3日内出现新低
+
+AHR Buy发生时SMA20持续下弯
+
+AHR Buy后没有Right-side confirmation
+
+连续Value Buy之后又被Stage4撤销
+
+等等。
+
+但是：
+
+这些只能作为：
+
+HYPOTHESIS GENERATION。
+
+不得在本Run
+直接建立策略。
+
+==================================================
+四十一、Feature Snapshot
+==================================================
+
+每个 Event execution时：
+
+保存：
+
+BTC close
+
+ETH close
+
+AHR999
+
+BTC SMA10
+SMA20
+SMA50
+SMA200
+
+BTC Bollinger Upper
+Middle
+Lower
+Band Width
+
+distance_to_SMA20
+
+distance_to_SMA50
+
+distance_to_SMA200
+
+20d return
+60d return
+
+20d realized volatility
+
+distance_to_20d_low
+
+distance_to_60d_low
+
+Shadow State
+Stage
+Cycle
+
+Exposure Before
+Exposure After。
+
+这些只是分析特征。
+
+不得回头改变交易。
+
+==================================================
+四十二、Forward Outcome Snapshot
+==================================================
+
+为了事后归因：
+
+可以保存：
+
+BTC forward return：
+
+3d
+7d
+14d
+30d
+60d
+90d
+
+ETH同样。
+
+但：
+
+明确标记：
+
+EX_POST_DIAGNOSTIC_ONLY。
+
+任何Forward Data：
+
+禁止进入策略Simulation。
+
+==================================================
+四十三、必要交易排行榜
+==================================================
+
+输出：
+
+top_return_contributing_events.csv
+
+按：
+
+Final Wealth Contribution
+
+从高到低。
+
+显示：
+
+Top 20。
+
+==================================================
+四十四、最差交易排行榜
+==================================================
+
+输出：
+
+most_harmful_events.csv
+
+显示：
+
+删除后Final Wealth
+提高最多的：
+
+Top 20。
+
+==================================================
+四十五、最冗余交易排行榜
+==================================================
+
+输出：
+
+most_redundant_events.csv
+
+优先：
+
+Final Impact≈0
+
+DD Impact≈0
+
+但：
+
+Turnover Saved高
+
+的 Event / Cluster。
+
+==================================================
+四十六、Risk Essential排行榜
+==================================================
+
+输出：
+
+risk_essential_events.csv
+
+按：
+
+删除后 DD恶化程度
+
+排序。
+
+==================================================
+四十七、Round-Trip排行榜
+==================================================
+
+输出：
+
+round_trip_necessity_ranking.csv
+
+至少包含：
+
+cluster_id
+dates
+duration
+events
+signal sequence
+turnover
+cost
+final contribution
+CAGR contribution
+DD contribution
+classification
+robust_classification。
+
+==================================================
+四十八、2022图
+==================================================
+
+输出：
+
+01_2022_trade_necessity_map.png
+
+显示：
+
+BTC Price
+
+V3.1 Exposure
+
+所有 Tactical Events
+
+并根据诊断分类：
+
+RETURN_ESSENTIAL
+RISK_ESSENTIAL
+REDUNDANT
+HARMFUL
+MIXED
+
+做不同 marker。
+
+不要更改交易。
+
+==================================================
+四十九、2026图
+==================================================
+
+02_2026_trade_necessity_map.png
+
+同样显示。
+
+==================================================
+五十、Full History图
+==================================================
+
+03_full_trade_necessity_map.png
+
+完整2020→最新。
+
+==================================================
+五十一、Contribution Distribution
+==================================================
+
+04_event_contribution_distribution.png
+
+显示：
+
+106个Events的
+
+Final Wealth Contribution Distribution。
+
+==================================================
+五十二、Turnover vs Contribution
+==================================================
+
+05_turnover_vs_contribution.png
+
+X：
+
+Turnover / Gross Notional
+
+Y：
+
+Final Wealth Contribution
+
+用来找：
+
+高Turnover
+低Contribution
+
+的交易。
+
+==================================================
+五十三、Risk vs Return Contribution
+==================================================
+
+06_risk_return_contribution.png
+
+X：
+
+Final Wealth Contribution
+
+Y：
+
+DD Protection Contribution。
+
+找：
+
+高Return / 高Risk Protection
+
+低Return / 低Risk Protection
+
+等Quadrants。
+
+==================================================
+五十四、Signal Type Summary
+==================================================
+
+07_signal_type_contribution.png
+
+比较：
+
+AHR Buy
+Right-side
+NEW_BULL
+Risk Sell
+Crash
+其他
+
+平均 / 中位数
+Economic Contribution。
+
+==================================================
+五十五、Counterfactual Equity Examples
+==================================================
+
+对：
+
+Top 5 RETURN_ESSENTIAL
+
+Top 5 HARMFUL
+
+Top 5 REDUNDANT Clusters
+
+分别输出：
+
+Baseline B Equity
+
+Counterfactual Equity。
+
+看差异从哪里开始。
+
+==================================================
+五十六、特别回答：
+AHR999到底有没有Alpha
+==================================================
+
+单独汇总：
+
+所有 AHR Value Buy Events。
+
+回答：
+
+AHR Event Count
+
+Positive Contribution Count
+
+Negative Contribution Count
+
+Median Final Contribution
+
+Mean Final Contribution
+
+Median 30d BTC Forward Return
+
+Median 60d BTC Forward Return
+
+删除AHR Event后：
+
+Median DD change。
+
+目的是判断：
+
+AHR999本身是否整体有价值，
+
+还是只有部分环境有效。
+
+==================================================
+五十七、特别回答：
+短期Whipsaw是否真的没价值
+==================================================
+
+将所有：
+
+3-close opposite action
+
+7-day opposite action
+
+14-day opposite action
+
+分别分组。
+
+输出：
+
+Count
+
+Median Final Contribution
+
+Positive Contribution Fraction
+
+Median DD Contribution
+
+Median Turnover
+
+Median Cost。
+
+回答：
+
+「交易间隔短」
+
+是否真的等于：
+
+「没有经济价值」。
+
+==================================================
+五十八、特别回答：
+2022 / 2026
+==================================================
+
+对：
+
+2022 bottom
+
+2026 bottom
+
+分别回答：
+
+总共有多少Tactical Events？
+
+多少：
+
+Return Essential
+
+Risk Essential
+
+Redundant
+
+Harmful
+
+Mixed？
+
+如果把所有：
+
+ROBUST REDUNDANT
+
+单独拿掉，
+
+作为纯Diagnostic Basket Counterfactual：
+
+Final Value会怎样？
+
+DD会怎样？
+
+Turnover会怎样？
+
+IMPORTANT：
+
+这是Diagnostic Basket。
+
+不是策略版本。
+
+==================================================
+五十九、Robust Redundant Basket
+==================================================
+
+允许额外测试：
+
+ROBUST_REDUNDANT_BASKET_CF
+
+仅删除：
+
+三套Sensitivity分类
+都为 REDUNDANT
+
+的 Clusters。
+
+输出：
+
+Final Value
+CAGR
+Max DD
+Turnover
+Event Count。
+
+但必须标：
+
+EX_POST UPPER-BOUND DIAGNOSTIC。
+
+不得：
+
+Promote
+Live Test
+称为新策略。
+
+==================================================
+六十、Robust Harmful Basket
+==================================================
+
+同样允许：
+
+ROBUST_HARMFUL_BASKET_CF
+
+目的只是：
+
+估计历史上这些交易
+造成的最大机会成本。
+
+必须明确：
+
+这是严重 hindsight-biased
+upper bound。
+
+不得作为交易系统。
+
+==================================================
+六十一、最终必须直接回答
+==================================================
+
+1.
+V3.1 Baseline是否完整重现？
+
+2.
+106个Tactical Events中：
+
+多少有正Final Contribution？
+
+多少有负Contribution？
+
+多少接近0？
+
+3.
+多少被分类：
+
+RETURN_ESSENTIAL？
+
+4.
+多少：
+
+RISK_ESSENTIAL？
+
+5.
+多少：
+
+REDUNDANT？
+
+6.
+多少：
+
+HARMFUL？
+
+7.
+多少：
+
+MIXED？
+
+8.
+2022底部：
+
+真正冗余的有几组？
+
+9.
+2026底部：
+
+真正冗余的有几组？
+
+10.
+2022 / 2026
+看起来频繁的交易中：
+
+有多少其实具有正经济价值？
+
+11.
+AHR999 Value Buy整体：
+
+是正贡献还是负贡献？
+
+12.
+AHR Buy中：
+
+哪类环境表现最好？
+
+13.
+AHR Buy中：
+
+哪类环境最容易快速失败？
+
+14.
+Risk Sell中：
+
+哪些是真正保护DD的？
+
+15.
+有没有Risk Sell：
+
+删除后DD几乎不变
+但Final反而提高？
+
+16.
+Right-side Buy：
+
+整体贡献如何？
+
+17.
+NEW_BULL Redeploy：
+
+整体贡献如何？
+
+18.
+3-close Whipsaw：
+
+是否真的大多数没价值？
+
+19.
+7-day Whipsaw：
+
+是否真的大多数没价值？
+
+20.
+14-day Whipsaw：
+
+结果如何？
+
+21.
+最有价值的Top 10 Tactical Events？
+
+22.
+最没价值的Top 10？
+
+23.
+最高Turnover / 最低贡献
+是哪几组？
+
+24.
+如果只看Robust Redundant：
+
+历史上理论可减少多少Event？
+
+25.
+理论可减少多少Turnover？
+
+26.
+DD几乎不变吗？
+
+27.
+最终资产几乎不变吗？
+
+28.
+V3.1目前106次操作：
+
+究竟是真的太多，
+
+还是只是视觉上看起来多？
+
+29.
+应该继续研究「降低交易频率」吗？
+
+30.
+还是应该接受：
+
+部分高频熊底AHR操作
+本身有经济价值？
+
+==================================================
+六十二、J Law Diagnostic Verdict
+==================================================
+
+最后输出：
+
+Baseline Integrity
+
+AHR Economic Edge
+
+Risk-Sell Economic Edge
+
+Right-Side Economic Edge
+
+NEW_BULL Economic Edge
+
+Whipsaw Necessity
+
+2022 Bottom Efficiency
+
+2026 Bottom Efficiency
+
+Redundant Trade Fraction
+
+Harmful Trade Fraction
+
+Return-Essential Fraction
+
+Risk-Essential Fraction
+
+Turnover Efficiency
+
+Path Dependency Risk
+
+Hindsight Bias Risk
+
+Overfit Risk
+
+最后只能给研究结论：
+
+A.
+V3.1 TRADING FREQUENCY LARGELY JUSTIFIED
+
+B.
+V3.1 CONTAINS MATERIAL REDUNDANT TRADING
+
+C.
+V3.1 CONTAINS MATERIAL HARMFUL TRADING
+
+D.
+MIXED — MORE STRUCTURAL RESEARCH REQUIRED
+
+不得：
+
+自动建立新策略。
+
+==================================================
+六十三、输出文件
+==================================================
+
+至少生成：
+
+FINAL_REPORT_V31_NECESSITY_AUDIT.md
+
+baseline_v31_replay.csv
+
+v31_tactical_events_master.csv
+
+leave_one_event_out_results.csv
+
+leave_one_cluster_out_results.csv
+
+round_trip_clusters.csv
+
+interaction_audit.csv
+
+signal_type_contribution_summary.csv
+
+ahr_value_buy_contribution.csv
+
+risk_sell_contribution.csv
+
+right_side_contribution.csv
+
+new_bull_contribution.csv
+
+whipsaw_contribution_summary.csv
+
+top_return_contributing_events.csv
+
+most_harmful_events.csv
+
+most_redundant_events.csv
+
+risk_essential_events.csv
+
+round_trip_necessity_ranking.csv
+
+robust_redundant_basket_cf.csv
+
+robust_harmful_basket_cf.csv
+
+01_2022_trade_necessity_map.png
+
+02_2026_trade_necessity_map.png
+
+03_full_trade_necessity_map.png
+
+04_event_contribution_distribution.png
+
+05_turnover_vs_contribution.png
+
+06_risk_return_contribution.png
+
+07_signal_type_contribution.png
+
+以及必要的：
+
+config
+manifest
+audit logs。
+
+==================================================
+六十四、最终Hard Rules
+==================================================
+
+1.
+不得修改V3.1。
+
+2.
+不得调Cooldown。
+
+3.
+不得建立新的交易Threshold。
+
+4.
+不得根据Counterfactual结果
+自动删除任何Live Rule。
+
+5.
+所有未来价格资料
+只能用于EX-POST诊断。
+
+6.
+所有Counterfactual
+必须使用Frozen V3.1 Shadow Signals。
+
+7.
+Fixed DCA始终完全相同。
+
+8.
+BTC+ETH必须一起作为Portfolio Event测试。
+
+9.
+LOEO结果不可相加。
+
+10.
+必须明确报告Path Dependency。
+
+11.
+不得自动创建V3.9。
+
+12.
+本轮只有诊断，
+没有Champion Challenger Promotion。
+
+完成后：
+
+只报告真实结果。
+
+不要根据结果
+自动设计下一版。

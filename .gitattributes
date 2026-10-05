@@ -1,0 +1,3 @@
+# Frozen manifests validate exact file bytes. Disable line-ending conversion
+# for source code, configuration, raw inputs, and evidence on every platform.
+* -text
