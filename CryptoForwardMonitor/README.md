@@ -1,88 +1,71 @@
-# Crypto Forward Monitor
+# Crypto Forward Monitor 使用說明
 
-Windows 桌面監控程式，僅用於 Frozen V3.10 Forward Paper Test 的監控、記錄、
-稽核與手動啟動。它不會改寫模型規則，也不會自動下單。
+Windows 繁體中文紙上監控工具。**不會向交易所下真實訂單。**
 
-正式安裝位置：`D:\虛擬貨幣\crypto_backtest_system\CryptoForwardMonitor`
+## 每天怎麼用？
 
-## 第一次使用
+1. 開啟 App：讀取上次保存的持倉、更新 BTC／ETH 行情，不重設本金。
+2. 按 **執行每日模型**：先執行純 V3.10；已啟用 AI 時，再進行資料整理、GPT 判讀、風控與紙上成交。
+3. 看 **資產總覽**：左邊是 V3.10＋AI，右邊是純 V3.10。
+4. 看 **執行摘要／AI 決策**：查看時間、買賣幣種、數量、價格、金額、原因及資料來源。
 
-1. 使用專案既有 Python 環境，或執行 `build_exe.bat` 建立 EXE。
-2. 開啟 `config.json`。
-3. `model_command` 填每日執行 Frozen V3.10 的完整命令。
-4. `model_workdir` 填模型專案資料夾。
-5. `status_file` 填 `DAILY_FORWARD_STATUS.md` 完整路徑。
-6. 執行 `install_shortcut.bat`，桌面會建立 **Crypto Forward Monitor** 捷徑。
+「更新行情／自動更新」只重估資產，不呼叫 GPT、不交易。模型尚在執行時不要重複按；同日重複判讀另有防重複機制。
 
-目前三個欄位已依本專案實際位置設定完成。Windows 中文與空白路徑均以完整
-Unicode 路徑處理。
+## 第一次連結 AI
 
-## 每天使用
+1. **工具與設定 → ChatGPT 與 AI 設定 → Continue with ChatGPT**。
+2. 在官方瀏覽器登入自己的 ChatGPT，允許 **ChatGPT Plan Usage**。
+3. 回 App，按 **載入此帳號可用模型**，選擇模型。
+4. 按 **啟用 V3.10＋AI／建立新綜合帳本**，確認接續目前 V3.10 的 BTC／ETH 數量與現金。
+5. 之後使用同一個 **執行每日模型** 按鈕即可；不用每天登入或建立新帳本。
 
-1. 雙擊桌面的 **Crypto Forward Monitor**。
-2. 查看主控台與市場資訊。
-3. 按一次 **執行每日模型**。
-4. 完成後查看最新報告、歷史紀錄、封存或日誌。
-5. 關閉或保持程式開啟。
+連線使用官方 OAuth，不需要 API Key，也沒有付費 API 備援。資格、可選模型及用量以帳號實際回傳為準；不是每個帳號都保證能使用。失敗、額度不足或資料過期時會提示，不會捏造 AI 成交。[官方連線說明](https://developers.openai.com/siwc/token-sharing-open-source/sign-in)。
 
-同一個本機日曆日，一般執行成功後會顯示「今天已成功執行過，未重複執行」。
-強制執行需要二次確認，且不會重複寫入相同 `status_date` 的歷史紀錄。
+新安裝的 AI 預設關閉；既有設定會保留。換模型、帳號、政策或風控時，要另建新實驗，舊帳本不刪除。建立新帳本是新比較起點，**不是把本金重設 US$20,000，更不會匯入歷史回測的獲利**。
 
-## 安全邊界
+## 兩個版本有什麼不同？
 
-- App 啟動不會執行模型。
-- **更新行情** 只更新 Binance BTC/ETH、重讀狀態與歷史紀錄。
-- **自動更新行情** 只做相同的唯讀刷新，永遠不呼叫 `model_command`。
-- 只有 **執行每日模型** 與經確認的 **強制執行** 能呼叫模型。
-- V3.1 僅顯示為 Comparator，不控制 V3.10 Action。
-- 最新報告是確定性狀態摘要，不使用 LLM，不產生交易建議。
-- **資產總覽** 並排顯示 V3.10 Champion 與 V3.1 Shadow 的總資產、BTC／ETH／現金配置；持倉來自各自的紙上帳本，估值使用目前 Binance 市價。
-- Frozen Hash FAIL 仍會保存 History、Archive 與 Log，但顯示醒目警告。
+- **純 V3.10**：固定定投、市場週期判斷、分階段避險及買回；Stage3 再進入需三個完成日確認。
+- **V3.10＋AI**：以純版技術狀態為主要依據，加上可驗證外部資料，讓 GPT 提出配置；通過風控後在自己的紙上帳本執行。
+- 原凍結規則與右側帳本不受 AI 改寫。綜合版不自動複製純版後續交易；HOLD 代表 AI 不調倉。
+- V3.1 原比較模型仍保留於原始資料及帳本。
 
-## 新版介面（2026-09-06）
+更完整的模型邏輯、AI 作用與限制見 [專案首頁](../README.md)。
 
-- 深色背景與放大金額；BTC 使用金色、ETH 使用藍色、現金使用綠色。
-- **資產總覽**：行情、兩套模型資產卡片、配置比例、前瞻進度及風險狀態。視窗較窄時風險區移至下方，可用滑鼠滾輪捲動。
-- **白話報告**：較大的繁體中文字級與分段標題；更新行情不會重設閱讀位置。
-- **原始資料**：曝險差距、完整狀態時間、動作代碼及近期紀錄，方便稽核。
-- **歷史紀錄** 位於左側；封存、日誌、設定、資料夾與強制執行位於左下方 **工具與設定**。
-- 「帳本曝險」是最後一次模型紀錄的比例；下方持倉配置依目前可用市價估值，兩者可能不同。持倉時間與估值來源均另行標示。
-- 既有 `FORWARD SAFETY FAIL` 或凍結檔案異常會醒目顯示；介面更新不會清除歷史異常、改動門檻或重新執行模型。
+## 均價、盈虧與時間怎麼看？
 
-### 高 DPI／圓角更新
+綜合版啟用時以當時市價建立成本基準，**不是原 V3.10 的歷史買入均價**。浮動盈虧是目前持倉相對帳本成本，不等於總投資報酬，也不包含未來賣出費用。
 
-- 啟動前啟用 Per-Monitor DPI Awareness，EXE 內亦包含 DPI manifest。文字與元件依螢幕 DPI 繪製，不依賴 Windows 將低解析畫面整張拉大。
-- CustomTkinter 圓角卡片、按鈕、選單控制與高解析 Bitcoin 圖示；交易所風格的側邊導覽及緊湊行情列。
-- 資產總覽使用像素級平滑捲動；縮小視窗後風險欄移至下方。
-- 更新中／模型執行中按鈕會顯示忙碌狀態。一般完成提示改成不阻擋操作的通知；失敗提示不自動消失。強制執行仍要求確認。
-- 背景工作結果經佇列交由主介面執行緒更新；關閉後不再對已關閉視窗送出更新。
-- 快捷鍵：F5 更新行情；Ctrl+1／2／3 切換總覽、報告、原始資料。
-- 畫面數值直接使用既有帳本與行情，沒有加入假行情、假資產曲線或模擬成交動畫。
+資產卡依最新可取得行情估值；批准配置及 AI 決策頁績效是最後一次成功判讀的快照。持倉時間、估值時間與 AI 判讀時間分開顯示，行情刷新不代表 AI 重新決策。斷線時會標示沿用舊估值。
 
-視覺布局集中在 `ui.py`，元件在 `ui_components.py`，背景顯示事件在 `ui_dispatch.py`；與模型執行、行情、帳本及儲存邏輯分離。
+## 安裝與 EXE
 
-設計依據：[CustomTkinter DPI 文件](https://customtkinter.tomschimansky.com/documentation/scaling/)、[Microsoft High DPI 文件](https://learn.microsoft.com/en-us/windows/win32/hidpi/high-dpi-desktop-application-development-on-windows)。沒有改動 Windows 的顯示縮放或其他系統設定。
+第一次安裝依 [專案首頁](../README.md#第一次啟動windows) 建立 Python 環境與本機設定。搬到其他位置時，核對 `config.json` 的模型命令、工作資料夾、狀態檔與資料路徑。
 
-## 資料位置
+要建立 EXE，可在本資料夾執行 `build_exe.bat`，輸出為 `dist/CryptoForwardMonitor.exe`。打包不覆蓋既有 `dist/config.json`；若從 `dist` 啟動，設定的路徑須指向實際模型專案及資料位置，而不是誤用範例的相對位置。桌面捷徑可用 `install_shortcut.bat` 建立。
 
-- History：`data/history_forward.csv`
-- Stage3：`data/stage3_candidates.csv`
-- Runner state：`data/runner_state.json`
-- 每日原始狀態備份：`archive/YYYY-MM-DD/`
-- 執行紀錄：`logs/YYYY-MM-DD.log`
+## 常見問題
 
-上述檔案不會自動刪除。CSV 與 runner state 使用同資料夾暫存檔後原子取代。
+- **關閉 App 會清空嗎？** 不會。下次讀取保存的持倉；成功執行時依已完成的 4H 時段補入紙上外部本金。關閉期間不會跑 GPT，也沒有真實下單。
+- **AI 失敗會影響純版嗎？** 純 V3.10 的成功結果仍保留；AI 本次不成交。凍結完整性與資料新鮮度檢查仍適用。
+- **CSV 被 Excel 占用？** 關閉檔案後，到「AI 決策 → 重建 CSV／JSON 匯出」。只重建匯出，不呼叫 GPT、不重做成交。
+- **看到安全驗收失敗？** 原前瞻 `FORWARD SAFETY FAIL` 仍保留；介面改版不代表失敗已修復，也不會清除紀錄或降低門檻。
 
-## EXE
+## 資料保存與隱私
 
-執行 `build_exe.bat` 後產生：
+App 紀錄依 `app_data_dir` 保存於 `data/`、`archive/`、`logs/`；AI 實驗預設在專案根目錄 `ai_shadow/data/experiments/<UUID>/`。正式 AI 帳本是 `journal.sqlite3`，CSV／JSON 為可重建匯出。
 
-`dist/CryptoForwardMonitor.exe`
+登入 token 在 **Windows Credential Manager**，不放進帳本或 GitHub。分析用的市場快照及紙上持倉會送給 OpenAI；私人帳本、帳號資料、本機設定與 EXE 不上傳 GitHub。GitHub 不會自動備份每日新紀錄。
 
-打包時只在 `dist/config.json` 不存在時複製初始設定，不覆蓋現有設定；資料仍依 `app_data_dir` 保存於本資料夾。
+## 程式測試
 
-## 測試
+從專案根目錄執行：
 
-在此資料夾執行：
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q tests universe_diagnostic\tests ai_shadow\tests
+Push-Location CryptoForwardMonitor
+..\.venv\Scripts\python.exe -m unittest discover -s tests -q
+Pop-Location
+```
 
-`..\.venv\Scripts\python.exe -m unittest discover -s tests -v`
+這些是本機回歸測試，不呼叫真實 GPT；歷史探索另外記錄於 [首月測試](../docs/FIRST_MONTH_AI_REPLAY.md)，不能當成目前 App 已通過完整實際運行驗收。

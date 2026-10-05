@@ -1,0 +1,205 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "STRONG_ADD",
+        "ADD",
+        "HOLD",
+        "REDUCE",
+        "EXIT"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "market_regime": {
+      "type": "string",
+      "enum": [
+        "STRONG_BULL",
+        "BULL",
+        "BULL_CONSOLIDATION",
+        "NEUTRAL",
+        "DISTRIBUTION",
+        "BEAR",
+        "CRISIS"
+      ]
+    },
+    "market_health": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "macro_health": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "liquidity_health": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "etf_flow_health": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "derivatives_health": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "onchain_health": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "technical_health": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "event_health": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "post_entry_health": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "risk_veto": {
+      "type": "boolean"
+    },
+    "risk_veto_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 12
+    },
+    "thesis": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 12
+    },
+    "key_positive_factors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 12
+    },
+    "key_risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 12
+    },
+    "invalidation_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 12
+    },
+    "bull_probability": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "base_probability": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "bear_probability": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "target_total_exposure": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 0.95
+    },
+    "target_btc_weight": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "target_eth_weight": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "target_cash_weight": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "v310_view": {
+      "type": "string",
+      "enum": [
+        "AGREE",
+        "PARTIAL_AGREE",
+        "DIVERGE"
+      ]
+    },
+    "data_quality": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "PARTIAL",
+        "POOR"
+      ]
+    },
+    "thesis_status": {
+      "type": "string",
+      "enum": [
+        "Still Valid",
+        "Weakening",
+        "Invalidated"
+      ]
+    }
+  },
+  "required": [
+    "action",
+    "confidence",
+    "market_regime",
+    "market_health",
+    "macro_health",
+    "liquidity_health",
+    "etf_flow_health",
+    "derivatives_health",
+    "onchain_health",
+    "technical_health",
+    "event_health",
+    "post_entry_health",
+    "risk_veto",
+    "risk_veto_reasons",
+    "thesis",
+    "key_positive_factors",
+    "key_risks",
+    "invalidation_conditions",
+    "bull_probability",
+    "base_probability",
+    "bear_probability",
+    "target_total_exposure",
+    "target_btc_weight",
+    "target_eth_weight",
+    "target_cash_weight",
+    "v310_view",
+    "data_quality",
+    "thesis_status"
+  ]
+}

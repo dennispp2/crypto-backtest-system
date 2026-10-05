@@ -38,6 +38,9 @@ class WidgetTests(unittest.TestCase):
                 window = CryptoForwardMonitorApp(config_path)
                 try:
                     self.assertEqual(window.state(), "withdrawn")
+                    self.assertEqual(list(window.portfolio_cards), ["h", "q"])
+                    self.assertEqual(int(window.portfolio_cards["h"].grid_info()["column"]), 0)
+                    self.assertEqual(int(window.portfolio_cards["q"].grid_info()["column"]), 1)
                     snapshot = DashboardSnapshot(
                         status=parse_status(SAMPLE), market=FixedMarket().fetch(),
                         market_error=None, status_error=None, v310_portfolio=None,

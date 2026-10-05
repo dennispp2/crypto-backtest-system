@@ -1,0 +1,235 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "snapshot_id",
+    "snapshot_hash",
+    "created_at",
+    "data_freshness",
+    "quant",
+    "technical",
+    "macro",
+    "risk_assets",
+    "derivatives",
+    "etf_flow",
+    "liquidity",
+    "onchain",
+    "events",
+    "portfolio",
+    "external"
+  ],
+  "properties": {
+    "snapshot_id": {
+      "type": "string"
+    },
+    "snapshot_hash": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "data_freshness": {
+      "type": "object"
+    },
+    "quant": {
+      "type": "object",
+      "required": [
+        "status_date",
+        "status_available_at",
+        "v310_state",
+        "v310_stage",
+        "target_exposure",
+        "actual_exposure",
+        "drawdown",
+        "stage3_candidate",
+        "crash",
+        "ahr999",
+        "tactical_action",
+        "frozen_hash_status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status_date": {
+          "type": "string"
+        },
+        "status_available_at": {
+          "type": "string"
+        },
+        "v310_state": {
+          "type": "string"
+        },
+        "v310_stage": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "target_exposure": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "actual_exposure": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "drawdown": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "stage3_candidate": {
+          "type": "string"
+        },
+        "crash": {
+          "type": "string"
+        },
+        "ahr999": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "tactical_action": {
+          "type": "string"
+        },
+        "frozen_hash_status": {
+          "type": "string"
+        }
+      }
+    },
+    "technical": {
+      "type": "object",
+      "required": [
+        "BTC",
+        "ETH"
+      ],
+      "properties": {
+        "BTC": {
+          "type": "object",
+          "required": [
+            "indicator_asof",
+            "spot_asof",
+            "spot_now",
+            "daily_close",
+            "sma10",
+            "sma20",
+            "sma50",
+            "sma200",
+            "ema20",
+            "bb20_middle",
+            "bb20_upper",
+            "bb20_lower",
+            "atr14",
+            "rsi14",
+            "macd",
+            "macd_signal",
+            "macd_histogram",
+            "volume",
+            "volume_ma20",
+            "volume_ratio",
+            "volume_zscore",
+            "return1d",
+            "return7d",
+            "return30d",
+            "return90d",
+            "price_vs_sma10",
+            "price_vs_sma20",
+            "price_vs_sma50",
+            "price_vs_sma200",
+            "sma10_slope5",
+            "sma20_slope5",
+            "sma50_slope5",
+            "sma200_slope5",
+            "structure",
+            "high20",
+            "low20",
+            "high50",
+            "low50",
+            "realized_volatility30",
+            "source",
+            "source_timestamp",
+            "fetched_at",
+            "status"
+          ]
+        },
+        "ETH": {
+          "type": "object",
+          "required": [
+            "indicator_asof",
+            "spot_asof",
+            "spot_now",
+            "daily_close",
+            "sma10",
+            "sma20",
+            "sma50",
+            "sma200",
+            "ema20",
+            "bb20_middle",
+            "bb20_upper",
+            "bb20_lower",
+            "atr14",
+            "rsi14",
+            "macd",
+            "macd_signal",
+            "macd_histogram",
+            "volume",
+            "volume_ma20",
+            "volume_ratio",
+            "volume_zscore",
+            "return1d",
+            "return7d",
+            "return30d",
+            "return90d",
+            "price_vs_sma10",
+            "price_vs_sma20",
+            "price_vs_sma50",
+            "price_vs_sma200",
+            "sma10_slope5",
+            "sma20_slope5",
+            "sma50_slope5",
+            "sma200_slope5",
+            "structure",
+            "high20",
+            "low20",
+            "high50",
+            "low50",
+            "realized_volatility30",
+            "source",
+            "source_timestamp",
+            "fetched_at",
+            "status"
+          ]
+        }
+      }
+    },
+    "macro": {
+      "type": "object"
+    },
+    "risk_assets": {
+      "type": "object"
+    },
+    "derivatives": {
+      "type": "object"
+    },
+    "etf_flow": {
+      "type": "object"
+    },
+    "liquidity": {
+      "type": "object"
+    },
+    "onchain": {
+      "type": "object"
+    },
+    "events": {
+      "type": "object"
+    },
+    "portfolio": {
+      "type": "object"
+    },
+    "external": {
+      "type": "object"
+    }
+  }
+}

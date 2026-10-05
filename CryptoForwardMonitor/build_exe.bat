@@ -10,7 +10,7 @@ if not exist "%PYTHON%" (
 )
 "%PYTHON%" -m pip install -r "%APP_DIR%requirements.txt"
 if errorlevel 1 exit /b 1
-"%PYTHON%" -m PyInstaller --noconfirm --clean --onefile --windowed --name CryptoForwardMonitor --collect-all customtkinter --exclude-module numpy --manifest "%APP_DIR%app.manifest" --add-data "%APP_DIR%assets\bitcoin_app_icon.png;assets" --icon "%APP_DIR%assets\CryptoForwardMonitor.ico" --distpath "%APP_DIR%dist" --workpath "%BUILD_TEMP%" --specpath "%BUILD_TEMP%" "%APP_DIR%app.py"
+"%PYTHON%" -m PyInstaller --noconfirm --clean --onefile --windowed --name CryptoForwardMonitor --paths "%APP_DIR%.." --collect-all customtkinter --collect-data keyring --hidden-import keyring.backends.Windows --collect-data jsonschema_specifications --exclude-module numpy --manifest "%APP_DIR%app.manifest" --add-data "%APP_DIR%assets\bitcoin_app_icon.png;assets" --add-data "%APP_DIR%..\ai_shadow\schemas;ai_shadow\schemas" --add-data "%APP_DIR%..\ai_shadow\policy;ai_shadow\policy" --icon "%APP_DIR%assets\CryptoForwardMonitor.ico" --distpath "%APP_DIR%dist" --workpath "%BUILD_TEMP%" --specpath "%BUILD_TEMP%" "%APP_DIR%app.py"
 if errorlevel 1 exit /b 1
 if not exist "%APP_DIR%dist\config.json" copy "%APP_DIR%config.json" "%APP_DIR%dist\config.json" >nul
 copy /Y "%APP_DIR%assets\CryptoForwardMonitor.ico" "%APP_DIR%dist\CryptoForwardMonitor.ico" >nul

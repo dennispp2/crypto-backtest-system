@@ -9,6 +9,8 @@ from pathlib import Path
 import tkinter as tk
 from tkinter import messagebox, ttk
 import customtkinter as ctk
+from ai_integration import create_ai
+from ai_ui import AIUiMixin, outcome_text
 
 from config import AppConfig, ConfigError, load_config, save_config
 from controller import DashboardSnapshot, MonitorController
@@ -126,8 +128,8 @@ class HistoryViewer(ctk.CTkToplevel):
             self.tree.insert("", "end", values=[row.get(column, "") for column in self.tree["columns"]])
 
 
-class CryptoForwardMonitorApp(DashboardLayout, ctk.CTk):
-    def __init__(self, config_path: Path = CONFIG_PATH) -> None:
+class CryptoForwardMonitorApp(AIUiMixin, DashboardLayout, ctk.CTk):
+    def __init__(self, config_path: Path = CONFIG_PATH, *, ui_smoke: bool = False) -> None:
         ctk.set_appearance_mode("dark")
         # Enable awareness before Tk creates a window or caches screen metrics.
         # The packaged EXE also declares this in app.manifest.
@@ -148,9 +150,11 @@ class CryptoForwardMonitorApp(DashboardLayout, ctk.CTk):
         self.config_data = load_config(config_path)
         self.storage = MonitorStorage(self.config_data.app_data_dir)
         self.runner = DailyModelRunner(self.config_data, self.storage)
+        self.ai = create_ai(self.config_data)
         self.controller = MonitorController(
             self.config_data, self.storage, self.runner,
             BinanceMarketClient(timeout=self.config_data.market_timeout_seconds),
+            ai_orchestrator=self.ai,
         )
         self.refresh_in_progress = False
         self.model_in_progress = False
@@ -160,11 +164,13 @@ class CryptoForwardMonitorApp(DashboardLayout, ctk.CTk):
         self.dispatcher = UiDispatcher()
         self._poll_after_id = None
         self._variables()
+        self._ai_variables()
         self._styles()
         self._layout()
         self._tick_clock()
         self._drain_ui_events()
-        self.after(100, self.refresh_dashboard)
+        if not ui_smoke:
+            self.after(100, self.refresh_dashboard)
         self.protocol("WM_DELETE_WINDOW", self.close)
 
     def _variables(self) -> None:
@@ -182,8 +188,11 @@ class CryptoForwardMonitorApp(DashboardLayout, ctk.CTk):
             "q_cost_status", "b_cost_status",
             "q_btc_pnl", "q_eth_pnl", "b_btc_pnl", "b_eth_pnl",
             "q_state_label", "b_state_label", "action_raw", "crash_label", "stage3_label",
+            "h_state_label", "h_target", "h_actual", "h_stage", "h_decision_time", "q_decision_time",
+            "h_portfolio_total", "h_portfolio_btc", "h_portfolio_eth", "h_portfolio_cash", "h_portfolio_time",
+            "h_btc_average", "h_eth_average", "h_btc_pnl", "h_eth_pnl", "h_cost_status",
         ]}
-        self.allocation_percentages = {"q": (0.0, 0.0, 0.0), "b": (0.0, 0.0, 0.0)}
+        self.allocation_percentages = {key: (0.0, 0.0, 0.0) for key in ("h", "q", "b")}
         self.allocation_canvases: dict[str, tk.Canvas] = {}
         self.auto_var = tk.BooleanVar(value=self.config_data.auto_refresh)
         seconds_to_label = {10: "10 秒", 30: "30 秒", 60: "60 秒", 300: "5 分鐘"}
@@ -247,6 +256,8 @@ class CryptoForwardMonitorApp(DashboardLayout, ctk.CTk):
 
     def apply_snapshot(self, snapshot: DashboardSnapshot) -> None:
         self.latest_snapshot = snapshot
+        if hasattr(self, 'apply_ai_view'):
+            self.apply_ai_view(snapshot.ai_view)
         self.vars["last_refresh"].set(snapshot.refreshed_at.strftime("%H:%M:%S"))
         state = snapshot.runner_state
         last_run = str(state.get("last_run_time") or "從未執行")
@@ -281,6 +292,24 @@ class CryptoForwardMonitorApp(DashboardLayout, ctk.CTk):
             self.footer_var.set(snapshot.status_error)
         self._update_portfolio("q", snapshot.v310_portfolio)
         self._update_portfolio("b", snapshot.v31_portfolio)
+        self._update_portfolio("h", snapshot.combined_portfolio)
+        view = snapshot.ai_view or {}
+        hybrid = (view.get("genesis") or {}).get("strategy_mode") == "v310_hybrid"
+        cycle = (view.get("cycle") or {}) if hybrid else {}
+        self.vars["h_target"].set(fmt_pct(cycle["risk_gateway"]["exposure"] * 100) if cycle else "待判讀")
+        self.vars["h_stage"].set("—")
+        self.vars["h_state_label"].set("等待 AI 判讀")
+        self.vars["h_decision_time"].set("AI：尚未執行（開啟 App 不會自動判讀）")
+        if cycle:
+            from ai_ui import ACTION_TEXT
+            action = cycle["risk_gateway"]["action"]
+            self.vars["h_state_label"].set("綜合決策 · " + ACTION_TEXT.get(action, action))
+            ai_time = datetime.fromisoformat(cycle["state"]["timestamp"].replace("Z", "+00:00")).astimezone()
+            self.vars["h_decision_time"].set(f"最後 AI 決策：{ai_time:%Y-%m-%d %H:%M}\n開啟 App 僅更新估值；新判讀請按執行每日模型。")
+        if snapshot.combined_portfolio is None:
+            self.vars["h_portfolio_total"].set("尚未啟用")
+            self.vars["h_portfolio_time"].set("請在 AI 設定建立綜合帳本；不會重設原 V3.10。")
+        self.vars["q_decision_time"].set("量化狀態：無資料")
         self.vars["portfolio_status"].set(
             "資產配置讀取失敗｜" + "｜".join(snapshot.portfolio_errors)
             if snapshot.portfolio_errors else "依各模型紙上持倉計算；即時價格變動不代表模型已執行交易。"
@@ -303,6 +332,8 @@ class CryptoForwardMonitorApp(DashboardLayout, ctk.CTk):
             }.items():
                 self.vars[key].set(value)
             self.vars["q_state_label"].set(STATE_LABELS.get(status.v310_state, status.v310_state))
+            self.vars["h_stage"].set(str(status.v310_stage) + "（量化）")
+            self.vars["q_decision_time"].set(f"量化資料：{status.status_local:%Y-%m-%d %H:%M}（4H 棒起點）")
             self.vars["b_state_label"].set(STATE_LABELS.get(status.v31_state, status.v31_state or "等待資料"))
             for key, raw in (("crash_label", status.crash), ("stage3_label", status.stage3_candidate)):
                 self.vars[key].set({"YES": "有", "NO": "無"}.get(raw.upper(), raw))
@@ -324,6 +355,8 @@ class CryptoForwardMonitorApp(DashboardLayout, ctk.CTk):
         else:
             self.vars["evaluation_eligibility"].set("模型狀態無法讀取 · 請查看日誌")
             self.eligibility_label.configure(style="Danger.TLabel")
+        for prefix, portfolio in (("q", snapshot.v310_portfolio), ("h", snapshot.combined_portfolio)):
+            self.vars[f"{prefix}_actual"].set(fmt_pct(portfolio.btc_percent + portfolio.eth_percent) if portfolio else "—")
         self._write_report(snapshot.latest_report)
         self._write_execution_summary(snapshot.execution_summary)
         self.recent_list.delete(0, "end")
@@ -368,7 +401,9 @@ class CryptoForwardMonitorApp(DashboardLayout, ctk.CTk):
 
     def _set_pnl_color(self, prefix: str, asset: str, value: float | None) -> None:
         color = "muted" if value is None or abs(value) < 0.005 else ("green" if value > 0 else "red")
-        self.pnl_labels[f"{prefix}_{asset}"].configure(text_color=UI_COLORS[color])
+        label = self.pnl_labels.get(f"{prefix}_{asset}")
+        if label is not None:
+            label.configure(text_color=UI_COLORS[color])
 
     def _draw_allocation_bar(self, prefix: str) -> None:
         bar = self.allocation_canvases.get(prefix)
@@ -415,7 +450,7 @@ class CryptoForwardMonitorApp(DashboardLayout, ctk.CTk):
             self._start_model(force=True)
 
     def _start_model(self, *, force: bool) -> None:
-        if self.model_in_progress:
+        if self.model_in_progress or getattr(self, 'ai_settings_busy', False):
             self.notify("模型目前已在執行中，可以繼續瀏覽其他分頁。")
             return
         self.model_in_progress = True
@@ -425,8 +460,9 @@ class CryptoForwardMonitorApp(DashboardLayout, ctk.CTk):
 
         def worker() -> None:
             try:
-                result = self.controller.run_daily_model(force=force)
-                self.dispatcher.post(self.model_finished, result)
+                result = self.controller.run_daily_cycle(force=force,
+                    progress=lambda text:self.dispatcher.post(self.footer_var.set,text))
+                self.dispatcher.post(self.daily_cycle_finished, result)
             except ModelRunInProgress as exc:
                 self.dispatcher.post(self.show_error, "模型", exc)
                 self.dispatcher.post(self._model_reset)
@@ -434,6 +470,13 @@ class CryptoForwardMonitorApp(DashboardLayout, ctk.CTk):
                 self.dispatcher.post(self.show_error, "模型執行失敗", exc)
                 self.dispatcher.post(self._model_reset)
         threading.Thread(target=worker, daemon=True).start()
+
+    def daily_cycle_finished(self, cycle):
+        self.model_finished(cycle.v310)
+        code = cycle.ai.outcome
+        self.notify('V3.10：'+cycle.v310.outcome+'｜'+outcome_text(code),
+                    error=not cycle.ai.completed and code!='AI_DISABLED')
+        self.apply_ai_view(self.ai.view())
 
     def model_finished(self, result: RunResult) -> None:
         self._model_reset()
@@ -481,17 +524,60 @@ class CryptoForwardMonitorApp(DashboardLayout, ctk.CTk):
                 self.after_cancel(timer)
         if self.auto_after_id:
             self.after_cancel(self.auto_after_id)
+        # CTk top-level/animation timers can outlive a destroyed root in tests
+        # and rapid reopen. Cancel only callbacks belonging to this Tcl session.
+        for timer in self.tk.call('after', 'info'):
+            try:
+                # Keep Tcl command ownership intact for each child.destroy().
+                # Misc.after_cancel also deletes commands owned by children.
+                self.tk.call('after', 'cancel', timer)
+            except tk.TclError:
+                pass
         self.destroy()
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    import argparse
+    parser = argparse.ArgumentParser(description='Crypto Forward Monitor')
+    parser.add_argument('--config', type=Path, default=CONFIG_PATH)
+    parser.add_argument('--smoke-ui-receipt', type=Path,
+                        help='Offline UI/package QA; requires an isolated --config, no provider/GPT/model calls')
+    args = parser.parse_args(argv)
+    if args.smoke_ui_receipt and args.config.resolve() == CONFIG_PATH.resolve():
+        parser.error('Smoke QA requires a separate, isolated --config')
     try:
-        app = CryptoForwardMonitorApp()
+        app = CryptoForwardMonitorApp(args.config, ui_smoke=bool(args.smoke_ui_receipt))
     except ConfigError as exc:
         root = tk.Tk(); root.withdraw()
         messagebox.showerror("設定錯誤", str(exc), parent=root)
         root.destroy()
         return 2
+    if args.smoke_ui_receipt:
+        from ai_shadow.storage import atomic_text
+        from ai_shadow.snapshot import canonical_json
+        from ai_shadow.auth.token_store import WindowsTokenStore
+        from ai_shadow.decision_models import DECISION_SCHEMA
+        from ai_shadow.decision_engine import POLICY_FILE
+        # Constructor verifies Windows backend importability only. No vault
+        # read/write, login, provider, model runner or inference call is made.
+        backend = WindowsTokenStore()
+        app.show_page('AI 決策')
+        app.apply_ai_view(app.ai.view())
+        app.show_ai_settings()
+        def finish_smoke():
+            atomic_text(args.smoke_ui_receipt, canonical_json({
+                'status':'PASS', 'packaged':bool(getattr(sys,'frozen',False)),
+                'pages':list(app.pages), 'policy_resource':POLICY_FILE.is_file(),
+                'schema_required_fields':len(DECISION_SCHEMA['required']),
+                'vault_backend':type(backend.backend).__name__,
+                'vault_operations':0, 'live_oauth':False, 'gpt_requests':0,
+                'model_runs':0, 'ai_enabled':app.ai.settings()['enabled'],
+                'settings_window':bool(app.ai_settings_window.winfo_exists()),
+                'portfolio_order':list(app.portfolio_cards),
+                'combined_policy_resource':(POLICY_FILE.parent/'v310_combined_v1.md').is_file(),
+            })+'\n')
+            app.close()
+        app.after(1200,finish_smoke)
     app.mainloop()
     return 0
 

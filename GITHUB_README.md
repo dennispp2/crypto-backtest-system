@@ -1,39 +1,35 @@
 # GitHub 保存範圍與還原
 
-此儲存庫保存加密貨幣回測專案及 Crypto Forward Monitor 原始碼。
-GitHub 版本是提交當下的快照；桌面 App 每日產生的新紀錄不會自動推送。
+GitHub 保存程式與研究結果，不會自動同步你每天的私人帳本。AI 功能目前在 **feature/gpt-shadow-portfolio-manager** 分支，main 保持原狀。
 
-## 已保存
+## 換電腦怎麼用？
 
-- 策略引擎、執行入口、測試與設計文件。
-- 凍結參數、原始行情、來源清單、雜湊與稽核證據。
-- 各版本現有回測結果、報告與圖表。
-- V3.10 前瞻模型的既有帳本與安全評估快照。
-- Windows App 原始碼、圖示、建置腳本及設定範例。
+先把這個分支複製到 D 槽等工作資料夾：
 
-保存既有結果不代表重新通過全部回測驗收。現有安全評估、失敗紀錄及凍結門檻保留原狀。
-`.gitattributes` 關閉換行轉換，使複製後的檔案位元組與既有凍結雜湊一致。
+```powershell
+git clone --branch feature/gpt-shadow-portfolio-manager https://github.com/dennispp2/crypto-backtest-system.git
+cd crypto-backtest-system
+```
 
-## 留在本機
+接著依 [專案首頁](README.md#第一次啟動windows) 安裝相依套件，首次複製 `CryptoForwardMonitor/config.example.json` 為 `config.json`，不要覆蓋已有設定。
 
-- `.venv`、Python 快取、App 的 `build`／`dist` 及 EXE。
-- `CryptoForwardMonitor/config.json`、`data`、`archive`、`logs`。
-- 已存在的重複 ZIP 交付套件及其套件雜湊檔。
+若搬到其他路徑，請核對模型命令、工作資料夾、狀態檔與 App 資料位置。模型命令中的 Python 完整路徑若含空白，要加雙引號，例如：
+`"D:/My Crypto/.venv/Scripts/python.exe" run_forward_v3_10.py`。
 
-以上檔案沒有被刪除。GitHub 儲存庫不等同於可直接啟動的完整桌面安裝包。
+新電腦需要在 App 用自己的 ChatGPT 重新登入、授權方案用量及選模型。GitHub 不包含你的登入憑證或私人 AI 帳本，不會自動還原目前資產。[App 使用說明](CryptoForwardMonitor/README.md)。
 
-## Windows 還原
+## 有上傳什麼？
 
-1. 複製儲存庫到 D 槽的工作資料夾。
-2. 建立 Python 環境，依根目錄 `requirements.txt` 與
-   `CryptoForwardMonitor/requirements.txt` 安裝相依套件。
-3. 將 `CryptoForwardMonitor/config.example.json` 複製成 `config.json`。
-4. 將 `model_command` 改成該環境 Python 的完整路徑加上
-   `run_forward_v3_10.py`，例如：
-   `"D:/虛擬貨幣/crypto_backtest_system/.venv/Scripts/python.exe" run_forward_v3_10.py`。
-   若搬到含空白的路徑，Python 路徑必須加雙引號。
-5. 其餘範例路徑以設定檔所在資料夾為基準；若使用打包 EXE，依
-   `CryptoForwardMonitor/README.md` 將設定指向實際專案及 App 資料目錄。
-6. 依各版本 README 執行測試或重現流程；需要刷新行情時另行執行相應入口。
+- 回測引擎、桌面 App、AI 整合程式、測試與文件。
+- 凍結設定、原始行情、來源清單、雜湊、各版本報告及圖表。
+- 原先已版本化的 `v3_10_forward/` 研究帳本與安全評估快照；不是新的私人 AI 帳本。
 
-本機原始位置：`D:\虛擬貨幣\crypto_backtest_system`。
+保留既有結果不代表重新通過全部驗收；原始失敗紀錄與凍結門檻照原樣保存。`.gitattributes` 保留檔案位元組，避免換行轉換破壞凍結雜湊。
+
+## 什麼留在本機？
+
+- ChatGPT token、帳號 metadata、私人 AI Genesis／SQLite／決策與成交紀錄。
+- `ai_shadow/data/`、`artifacts/ai_shadow_local/`、App 本機 `config.json`、`data/`、`archive/`、`logs/`。
+- Python 環境、快取、App `build/`／`dist/`／EXE，以及重複 ZIP 交付包。
+
+這些資料沒有被刪除，只是不納入 Git。GitHub 是提交時的原始碼與研究快照，不是完整桌面安裝包，也不是私人操作紀錄的雲端備份。

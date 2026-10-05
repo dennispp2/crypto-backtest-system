@@ -7,7 +7,7 @@ from typing import Callable
 from config import AppConfig
 from market import BinanceMarketClient, MarketError, MarketSnapshot
 from parser import ForwardStatus, parse_status_file
-from portfolio import PortfolioError, PortfolioSnapshot, load_portfolio
+from portfolio import PortfolioError, PortfolioSnapshot, load_portfolio, load_combined_portfolio
 from report import build_latest_report
 from runner import DailyModelRunner, RunResult
 from storage import MonitorStorage, StorageError
@@ -30,6 +30,8 @@ class DashboardSnapshot:
     refreshed_at: datetime
     market_last_successful_update: datetime | None
     execution_summary: str = ""
+    ai_view: dict | None = None
+    combined_portfolio: PortfolioSnapshot | None = None
 
 
 class MonitorController:
@@ -39,11 +41,13 @@ class MonitorController:
         self, config: AppConfig, storage: MonitorStorage,
         runner: DailyModelRunner, market_client: BinanceMarketClient,
         *, clock: Callable[[], datetime] | None = None,
+        ai_orchestrator=None,
     ) -> None:
         self.config = config
         self.storage = storage
         self.runner = runner
         self.market_client = market_client
+        self.ai = ai_orchestrator
         self.clock = clock or (lambda: datetime.now().astimezone())
         self.last_market: MarketSnapshot | None = None
         self.market_last_successful_update: datetime | None = None
@@ -82,6 +86,18 @@ class MonitorController:
         runner_state["last_refresh_time"] = now.isoformat()
         self.storage.save_runner_state(runner_state)
         report = build_latest_report(status, self.last_market) if status else "LATEST REPORT\n\nSTATUS FILE NOT FOUND OR INVALID."
+        ai_view = self.load_ai_view()
+        try:
+            combined = load_combined_portfolio(ai_view, self.last_market)
+        except (PortfolioError, TypeError) as exc:
+            combined = None
+            portfolio_errors.append(f"V3.10＋AI: {exc}")
+        if market_error:
+            # A failed refresh does not make cached prices current again.
+            def cached(portfolio):
+                return replace(portfolio, valuation="行情更新失敗 · 沿用上次估值，非最新價格") if portfolio else None
+            portfolios = [cached(p) for p in portfolios]
+            combined = cached(combined)
         return DashboardSnapshot(
             status=status, market=self.last_market, market_error=market_error,
             status_error=status_error, v310_portfolio=portfolios[0], v31_portfolio=portfolios[1],
@@ -90,6 +106,7 @@ class MonitorController:
             runner_state=runner_state, refreshed_at=now,
             market_last_successful_update=self.market_last_successful_update,
             execution_summary=self.load_execution_summary(),
+            ai_view=ai_view, combined_portfolio=combined,
         )
 
     def auto_refresh_tick(self) -> DashboardSnapshot:
@@ -119,6 +136,34 @@ class MonitorController:
         except (OSError, StorageError) as exc:
             summary += f"\n\n摘要保存失敗（不影響模型原始結果）：{exc}"
         return replace(result, execution_summary=summary)
+
+    def run_daily_cycle(self, *, force: bool = False, progress=None):
+        from ai_shadow.daily_cycle import DailyCycleOrchestrator
+        if self.ai:
+            self.ai.progress = progress or (lambda _: None)
+        cycle = DailyCycleOrchestrator(self.run_daily_model, self.ai, progress).run(force=force)
+        if self.ai and self.ai.settings().get('strategy_mode') == 'v310_hybrid':
+            from ai_shadow.combined import render_combined_result
+            try:
+                quant, _, _ = self.ai.read_forward()
+                combined = render_combined_result(quant, cycle.ai, self.load_ai_view())
+            except Exception:
+                # Presentation failure cannot invalidate an already committed
+                # quant/AI cycle or cause the user to repeat paper execution.
+                combined = '綜合摘要暫時無法讀取；請查看原始執行紀錄，不需重複下達模型執行。'
+            summary = combined+'\n\n【純 V3.10 執行紀錄】\n'+cycle.v310.execution_summary
+            try:
+                self.storage.save_execution_summary(summary, self.clock().astimezone())
+            except (OSError, StorageError):
+                summary += '\n摘要未能保存；原始模型與紙上帳本結果不受影響。'
+            cycle = replace(cycle, v310=replace(cycle.v310, execution_summary=summary))
+        return cycle
+
+    def load_ai_view(self):
+        try:
+            return self.ai.view() if self.ai else None
+        except Exception:
+            return {'outcome':'AI_STATE_READ_FAILED'}
 
     def load_execution_summary(self) -> str:
         try:

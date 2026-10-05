@@ -43,6 +43,7 @@ class DashboardLayout:
         self._reports()
         self._execution_report()
         self._audit()
+        self._ai_page()
         for page in self.pages.values():
             page.grid(row=0, column=0, sticky="nsew")
         footer = frame(self.main)
@@ -75,7 +76,7 @@ class DashboardLayout:
         nav = frame(side)
         nav.grid(row=1, column=0, sticky="ew", padx=12)
         self.nav_buttons = {}
-        for title in ("資產總覽", "白話報告", "執行摘要", "原始資料"):
+        for title in ("資產總覽", "白話報告", "執行摘要", "AI 決策", "原始資料"):
             button = Button(nav, title, lambda name=title: self.show_page(name),
                             width=160, anchor="w", border_spacing=16)
             button.configure(fg_color="transparent", text_color=UI_COLORS["muted"])
@@ -89,7 +90,7 @@ class DashboardLayout:
         self.tools_button = Button(utilities, "工具與設定  ⌄", self.show_tools, width=160)
         self.tools_button.pack(fill="x", pady=4)
         Label(utilities, "僅紙上模擬 · 不會下單", size=12, color="muted").pack(pady=(20, 0))
-        Label(utilities, "V3.10  /  V3.1", size=12, color="muted", number=True).pack(pady=(4, 0))
+        Label(utilities, "V3.10＋AI  /  V3.10", size=12, color="muted", number=True).pack(pady=(4, 0))
 
     def _header(self):
         header = frame(self.main)
@@ -200,11 +201,13 @@ class DashboardLayout:
         portfolios = frame(self.main_left)
         portfolios.pack(fill="x")
         self.pnl_labels = {}
+        self.portfolio_cards = {}
         for col, (prefix, version, detail, color) in enumerate((
-            ("q", "V3.10", "凍結模型 · Champion", "accent"),
-            ("b", "V3.1", "影子模型 · Comparator", "blue"),
+            ("h", "V3.10＋AI", "綜合版 · 紙上帳本", "green"),
+            ("q", "V3.10", "純量化 · 凍結模型", "accent"),
         )):
             card = Card(portfolios)
+            self.portfolio_cards[prefix] = card
             card.grid(row=0, column=col, sticky="nsew", padx=(0, 7) if col == 0 else (7, 0))
             portfolios.grid_columnconfigure(col, weight=1, uniform="portfolio")
             box = card.content
@@ -241,7 +244,7 @@ class DashboardLayout:
             ctk.CTkFrame(box, height=1, corner_radius=0, fg_color=UI_COLORS["border"]).pack(fill="x", pady=(15, 14))
             metrics = frame(box)
             metrics.pack(fill="x")
-            for i, (label, suffix) in enumerate((("目標曝險", "target"), ("帳本曝險", "actual"), ("減碼階段", "stage"))):
+            for i, (label, suffix) in enumerate((("批准曝險" if prefix == "h" else "目標曝險", "target"), ("即時曝險", "actual"), ("量化階段", "stage"))):
                 cell = frame(metrics)
                 cell.grid(row=0, column=i, sticky="w")
                 metrics.grid_columnconfigure(i, weight=1)
@@ -251,6 +254,7 @@ class DashboardLayout:
             meta = frame(box)
             meta.pack(fill="x", pady=(16, 0))
             wrapping_label(meta, textvariable=self.vars[f"{prefix}_portfolio_time"], size=11)
+            wrapping_label(meta, textvariable=self.vars[f"{prefix}_decision_time"], size=11)
         note = frame(self.main_left)
         note.pack(fill="x", pady=(12, 16))
         wrapping_label(note, textvariable=self.vars["portfolio_status"], size=12)
@@ -285,6 +289,7 @@ class DashboardLayout:
         warnings = frame(risk.content)
         warnings.pack(fill="x", pady=(6, 0))
         wrapping_label(warnings, textvariable=self.vars["warning"], color="red", size=12)
+        self._ai_summary_card()
 
     def _responsive_layout(self, event):
         logical_width = event.width / ctk.ScalingTracker.get_widget_scaling(self.main_grid)
@@ -370,6 +375,8 @@ class DashboardLayout:
         for label, path in (("開啟封存", self.storage.archive_dir), ("開啟日誌", self.storage.logs_dir),
                             ("開啟設定", self.config_path), ("開啟資料夾", self.storage.data_dir)):
             menu.add_command(label=label, command=lambda p=path: self.open_path(p))
+        menu.add_separator()
+        menu.add_command(label='ChatGPT 與 AI 設定…',command=self.show_ai_settings)
         menu.add_separator()
         menu.add_command(label="強制執行模型…", command=self.force_run)
         menu.add_separator()

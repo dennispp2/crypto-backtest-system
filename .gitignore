@@ -33,3 +33,8 @@ Desktop.ini
 
 # Local GitHub publication receipt.
 /artifacts/github_publish_receipt.json
+
+# Independent AI shadow runtime, account metadata and credential-free journals.
+/ai_shadow/data/
+/CryptoForwardMonitor/ai_shadow_data/
+/artifacts/ai_shadow_local/

@@ -118,3 +118,49 @@ def load_portfolio(path: Path, market: MarketSnapshot | None, *, cost_path: Path
         valuation=valuation,
         btc_average_cost=btc_cost, eth_average_cost=eth_cost, cost_status=cost_status,
     )
+
+
+def load_combined_portfolio(view: dict | None, market: MarketSnapshot | None) -> PortfolioSnapshot | None:
+    """Read-only valuation of the persisted hybrid account, never a new Genesis.
+
+    Do not relabel legacy independent AI experiments as V3.10 + AI. Cost basis
+    is measured from this account's Genesis, not inherited historical costs.
+    """
+    if not view or (view.get("genesis") or {}).get("strategy_mode") != "v310_hybrid":
+        return None
+    state = view.get("state")
+    if not isinstance(state, dict):
+        raise PortfolioError("COMBINED PORTFOLIO STATE MISSING")
+    btc_units = _number(state, "btc_units")
+    eth_units = _number(state, "eth_units")
+    cash = _number(state, "cash")
+    try:
+        timestamp = datetime.fromisoformat(state["timestamp"].replace("Z", "+00:00"))
+        if timestamp.tzinfo is None:
+            raise ValueError("Timezone required")
+    except (KeyError, TypeError, ValueError) as exc:
+        raise PortfolioError("COMBINED PORTFOLIO TIMESTAMP INVALID") from exc
+    if market:
+        btc_price, eth_price = market.btc.price, market.eth.price
+        quote_time = min(market.btc.data_timestamp, market.eth.data_timestamp).astimezone()
+        valuation = f"Binance 市價 · {quote_time:%m/%d %H:%M:%S}"
+    else:
+        btc_price = _number(state, "btc_price", positive=True)
+        eth_price = _number(state, "eth_price", positive=True)
+        valuation = "帳本最後一次估值（尚未取得最新行情）"
+    if any(not math.isfinite(p) or p <= 0 for p in (btc_price, eth_price)):
+        raise PortfolioError("COMBINED MARKET PRICE INVALID")
+    btc_value, eth_value = btc_units * btc_price, eth_units * eth_price
+    total = btc_value + eth_value + cash
+    if not math.isfinite(total) or total <= 0:
+        raise PortfolioError("COMBINED PORTFOLIO TOTAL INVALID")
+    averages = []
+    for asset, units in (("btc", btc_units), ("eth", eth_units)):
+        cost = _number(state, f"{asset}_cost_basis")
+        averages.append(cost / units if units > 1e-12 else None)
+    return PortfolioSnapshot(
+        timestamp, total, btc_value, eth_value, cash,
+        btc_value / total * 100, eth_value / total * 100, cash / total * 100,
+        btc_units, eth_units, valuation, *averages,
+        "均價以綜合帳本啟用時市價為起點；非原 V3.10 歷史買入均價。",
+    )
