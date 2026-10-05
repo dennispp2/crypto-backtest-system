@@ -55,7 +55,7 @@ AI 建議還要通過程式風控：主動目標曝險最多 95%、單次調整�
 
 ## 第一次啟動（Windows）
 
-目前 AI 功能在 `feature/gpt-shadow-portfolio-manager` 分支，`main` 保持原狀。下載該分支後，在專案根目錄執行：
+AI 功能與使用說明已納入 `main`。下載本專案後，在專案根目錄執行：
 
 ```powershell
 py -m venv .venv

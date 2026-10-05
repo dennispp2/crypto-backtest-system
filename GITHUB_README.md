@@ -1,13 +1,13 @@
 # GitHub 保存範圍與還原
 
-GitHub 保存程式與研究結果，不會自動同步你每天的私人帳本。AI 功能目前在 **feature/gpt-shadow-portfolio-manager** 分支，main 保持原狀。
+GitHub 保存程式與研究結果，不會自動同步你每天的私人帳本。AI 功能與操作說明已納入 **main**。
 
 ## 換電腦怎麼用？
 
-先把這個分支複製到 D 槽等工作資料夾：
+先把 main 複製到 D 槽等工作資料夾：
 
 ```powershell
-git clone --branch feature/gpt-shadow-portfolio-manager https://github.com/dennispp2/crypto-backtest-system.git
+git clone --branch main https://github.com/dennispp2/crypto-backtest-system.git
 cd crypto-backtest-system
 ```
 
